@@ -61,7 +61,7 @@ if ( ! function_exists('form_open'))
 	 * @param	array	a key/value pair hidden data
 	 * @return	string
 	 */
-	function form_open($action = '', $attributes = array(), $hidden = array())
+	function form_open($action = '', $attributes = array(), $hidden = array(), $novalidate = true)
 	{
 		$CI =& get_instance();
 
@@ -88,7 +88,7 @@ if ( ! function_exists('form_open'))
 			$attributes .= ' accept-charset="'.strtolower(config_item('charset')).'"';
 		}
 
-		$form = '<form action="'.$action.'"'.$attributes.">\n";
+		$form = '<form action="'.$action.'"'.$attributes." novalidate>\n";
 
 		if (is_array($hidden))
 		{

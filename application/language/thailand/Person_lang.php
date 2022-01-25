@@ -1,0 +1,22 @@
+<?php 
+$lang['title'] = 'Person';
+$lang['ID'] = 'Id';
+$lang['NATIONAL_ID'] = 'National Id';
+$lang['PASSPORT_ID'] = 'Passport Id';
+$lang['TITLE_TH'] = 'Title Th';
+$lang['FIRST_NAME_TH'] = 'First Name Th';
+$lang['LAST_NAME_TH'] = 'Last Name Th';
+$lang['TITLE_EN'] = 'Title En';
+$lang['FIRST_NAME_EN'] = 'First Name En';
+$lang['LAST_NAME_EN'] = 'Last Name En';
+$lang['PICTURE'] = 'Picture';
+$lang['COUNTRY'] = 'Country';
+$lang['REFERENCE_ID'] = 'Reference Id';
+$lang['GENDER'] = 'Gender';
+$lang['DATA_SOURCE'] = 'Data Source';
+$lang['REMARKS'] = 'Remarks';
+$lang['STATUS_ID'] = 'Status Id';
+$lang['CREATE_DATE'] = 'Create Date';
+$lang['CREATE_BY'] = 'Create By';
+$lang['UPDATE_DATE'] = 'Update Date';
+$lang['UPDATE_BY'] = 'Update By';

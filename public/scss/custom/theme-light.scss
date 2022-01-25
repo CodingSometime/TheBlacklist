@@ -1,0 +1,99 @@
+$enable-light-mode: true;
+$border-opacity: 0.16 !default;
+
+// light mode
+$light-mode-lighten: lighten($light, 8%) !default;
+$light-mode-lighten: lighten($light, 2%) !default;
+$light-mode-border-color: lighten($light, 8%) !default;
+$light-mode-border-color-light: lighten($light, 4%) !default;
+$light-mode-text: $light;
+$border-color-transparent: rgba($text-muted, $border-opacity) !default;
+
+@mixin light-mode {
+	@if $enable-light-mode {
+		$selector: &;
+
+		@media not print {
+			@if ($selector) {
+				.theme-light & {
+					@content;
+				}
+			} @else {
+				.theme-light {
+					@content;
+				}
+			}
+		}
+
+		@media not print {
+			@media (prefers-color-scheme: light) {
+				@if ($selector) {
+					.theme-light-auto & {
+						@content;
+					}
+				} @else {
+					.theme-light-auto {
+						@content;
+					}
+				}
+			}
+		}
+	}
+}
+
+// stylelint-disable declaration-no-important
+// body:not(.theme-light) .hide-theme-dark {
+// 	display: none !important;
+// }
+
+@include light-mode {
+	& {
+		--#{$variable-prefix}white-rgb: #{to-rgb($white)};
+		--#{$variable-prefix}black-rgb: #{to-rgb($black)};
+		--#{$variable-prefix}body-color-rgb: #{to-rgb($body-color)};
+		--#{$variable-prefix}body-bg-rgb: #{to-rgb($body-bg)};
+	  
+		// --#{$variable-prefix}body-color: #{$light-mode-text};
+		// --#{$variable-prefix}body-color-rgb: #{to-rgb($light-mode-text)};
+
+		// --#{$variable-prefix}body-bg: #{$light-mode-lighten};
+		// --#{$variable-prefix}body-bg-rgb: #{to-rgb($light-mode-lighten)};
+
+		// --#{$variable-prefix}card-bg: #{$light};
+		// --#{$variable-prefix}card-bg-rgb: #{to-rgb($light)};
+
+		// --#{$variable-prefix}border-color: #{$light-mode-border-color};
+		// --#{$variable-prefix}border-color-light: #{$light-mode-border-color-light};
+
+		// color: $dark;
+		background-color: rgba($light, 0.9) !important;
+	}
+
+	.hide-theme-light {
+		display: none !important;
+	}
+
+	.text-body {
+		color: $dark !important;
+	}
+
+	.bg-body {
+		background-color:  rgba($gray-100, 0.9) !important;
+	}
+
+	.breadcrumb .breadcrumb-item a {
+		color: $text-muted !important;
+	}
+
+	.pagination .page-item a.page-link{
+		padding: 2px;
+		border: none !important;
+		background-color: $white !important;
+		color: inherit;
+	}
+
+	.pagination .active a.page-link{
+		background-color: $primary !important;
+		color: $light;
+	}
+}

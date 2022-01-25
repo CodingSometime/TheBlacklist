@@ -1,0 +1,53 @@
+@import url(https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap);
+// @import url(https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700&display=swap);
+// @import url(https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700&display=swap);
+// @import url(https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap);
+// @import url(https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap);
+
+// @import "./bootstrap/functions";
+// @import "./bootstrap/variables";
+// @import "./bootstrap/mixins";
+// @import "./bootstrap/root";
+
+// @import "./bootstrap/utilities";
+// @import "./bootstrap/reboot";
+// @import "./bootstrap/type";
+// @import "./bootstrap/images";
+// @import "./bootstrap/containers";
+// @import "./bootstrap/grid";
+// @import "./bootstrap/nav";
+// @import "./bootstrap/navbar";
+// @import "./bootstrap/dropdown";
+// @import "./bootstrap/breadcrumb";
+// @import "./bootstrap/buttons";
+// @import "./bootstrap/forms";
+// @import "./bootstrap/card";
+// @import "./bootstrap/pagination";
+// @import "./bootstrap/tooltip";
+// @import "./bootstrap/toasts";
+
+// @import "./bootstrap/utilities/api";
+
+@import "./bootstrap/bootstrap.scss";
+
+
+@import "./custom/theme-dark";
+@import "./custom/theme-light";
+@import "./custom/tables";
+@import "./custom/footer";
+@import "./custom/breadcrumbs";
+@import "./custom/pagination";
+@import "./custom/icons";
+@import "./custom/form-icons";
+
+// @import "./custom/variables";
+// @import "./tabler/mixins";
+// @import "./tabler/mixins-override";
+
+// @import "./custom/buttons";
+
+
+// @import "./tabler/variables";
+// @import "./tabler/ui/buttons";
+
+// @import "./tabler/tabler";

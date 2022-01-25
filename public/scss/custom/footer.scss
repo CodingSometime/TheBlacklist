@@ -1,0 +1,12 @@
+
+.footer {
+    border-top: 1px solid $gray-100;
+    background-color: $gray-100;
+    color: $text-muted;
+    margin-top: auto;
+  }
+  
+  .footer-transparent {
+    background-color: transparent;
+    border-top: 0;
+  }
