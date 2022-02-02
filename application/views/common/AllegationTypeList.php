@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-between align-items-center mt-3">
   <?php echo @$breadcrumbs; ?>
-  <a href="<?php echo base_url(); ?>page/allegation-type/create" class="btn btn-primary"><i class="ti ti-plus icon"></i> New <?php echo @lang("TITLE"); ?></a>
+  <button data-bs-toggle="modal" data-bs-target="#modalLoading" data-bs-action="create" class="btn btn-primary"><i class="ti ti-plus icon"></i> New <?php echo @lang("TITLE"); ?></button>
 </div>
 <div class="shadow bg-body">
   <div class="border-bottom px-3 py-3 d-flex justify-content-between align-items-center">
@@ -30,7 +30,7 @@
         ?>
             <tr>
               <td class="text-muted"><?php echo $counter; ?></td>
-							<td class="text-center"><?php echo @$rs->allegationCode;?></td>
+							<td><?php echo @$rs->allegationCode;?></td>
 							<td><?php echo @$rs->allegationType;?></td>
 							<td><?php echo @$rs->allegationLevel;?></td>
               <td class="text-nowrap">
@@ -111,8 +111,11 @@
       var button = event.relatedTarget;
       var modalAction = button.getAttribute("data-bs-action");
       var modalId = button.getAttribute("data-bs-id");
-      if (!modalAction || !modalId) return false;
-      window.location = `${baseUrl}/${modalAction}/${modalId}`;
+
+      if (modalAction == "create")
+        window.location = `${baseUrl}/${modalAction}`;
+      else
+        window.location = `${baseUrl}/${modalAction}/${modalId}`;
     } catch (error) {
       console.log("modalLoading.addEventListener");
     }

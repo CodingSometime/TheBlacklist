@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-between align-items-center mt-3">
   <?php echo @$breadcrumbs; ?>
-  <a href="<?php echo base_url(); ?>page/group-company/create" class="btn btn-primary"><i class="ti ti-plus icon"></i> New <?php echo @lang("TITLE"); ?></a>
+  <button data-bs-toggle="modal" data-bs-target="#modalLoading" data-bs-action="create" class="btn btn-primary"><i class="ti ti-plus icon"></i> New <?php echo @lang("TITLE"); ?></button>
 </div>
 <div class="shadow bg-body">
   <div class="border-bottom px-3 py-3 d-flex justify-content-between align-items-center">
@@ -33,7 +33,7 @@
 							<td><?php echo @$rs->groupName;?></td>
               <td class="text-nowrap">
                 <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalLoading" data-bs-action="edit" data-bs-id="<?php echo @$rs->id; ?>"><?php echo @lang('LIST_BUTTON_EDIT'); ?></button>
-                <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalDeleteConfirm" data-bs-action="remove" data-bs-id="<?php echo @$rs->id; ?>" data-bs-label="<?php echo @$rs->groupName; ?>"><?php echo @lang('LIST_BUTTON_DEL'); ?></button>
+                <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalDeleteConfirm" data-bs-action="remove" data-bs-id="<?php echo @$rs->id; ?>" data-bs-label="<?php echo @$rs->companyCode; ?>"><?php echo @lang('LIST_BUTTON_DEL'); ?></button>
               </td>
             </tr>
         <?php
@@ -109,8 +109,11 @@
       var button = event.relatedTarget;
       var modalAction = button.getAttribute("data-bs-action");
       var modalId = button.getAttribute("data-bs-id");
-      if (!modalAction || !modalId) return false;
-      window.location = `${baseUrl}/${modalAction}/${modalId}`;
+
+      if (modalAction == "create")
+        window.location = `${baseUrl}/${modalAction}`;
+      else
+        window.location = `${baseUrl}/${modalAction}/${modalId}`;
     } catch (error) {
       console.log("modalLoading.addEventListener");
     }

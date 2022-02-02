@@ -28,10 +28,10 @@ $lang['FORM_VALIDATE_REQUIRE'] = 'ไม่สามารถเป็นค่�
 # Database Items
 $lang['ACTIONS'] = 'Actions';
 $lang['ID'] = '#';
-$lang['GROUP_CODE'] = 'Group Company Code';
-$lang['GROUP_NAME'] = 'Group Of Company';
+$lang['GROUP_CODE'] = 'Group Code';
+$lang['GROUP_NAME'] = 'Group Name';
 $lang['REMARKS'] = 'Remarks';
-$lang['STATUS_ID'] = 'สถานะ';
+$lang['STATUS_ID'] = 'สถานะการใช้งาน';
 $lang['CREATE_DATE'] = 'Create Date';
 $lang['CREATE_BY'] = 'Create By';
 $lang['UPDATE_DATE'] = 'Update Date';

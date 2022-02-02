@@ -28,6 +28,7 @@
 
 // @import "./bootstrap/utilities/api";
 
+
 @import "./bootstrap/bootstrap.scss";
 
 
@@ -40,6 +41,10 @@
 @import "./custom/icons";
 @import "./custom/form-icons";
 
+
+.dropdown-item, .nav-link {
+    cursor: pointer !important;
+}
 // @import "./custom/variables";
 // @import "./tabler/mixins";
 // @import "./tabler/mixins-override";

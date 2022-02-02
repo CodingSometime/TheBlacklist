@@ -11495,4 +11495,8 @@ Icon input
   left: auto;
 }
 
+.dropdown-item, .nav-link {
+  cursor: pointer !important;
+}
+
 /*# sourceMappingURL=bootstrap-styles.css.map */

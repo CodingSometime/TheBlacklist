@@ -21,16 +21,10 @@ class BaseController extends CI_Controller
     $this->_language = @$object->language;
     $this->_breadcrumbs = @$object->breadcrumbs;
 
-
-    $_SESSION["sess_user_lang"] = "thailand";
-    $_SESSION["sess_user_id"] = -1;
-    $_SESSION["sess_role_id"] = -1;
-    $_SESSION["sess_profile_id"] = -1;
-    
     if (!isset($_SESSION["sess_user_id"])) show_404();
 
     // load _languageuage
-    $this->lang->load($this->_language, $_SESSION["sess_user_lang"]);
+    $this->lang->load($this->_language, @$_SESSION["sess_user_lang"]);
 
 
   }

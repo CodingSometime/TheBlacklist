@@ -32,6 +32,7 @@ $lang['ROLE_CODE'] = 'Role Code';
 $lang['ROLE_NAME'] = 'Role Name';
 $lang['REMARKS'] = 'Remarks';
 $lang['STATUS_ID'] = 'Status';
+$lang['REMOVEABLE'] = 'Removeable';
 $lang['CREATE_DATE'] = 'Create Date';
 $lang['CREATE_BY'] = 'Create By';
 $lang['UPDATE_DATE'] = 'Update Date';

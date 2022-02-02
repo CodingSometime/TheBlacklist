@@ -28,8 +28,8 @@ $lang['FORM_VALIDATE_REQUIRE'] = 'cannot be null.';
 # Database Items
 $lang['ACTIONS'] = 'Actions';
 $lang['ID'] = '#';
-$lang['GROUP_CODE'] = 'Group Company Code';
-$lang['GROUP_NAME'] = 'Group Of Company';
+$lang['GROUP_CODE'] = 'Group Code';
+$lang['GROUP_NAME'] = 'Group Name';
 $lang['REMARKS'] = 'Remarks';
 $lang['STATUS_ID'] = 'Status';
 $lang['CREATE_DATE'] = 'Create Date';
