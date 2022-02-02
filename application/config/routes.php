@@ -53,6 +53,16 @@ $route['default_controller'] = 'welcome';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+// handle http response codes
+$route['page/notfound'] = 'HttpResponse/pagenotfound';
+$route['page/notauthorize'] = 'HttpResponse/notauthorize';
+
+
+$route['login'] = 'login';
+$route['page/redirect'] = 'login/redirect';
+$route['page/logout'] = 'logout/logout';
+$route['page/home'] = 'common/dashboard';
+
 
 $route['page/allegation-type'] = 'common/allegationType';
 $route['page/allegation-type/index'] = 'common/allegationType/index/$1';

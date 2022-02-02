@@ -1,8 +1,10 @@
+// set default page load toggle theme color
 function defaultTheme() {
 	const theme = localStorage.getItem("localTheme") ? localStorage.getItem("localTheme") : "light";
 	toggleThemes(theme);
 }
 
+// change theme color > light or dark
 function toggleThemes(theme) {
 	localStorage.setItem("localTheme", theme);
 	document.body.classList.remove("theme-dark");
@@ -10,18 +12,19 @@ function toggleThemes(theme) {
 	document.body.classList.add(`theme-${theme}`);
 }
 
+// for bootstap tooltips
 var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 	return new bootstrap.Tooltip(tooltipTriggerEl);
 });
 
-// Example starter JavaScript for disabling form submissions if there are invalid fields
+// custom validate bootstrap form-control validation highlight colors
+// JavaScript for disabling form submissions if there are invalid fields
 (function () {
 	"use strict";
 
 	// Fetch all the forms we want to apply custom Bootstrap validation styles to
 	var forms = document.querySelectorAll(".needs-validation");
-  var buttonSubmit = document.querySelector("#buttonSubmit");
 
 	// Loop over them and prevent submission
 	Array.prototype.slice.call(forms).forEach(function (form) {
@@ -32,7 +35,6 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 					event.preventDefault();
 					event.stopPropagation();
 				}
-				console.log(form);
 				form.classList.add("was-validated");
 			},
 			false
@@ -40,11 +42,3 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 	});
 })();
 
-
-function formActionSaveHandler(myForm){
-	
-}
-
-function formActionRemoveHandler(myForm){
-	
-}

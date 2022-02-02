@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------
@@ -72,12 +72,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $active_group = 'default';
 $query_builder = TRUE;
+$username = $_SERVER['CI_USERNAME'] ? $_SERVER['CI_USERNAME'] : "root";
+$password = $_SERVER['CI_PASSWORD'] ? $_SERVER['CI_PASSWORD'] : "";
 
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
+	'username' => $username,
+	'password' => $password,
 	'database' => 'cgplsdb',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',

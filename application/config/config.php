@@ -1,12 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-// secure rest api (maybe)
-$config['JWT_SECRET_KEY'] = 'Mango$BananaAlfa0Tango2Froxtrot';
-$config['JWT_TOKEN_LIFE'] = 300; //second 300=5m
-$config['SSL_SECRET_KEY'] = 'Dude,IdontKnowHow2HackingThisWebsite';
-$config['SSL_METHOD'] = 'AES-256-CBC';
-$config['SSL_SECRET_IV'] = substr(md5('Dude,IdontKnowHow2HackingThisWebsite'), 0, 16);
+// for secure rest api (maybe)
+$config['JWT_SECRET_KEY'] = $_SERVER['JWT_SECRET_KEY'] ? $_SERVER['JWT_SECRET_KEY'] : 'abcdEFGH123@ABCDEF';
+$config['JWT_TOKEN_LIFE'] = $_SERVER['JWT_TOKEN_LIFE'] ? $_SERVER['JWT_TOKEN_LIFE'] : 300; //second 300=5m
+$config['SSL_SECRET_KEY'] = $_SERVER['SSL_SECRET_KEY'] ? $_SERVER['SSL_SECRET_KEY'] : 'abcdEFGH123@ABCDEF';
+$config['SSL_METHOD'] = $_SERVER['SSL_METHOD'] ? $_SERVER['SSL_METHOD'] : 'AES-256-CBC';
+$config['SSL_SECRET_IV'] = substr(md5($config['SSL_SECRET_KEY']), 0, 16);
 
 
 /*

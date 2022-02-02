@@ -15,6 +15,7 @@
 // other navbar variations.
 
 .navbar {
+  font-family: "Inter", Sarabun, sans-serif;
   position: relative;
   display: flex;
   flex-wrap: wrap; // allow us to do the line break for collapsing content
@@ -58,6 +59,8 @@
   padding-bottom: $navbar-brand-padding-y;
   margin-right: $navbar-brand-margin-end;
   @include font-size($navbar-brand-font-size);
+  // modify font-weight
+  font-weight: 600;
   text-decoration: if($link-decoration == none, null, none);
   white-space: nowrap;
 

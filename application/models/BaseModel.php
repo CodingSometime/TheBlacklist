@@ -89,13 +89,14 @@ class BaseModel extends CI_Model
 
 	public function create($forms)
 	{
-		unset($forms["formAction"]);
+		unset($forms["__RequestVerificationAction"]);
+		unset($forms["__RequestVerificationId"]);
 		$forms = camelCaseToUnderscore($forms);
 
 		$forms["CREATE_DATE"] = date("Y-m-d H:i:s");
-		$forms["CREATE_BY"] = @$_SESSION["userId"];
+		$forms["CREATE_BY"] = @$_SESSION["sess_user_id"];
 		$forms["UPDATE_DATE"] = date("Y-m-d H:i:s");
-		$forms["UPDATE_BY"] = @$_SESSION["userId"];
+		$forms["UPDATE_BY"] = @$_SESSION["sess_user_id"];
 
 		$query = $this->db->insert($this->TABLE_NAME, $forms);
 		if (!$query) return responseError($this->db->error());
@@ -106,13 +107,15 @@ class BaseModel extends CI_Model
 
 	public function update($id, $forms)
 	{
+		unset($forms["__RequestVerificationAction"]);
+		unset($forms["__RequestVerificationId"]);
+		
 		if (!$id) return responseError(null, "ID is required");
 		if (!$this->isExists($id)) return false;
-		unset($forms["formAction"]);
 		$forms = camelCaseToUnderscore($forms);
 
 		$forms["UPDATE_DATE"] = date("Y-m-d H:i:s");
-		$forms["UPDATE_BY"] = @$_SESSION["userId"];
+		$forms["UPDATE_BY"] = @$_SESSION["sess_user_id"];
 
 		$this->db->where($this->PRIMARY_KEY, $id);
 		$query = $this->db->update($this->TABLE_NAME, $forms);

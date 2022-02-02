@@ -14,12 +14,13 @@ class AllegationTypeModel extends BaseModel
 		parent::__construct($this->tableName, $this->viewName, $this->primaryKey);
 	}
 
-	public function selectBox($selected = null, $isReadOnly = false)
+	public function selectBox($controlName=null, $selected = null, $isReadOnly = false)
 	{
-
-		$this->db->select("ID AS OPTION_VALUE, ID AS OPTION_NAME", false);
-		// $this->db->where("STATUS_ID", 1);
-		// $this->db->order_by("ID");
+		if (!$controlName) return false;
+		
+		$this->db->select("ID AS OPTION_VALUE, ALLEGATION_TYPE AS OPTION_NAME", false);
+		$this->db->where("STATUS_ID", 1);
+		$this->db->order_by(2);
 		$query = $this->db->get($this->tableName);
 		$results = ($query->result_array());
 		$options = array("" => "");
@@ -35,6 +36,6 @@ class AllegationTypeModel extends BaseModel
 		if ($isReadOnly) {
 			$readOnly = "disabled";
 		}
-		return form_dropdown('AllegationTypeId', $options, $selected, 'class="form-select" required ' . $readOnly);
+		return form_dropdown($controlName, $options, $selected, 'class="form-select" required ' . $readOnly);
 	}
 }

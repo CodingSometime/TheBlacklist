@@ -12,7 +12,7 @@
 	<link rel="mask-icon" href="<?php echo base_url(); ?>public/img/favicon.png" color="#7952b3">
 	<link rel="icon" href="<?php echo base_url(); ?>public/img/favicon.png">
 	<!-- CSS HERE -->
-	<link rel="stylesheet" href="<?php echo base_url(); ?>public/css/cgpls.css" />
+	<link rel="stylesheet" href="<?php echo base_url(); ?>public/css/bootstrap-styles.css" />
 </head>
 
 <body class="theme-dark">

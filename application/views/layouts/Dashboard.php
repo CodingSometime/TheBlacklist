@@ -5,15 +5,14 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>THE BLACKLIST</title>
+  <title>The Blacklist - beta v1.0</title>
   <link rel="shortcut icon" href="<?php echo base_url(); ?>public/img/B.png" type="image/x-icon" />
   <link rel="stylesheet" href="<?php echo base_url(); ?>public/css/bootstrap-styles.css" />
-  <link rel="stylesheet" href="<?php echo base_url(); ?>public/css/bootstrap-select.css" />
   <link rel="stylesheet" href="<?php echo base_url(); ?>public/iconfont/tabler-icons.css" />
 </head>
 
 <body onLoad="defaultTheme()">
-<script src="<?php echo base_url(); ?>public/js/jquery.min.js"></script>
+  <script src="<?php echo base_url(); ?>public/js/jquery.min.js"></script>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
     <div class="container-fluid">
       <img src="<?php echo base_url(); ?>public/img/B.png" style="width: 36px; height: 36px; margin-right: 6px" alt="" />
@@ -35,9 +34,9 @@
               Foundations
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <div class="d-flex">
-                <div>
-                  <li><a class="dropdown-item" href="/page/group-of-company">Group of Company</a></li>
+              <div class="d-flex px-2">
+                <div class="me-2">
+                  <li><a class="dropdown-item" href="/page/group-company">Group of Company</a></li>
                   <li><a class="dropdown-item" href="/page/business-unit">Business Unit</a></li>
                   <li><a class="dropdown-item" href="/page/company">Company</a></li>
                   <li><a class="dropdown-item" href="/page/branch">Branch</a></li>
@@ -56,11 +55,11 @@
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              <i class="ti ti-users icon"></i>
+              <i class="ti ti-shield-check icon"></i>
               Permissions
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
-              <div class="d-flex">
+              <div class="d-flex px-2">
                 <div>
                   <li><a class="dropdown-item" href="/page/user">User</a></li>
                   <li><a class="dropdown-item" href="/page/role">Role</a></li>
@@ -71,16 +70,31 @@
           </li>
         </ul>
         <div class="d-flex text-light">
-          <a href="#" onClick="toggleThemes('dark')" class="px-3 hide-theme-dark" title="Enable dark mode" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="ti ti-moon icon"></i></a>
-          <a href="#" onClick="toggleThemes('light')" class="px-3 hide-theme-light text-warning" title="Enable light mode" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="ti ti-sun icon"></i></a>
-          <span class="text-light"><i class="ti ti-user-circle icon"></i> CodingSometime@gmail.com</span>
+
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="ti ti-user-circle icon"></i>
+                CodingSometime@gmail.com
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                <div class="d-flex">
+                  <div>
+                    <li><a class="dropdown-item" href="<?php echo $_SERVER['PATH_INFO']  ?>?language-toggle=yes"><i class="ti ti-toggle-left icon"></i> Thai / Eng</a></li>
+                    <li><a href="#" onClick="toggleThemes('dark')" class="dropdown-item hide-theme-dark"><i class="ti ti-toggle-right icon"></i> Dark / Light</a>
+                      <a href="#" onClick="toggleThemes('light')" class="dropdown-item hide-theme-light"><i class="ti ti-toggle-left icon"></i> Dark / Light</a>
+                    </li>
+                    <li><a class="dropdown-item" href="/page/logout"><i class="ti ti-logout icon"></i> Logout</a></li>
+                  </div>
+                </div>
+              </ul>
+            </li>
+          </ul>
         </div>
       </div>
     </div>
   </nav>
-
   <main class="container pb-4">
-    <?php echo @$breadcrumbs; ?>
     <?php echo @$content; ?>
   </main>
 

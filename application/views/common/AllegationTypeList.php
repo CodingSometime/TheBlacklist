@@ -1,113 +1,148 @@
+<div class="d-flex justify-content-between align-items-center mt-3">
+  <?php echo @$breadcrumbs; ?>
+  <a href="<?php echo base_url(); ?>page/allegation-type/create" class="btn btn-primary"><i class="ti ti-plus icon"></i> New <?php echo @lang("TITLE"); ?></a>
+</div>
 <div class="shadow bg-body">
-  <h5 class="border-bottom px-3 pt-3 pb-3 mb-0"><i class="ti ti-user icon"></i> <?php echo @lang("title"); ?></h5>
+  <div class="border-bottom px-3 py-3 d-flex justify-content-between align-items-center">
+    <h5><i class="ti ti-align-justified icon"></i> <?php echo @lang("TITLE"); ?></h5>
+    <div>
+      <form action="<?php echo @$route; ?>">
+        <input type="text" name="q" value="<?php echo @$_GET["q"]; ?>" class="form-control  col-md-3" placeholder="Search.." aria-label="Search" />
+      </form>
+    </div>
+  </div>
   <div class="table-responsive">
     <table class="table">
       <thead>
         <tr>
-			<th><?php echo @lang("ID");?></th>
-			<th><?php echo @lang("ALLEGATION_CODE");?></th>
-			<th><?php echo @lang("ALLEGATION_TYPE");?></th>
-			<th><?php echo @lang("ALLEGATION_LEVEL");?></th>
-			<th><?php echo @lang("REMARKS");?></th>
-			<th><?php echo @lang("STATUS_ID");?></th>
-          <th>Action</th>
+          <th>#</th>
+					<th><?php echo @lang("ALLEGATION_CODE");?></th>
+					<th><?php echo @lang("ALLEGATION_TYPE");?></th>
+					<th><?php echo @lang("ALLEGATION_LEVEL");?></th>
+          <th><?php echo @lang("ACTIONS"); ?></th>
         </tr>
       </thead>
       <tbody>
         <?php
         if (isset($results) && is_array($results)) {
+          $counter = @$startRow;
           foreach ($results as $rs) {
         ?>
-  <tr>
-			<td class="text-muted"><?php echo @$rs->id;?></td>
-			<td><?php echo @$rs->allegationCode;?></td>
-			<td><?php echo @$rs->allegationType;?></td>
-			<td><?php echo @$rs->allegationLevel;?></td>
-			<td><?php echo @$rs->remarks;?></td>
-			<td><?php echo @$rs->statusId;?></td>
-            <td><a href="#" class="btn btn-sm btn-primary me-1" onClick="btnEditClick('<?php echo @$rs->id;?>')">Edit</a>
-              <a href="#" class="btn btn-sm btn-danger" onClick="btnDeleteClick('<?php echo @$rs->id;?>','<?php echo @$rs->id;?>')">Del</a>
-            </td>
-        </tr>
-        <?php }
+            <tr>
+              <td class="text-muted"><?php echo $counter; ?></td>
+							<td class="text-center"><?php echo @$rs->allegationCode;?></td>
+							<td><?php echo @$rs->allegationType;?></td>
+							<td><?php echo @$rs->allegationLevel;?></td>
+              <td class="text-nowrap">
+                <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalLoading" data-bs-action="edit" data-bs-id="<?php echo @$rs->id; ?>"><?php echo @lang('LIST_BUTTON_EDIT'); ?></button>
+                <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalDeleteConfirm" data-bs-action="remove" data-bs-id="<?php echo @$rs->id; ?>" data-bs-label="<?php echo @$rs->companyCode; ?>"><?php echo @lang('LIST_BUTTON_DEL'); ?></button>
+              </td>
+            </tr>
+        <?php
+            $counter++;
+          }
         } ?>
       </tbody>
     </table>
   </div>
   <div class="card-footer d-flex align-items-center bg-body">
-    <p class="m-0 text-muted">Showing <span><?php echo @$startRow; ?></span> to <span><?php echo @$endRow; ?></span> of <span><?php echo @$totalRows; ?></span> entries</p>
-    <?php echo @$pagination; ?>
+    <?php if (isset($totalRows) && $totalRows > 0) { ?>
+      <p class="m-0 text-muted">Showing <span><?php echo @$startRow; ?></span> to <span><?php echo @$endRow; ?></span> of <span><?php echo @$totalRows; ?></span> entries</p>
+      <?php echo @$pagination; ?>
+    <?php } else { ?>
+      <p class="m-0 text-muted">No data found</p>
+    <?php } ?>
   </div>
 </div>
 
-<!-- Modal -->
-<!-- <div class="modal fade" id="formModalConfirmation" data-bs-keyboard="false"  tabindex="-1" aria-labelledby="formModalConfirmationLabel" aria-hidden="true"> -->
-<div class="modal fade" id="formModalConfirmation" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true"> 
-<div class="modal-dialog modal-lg modal-dialog-centered">
+
+<!-- Modal Loading-->
+<div class="modal fade" id="modalLoading" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="formModalConfirmationLabel">CONFIRMATION</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h6 class="modal-title" id="modalLoadingTitle">PLEASE WAIT</h6>
       </div>
       <div class="modal-body">
-      <?php echo form_open("page/user/delete", array("id" => "formConfirmData")); ?>
-        <input type="hidden" id="__RequestVerificationAction" name="__RequestVerificationAction" value="__delete__" />
-        <input type="hidden" id="__RequestVerificationId" name="__RequestVerificationId" />
-        <label type="text" id="modalMessage" name="modalMessage" class="h5" /></label>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" id="btnClose" class="btn btn-secondary" data-bs-dismiss="modal">NO, CANCEL</button>
-        <button type="button" id="btnSave" class="btn btn-danger">YES, CONTINUE</button>
+        <div class="d-flex align-items-center">
+          <div id="loading" class="spinner-border spinner-border-lg text-secondary me-2" role="status">
+          </div>
+          <span class="align-middle h5"> Operations are in progress, please wait... </span>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- Modal -->
-<div class="modal fade" data-keyboard="false" data-backdrop="static" id="formModalConfirmationLong" tabindex="-1" role="dialog" aria-labelledby="formModalConfirmationLongTitle" aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+<!-- Modal Delete Confirmation-->
+<div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="modalDeleteConfirm" tabindex="-1" aria-labelledby="modalDeleteConfirmLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="formModalConfirmationLongTitle">CONFIRMATION</h5>
+        <h5 class="modal-title" id="modalDeleteConfirmLabel">CONFIRMATION</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </button>
       </div>
       <div class="modal-body">
-        <?php echo form_open("page/user/delete", array("id" => "formConfirmData")); ?>
-        <input type="hidden" id="__RequestVerificationAction" name="__RequestVerificationAction" value="__delete__" />
-        <input type="hidden" id="__RequestVerificationId" name="__RequestVerificationId" />
-        <label type="text" id="modalMessage" name="modalMessage" class="h5" /></label>
+        <?php echo form_open(base_url(), array("id" => "formConfirmDeleteData")); ?>
+        <div class="mb-3">
+          <input type="hidden" id="__RequestVerificationAction" name="__RequestVerificationAction" value="__delete__" />
+          <input type="hidden" id="__RequestVerificationId" name="__RequestVerificationId" />
+          <label for="modalMessage" class="modalMessage h5"></label>
+        </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" id="btnClose" class="btn btn-secondary" data-bs-dismiss="modal">NO, CANCEL
-        </button>
-        <button type="button" id="btnSave" class="btn btn-danger">YES, CONTINUE
-        </button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?php echo @lang('CONFIRM_BUTTON_NO'); ?></button>
+        <button type="button" id="btnConfirmDelete" class="btn btn-danger"><?php echo @lang('CONFIRM_BUTTON_YES'); ?></button>
       </div>
     </div>
   </div>
 </div>
-
 
 <script>
-  var baseUrl = `<?php echo base_url(); ?>page/allegation-type`;
+  var baseUrl = "<?php echo base_url(); ?>page/allegation-type";
+  var modalLoading = document.getElementById("modalLoading");
+  var modalDeleteConfirm = document.getElementById("modalDeleteConfirm");
 
-  function btnEditClick(id) {
-    window.location = `${baseUrl}/edit/${id}`;
-  }
+  // display modal loading...
+  modalLoading.addEventListener("shown.bs.modal", function(event) {
+    try {
+      // getting attributes
+      var button = event.relatedTarget;
+      var modalAction = button.getAttribute("data-bs-action");
+      var modalId = button.getAttribute("data-bs-id");
+      if (!modalAction || !modalId) return false;
+      window.location = `${baseUrl}/${modalAction}/${modalId}`;
+    } catch (error) {
+      console.log("modalLoading.addEventListener");
+    }
+  });
 
-  function btnDeleteClick(id, label) {
-    $(document).ready(function() {
-      $("#modalMessage").html(`Are you sure you want to delete allegation-type "${label}" ?`);
-      $('#formModalConfirmation').modal('show')
 
-      $("#btnSave").on("click", function() {
-        $("#formModalConfirmation").modal('hide');
-        $("#__RequestVerificationId").val(id);
-        $("#formConfirmData").submit();
-      });
-    });
-  }
+  // display modal confirmation
+  modalDeleteConfirm.addEventListener("shown.bs.modal", function(event) {
+    // getting modal components by id
+    const modalTitle = modalDeleteConfirm.querySelector(".modal-title");
+    const modalBodyMessage = modalDeleteConfirm.querySelector(".modal-body label");
+    // getting attributes
+    const button = event.relatedTarget;
+    const modalAction = button.getAttribute("data-bs-action");
+    const modalId = button.getAttribute("data-bs-id");
+    const modalLabel = button.getAttribute("data-bs-label");
+    const textMessage = `<?php echo @lang('CONFIRM_MESSAGE_DEL'); ?> company "${modalLabel}"`;
+
+    // update form values
+    $("#formConfirmDeleteData").attr("action", `${baseUrl}/${modalAction}/${modalId}`);
+    $("#__RequestVerificationId").val(modalId);
+    // assign value to html
+    // modalTitle.textContent = textTitle;
+    modalBodyMessage.innerHTML = `${textMessage}" ?`;
+  });
+
+  // button confirm delete handler
+  $("#btnConfirmDelete").on("click", function(evt) {
+    $("#modalDeleteConfirm").modal("hide");
+    $("#modalLoading").modal("show");
+    $("#formConfirmDeleteData").submit();
+  });
 </script>

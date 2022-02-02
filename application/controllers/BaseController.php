@@ -3,9 +3,9 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class BaseController extends CI_Controller
 {
-  private $title = "";
-  private $route = "";
-  private $breadcrumbs = array();
+  private $_route = "";
+  private $_language = "";
+  private $_breadcrumbs = array();
 
   public function __construct($object)
   {
@@ -17,30 +17,38 @@ class BaseController extends CI_Controller
 		$this->load->helper("pagination_helper");
 
     // default class members
-    $this->title = @$object->title;
-    $this->route = @$object->route;
-    $this->breadcrumbs = @$object->breadcrumbs;
+    $this->_route = @$object->route;
+    $this->_language = @$object->language;
+    $this->_breadcrumbs = @$object->breadcrumbs;
 
-    // load default model
-    $this->load->model(@$object->model, "BaseModel");
+
+    $_SESSION["sess_user_lang"] = "thailand";
+    $_SESSION["sess_user_id"] = -1;
+    $_SESSION["sess_role_id"] = -1;
+    $_SESSION["sess_profile_id"] = -1;
+    
+    if (!isset($_SESSION["sess_user_id"])) show_404();
+
+    // load _languageuage
+    $this->lang->load($this->_language, $_SESSION["sess_user_lang"]);
+
+
   }
 
-  public function render($arrays)
-  {
-    // render to main layout $content
-    $data["title"] = $this->title;
-    $data["route"] = $this->route;
-    $data["breadcrumbs"] = getBreadcrumbs($this->breadcrumbs);
-    $data["content"] = $arrays;
-    $this->load->view("layouts/Dashboard", $data);
+  public function _breadcrumbs(){
+    return getBreadcrumbs($this->_breadcrumbs);
   }
 
   public function addBreadcrumbs($segments = array())
   {
     if (is_array($segments))
-      array_push($this->breadcrumbs, $segments);
+      array_push($this->_breadcrumbs, $segments);
     return true;
   }
 
+  public function logout(){
+    session_destroy();
+    redirect("/");
+  }
 
 }
