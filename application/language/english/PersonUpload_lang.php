@@ -1,8 +1,8 @@
 <?php 
 $lang['ROOT'] = 'ข้อมูลบุคคล';
-$lang['TITLE'] = 'ค้นหาข้อมูลบุคคล';
-$lang['SUB_TITLE1'] = 'ค้นหาข้อมูลบุคคล';
-$lang['SUB_TITLE2'] = 'ผลการค้นหา';
+$lang['TITLE'] = 'อับโหลดข้อมูลบุคคล';
+$lang['SUB_TITLE1'] = 'อับโหลดข้อมูลบุคคล';
+$lang['SUB_TITLE2'] = 'ผลการอับโหลด';
 
 # Breadcrumbs
 $lang['BREADCRUMBS_NEW'] = 'เพิ่ม'.$lang["TITLE"];
@@ -14,7 +14,6 @@ $lang['BUTTON_NEW'] = 'เพิ่ม'.$lang["TITLE"];
 $lang['BUTTON_SAVE'] = 'บันทึกข้อมูล';
 $lang['BUTTON_CANCEL'] = 'ยกเลิก';
 $lang['BUTTON_DEL'] = 'ลบ';
-$lang['BUTTON_SEARCH'] = 'ค้นหา';
 $lang['CONFIRM_BUTTON_YES'] = 'ยืนยัน';
 $lang['CONFIRM_BUTTON_NO'] = 'ยกเลิก';
 
@@ -33,14 +32,6 @@ $lang['CONFIRM_MESSAGE_DEL'] = 'ยืนยันการลบข้อมู
 # Message Form Validation
 $lang['FORM_VALIDATE_REQUIRE'] = 'ไม่สามารถเป็นค่าว่างได้';
 $lang['FORM_DUPLICATE_DATA'] = 'พบข้อผิดพลาด: รหัสซ้ำในระบบ, ไม่สามารถบันทึกข้อมูลได้';
-
-# Search Form Items
-$lang['SEARCH_UNIQUE_ID'] = 'บัตรประชาชน | Passport';
-$lang['SEARCH_REFERENCE_ID'] = 'รหัสพนักงาน | เลขที่อ้างอิง';
-$lang['SEARCH_NAME_TH'] = 'ชื่อ-นามสกุล (ภาษาไทย)';
-$lang['SEARCH_NAME_EN'] = 'ชื่อ-นามสกุล (ภาษาอังกฤษ)';
-
-
 
 # Database Items
 $lang['ACTIONS'] = 'เครื่องมือ';

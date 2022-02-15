@@ -14,7 +14,7 @@ class GroupCompany extends BaseController
   private $breadcrumbs = array(
     array("" => null),
     array("ROOT" => null),
-    array("TITLE" => null)
+    array("TITLE" => "/page/group-company")
   );
 
   function __construct()
@@ -67,7 +67,7 @@ class GroupCompany extends BaseController
     $items["breadcrumbs"] = $this->_breadcrumbs();
     // render view html
     $output["content"] = $this->load->view($this->view_list, $items, true);
-    $this->load->view("layouts/Dashboard", $output);
+    $this->load->view("layouts/Main", $output);
   }
 
 
@@ -105,7 +105,7 @@ class GroupCompany extends BaseController
 
     // render view html
     $output["content"] = $this->load->view($this->view_form, $items, true);
-    $this->load->view("layouts/Dashboard", $output);
+    $this->load->view("layouts/Main", $output);
   }
 
 

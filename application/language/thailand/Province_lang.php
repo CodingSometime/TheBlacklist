@@ -35,9 +35,9 @@ $lang['FORM_DUPLICATE_DATA'] = 'พบข้อผิดพลาด: รหั�
 # Database Items
 $lang['ACTIONS'] = 'เครื่องมือ';
 $lang['ID'] = '#';
-$lang['PROVINCE_CODE'] = 'Province Code';
-$lang['PROVINCE_NAME'] = 'Province Name';
-$lang['COUNTRY_CODE'] = 'Country Code';
+$lang['PROVINCE_CODE'] = 'รหัสจังหวัด';
+$lang['PROVINCE_NAME'] = 'ขื่อจังหวัด';
+$lang['COUNTRY_CODE'] = 'รหัสประเทศ';
 $lang['STATUS_ID'] = 'สถานะการใช้งาน';
 $lang['CREATE_DATE'] = 'Create Date';
 $lang['CREATE_BY'] = 'Create By';

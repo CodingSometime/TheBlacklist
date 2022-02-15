@@ -12,7 +12,7 @@ class UploadFiles extends BaseController
   private $breadcrumbs = array(
     array("" => null),
     array("ROOT" => null),
-    array("TITLE" => null)
+    array("TITLE" => "/page/upload-personal-list")
   );
 
   function __construct()
@@ -49,7 +49,7 @@ class UploadFiles extends BaseController
     $items["breadcrumbs"] = $this->_breadcrumbs();
 
     $output["content"] = $this->load->view("admin/persons/UploadFile", $items, true);
-    $this->load->view("layouts/Dashboard", $output);
+    $this->load->view("layouts/Main", $output);
   }
 
 }

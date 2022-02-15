@@ -12,30 +12,30 @@
     <span class="pt-1"></span>
 
     <div class="mb-2 row">
-      <label for="_Code" class="col-sm-3 col-form-label"><?php echo @lang('CODE'); ?></label>
-      <div class="col-sm-2 has-validation">
+      <label for="_Code" class="col-md-3 col-form-label"><?php echo @lang('CODE'); ?></label>
+      <div class="col-md-2 has-validation">
         <input type="text" class="form-control" id="_Code" name="code" value="<?php echo @$items->code; ?>" required>
       </div>
     </div>
     <div class="mb-2 row">
-      <label for="_Name" class="col-sm-3 col-form-label"><?php echo @lang('NAME'); ?></label>
-      <div class="col-sm-4 has-validation">
+      <label for="_Name" class="col-md-3 col-form-label"><?php echo @lang('NAME'); ?></label>
+      <div class="col-md-4 has-validation">
         <input type="text" class="form-control" id="_Name" name="name" value="<?php echo @$items->name; ?>">
       </div>
     </div>
     <div class="mb-2 row">
-      <label for="_StatusId" class="col-sm-3 col-form-label"><?php echo @lang('STATUS_ID'); ?></label>
-      <div class="col-sm-2 has-validation">
+      <label for="_StatusId" class="col-md-3 col-form-label"><?php echo @lang('STATUS_ID'); ?></label>
+      <div class="col-md-2 has-validation">
         <?php echo @$selectBoxStatusId; ?>
       </div>
     </div>
     <div class="row pt-3 pb-0">
-      <div class="col-sm-3"></div>
-      <div class="col-sm-5"><span class="text-danger" id="error-message"></span></div>
-      <div class="col-sm-4">
+      <div class="col-md-3"></div>
+      <div class="col-md-5"><span class="text-danger" id="error-message"></span></div>
+      <div class="col-md-4">
         <div class="d-flex justify-content-end">
-          <button class="btn btn-primary me-2" type="button" id="buttonSubmit"><?php echo @lang('BUTTON_SAVE'); ?></button>
-          <button class="btn btn-secondary" type="button" id="buttonCancel"><?php echo @lang('BUTTON_CANCEL'); ?></button>
+          <button class="btn btn-primary px-4 me-2" type="button" id="buttonSubmit"><?php echo @lang('BUTTON_SAVE'); ?></button>
+          <button class="btn btn-secondary px-4" type="button" id="buttonCancel"><?php echo @lang('BUTTON_CANCEL'); ?></button>
         </div>
       </div>
     </div>

@@ -1,4 +1,5 @@
 <?php 
+$lang['ROOT'] = 'Permissions';
 $lang['TITLE'] = 'Security Profile';
 $lang['SUB_TITLE'] = 'Security Profile';
 
@@ -9,8 +10,8 @@ $lang['BREADCRUMBS_DEL'] = 'Del';
 
 # Buttons
 $lang['BUTTON_NEW'] = 'New '.$lang["TITLE"];
-$lang['BUTTON_SAVE'] = 'Save';
-$lang['BUTTON_CANCEL'] = 'Cancel';
+$lang['BUTTON_SAVE'] = 'SAVE';
+$lang['BUTTON_CANCEL'] = 'CANCEL';
 $lang['BUTTON_DEL'] = 'Del';
 $lang['CONFIRM_BUTTON_YES'] = 'YES, CONTINUE';
 $lang['CONFIRM_BUTTON_NO'] = 'NO, CANCEL';
@@ -38,9 +39,17 @@ $lang['ROLE_CODE'] = 'Role Code';
 $lang['PRIVILEGE_TYPE_CODE'] = 'Privilege Type Code';
 $lang['PERSON_TYPE_CODE'] = 'Person Type Code';
 $lang['BUSINESS_UNIT_CODE'] = 'Business Unit Code';
+$lang['GROUP_COMPANY_CODE'] = 'Group Company Code';
+$lang['COMPANY_CODE'] = 'Company Code';
 $lang['BRANCH_CODE'] = 'Branch Code';
+$lang['IS_CREATE'] = 'Create?';
+$lang['IS_UPDATE'] = 'Update?';
+$lang['IS_VIEW'] = 'View?';
+$lang['IS_DELETE_L1'] = 'Delete L.1?';
+$lang['IS_DELETE_L2'] = 'Delete L.2?';
+$lang['IS_DELETE_L3'] = 'Delete L.3?';
 $lang['REMARKS'] = 'Remarks';
-$lang['STATUS_ID'] = 'Status';
+$lang['STATUS_ID'] = 'Active?';
 $lang['CREATE_DATE'] = 'Create Date';
 $lang['CREATE_BY'] = 'Create By';
 $lang['UPDATE_DATE'] = 'Update Date';

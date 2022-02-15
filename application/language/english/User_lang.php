@@ -1,6 +1,7 @@
 <?php 
-$lang['TITLE'] = 'User';
-$lang['SUB_TITLE'] = 'User';
+$lang['ROOT'] = 'Permissions';
+$lang['TITLE'] = 'Users';
+$lang['SUB_TITLE'] = 'Users';
 
 # Breadcrumbs
 $lang['BREADCRUMBS_NEW'] = 'New '.$lang["TITLE"];

@@ -12,36 +12,36 @@
     <span class="pt-1"></span>
 
     <div class="mb-2 row">
-      <label for="branchCode" class="col-sm-3 col-form-label"><?php echo @lang('BRANCH_CODE'); ?></label>
-      <div class="col-sm-4 has-validation">
-        <input type="text" class="form-control" id="branchCode" name="branchCode" style="text-transform:uppercase" value="<?php echo @$items->branchCode; ?>" required>
+      <label for="branchCode" class="col-md-3 col-form-label"><?php echo @lang('BRANCH_CODE'); ?></label>
+      <div class="col-md-4 has-validation">
+        <input type="text" class="form-control" id="branchCode" name="branchCode" onkeyup="this.value = this.value.toUpperCase();" value="<?php echo @$items->branchCode; ?>" required>
       </div>
     </div>
     <div class="mb-2 row">
-      <label for="_BranchName" class="col-sm-3 col-form-label"><?php echo @lang('BRANCH_NAME'); ?></label>
-      <div class="col-sm-4 has-validation">
+      <label for="_BranchName" class="col-md-3 col-form-label"><?php echo @lang('BRANCH_NAME'); ?></label>
+      <div class="col-md-4 has-validation">
         <input type="text" class="form-control" id="_BranchName" name="branchName" value="<?php echo @$items->branchName; ?>" required>
       </div>
     </div>
     <div class="mb-2 row">
-      <label for="_CompanyCode" class="col-sm-3 col-form-label"><?php echo @lang('COMPANY_CODE'); ?></label>
-      <div class="col-sm-4 has-validation">
+      <label for="_CompanyCode" class="col-md-3 col-form-label"><?php echo @lang('COMPANY_CODE'); ?></label>
+      <div class="col-md-4 has-validation">
         <?php echo @$selectBoxCompanyCode; ?>
       </div>
     </div>
     <div class="mb-2 row">
-      <label for="_StatusId" class="col-sm-3 col-form-label"><?php echo @lang('STATUS_ID'); ?></label>
-      <div class="col-sm-4 has-validation">
+      <label for="_StatusId" class="col-md-3 col-form-label"><?php echo @lang('STATUS_ID'); ?></label>
+      <div class="col-md-4 has-validation">
         <?php echo @$selectBoxStatusId; ?>
       </div>
     </div>
     <div class="row pt-3 pb-0">
-      <div class="col-sm-3"></div>
-      <div class="col-sm-5"><span class="text-danger" id="error-message"></span></div>
-      <div class="col-sm-4">
+      <div class="col-md-3"></div>
+      <div class="col-md-5"><span class="text-danger" id="error-message"></span></div>
+      <div class="col-md-4">
         <div class="d-flex justify-content-end">
-          <button class="btn btn-primary me-2" type="button" id="buttonSubmit"><?php echo @lang('BUTTON_SAVE'); ?></button>
-          <button class="btn btn-secondary" type="button" id="buttonCancel"><?php echo @lang('BUTTON_CANCEL'); ?></button>
+          <button class="btn btn-primary px-4 me-2" type="button" id="buttonSubmit"><?php echo @lang('BUTTON_SAVE'); ?></button>
+          <button class="btn btn-secondary px-4" type="button" id="buttonCancel"><?php echo @lang('BUTTON_CANCEL'); ?></button>
         </div>
       </div>
     </div>

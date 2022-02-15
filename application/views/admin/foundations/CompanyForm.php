@@ -12,48 +12,48 @@
     <span class="pt-1"></span>
 
     <div class="mb-2 row">
-      <label for="_CompanyCode" class="col-sm-3 col-form-label"><?php echo @lang('COMPANY_CODE'); ?></label>
-      <div class="col-sm-2 has-validation">
-        <input type="text" class="form-control" id="_CompanyCode" name="companyCode" style="text-transform:uppercase" value="<?php echo @$items->companyCode; ?>" required>
+      <label for="_CompanyCode" class="col-md-3 col-form-label"><?php echo @lang('COMPANY_CODE'); ?></label>
+      <div class="col-md-2 has-validation">
+        <input type="text" class="form-control" id="_CompanyCode" name="companyCode" onkeyup="this.value = this.value.toUpperCase();" value="<?php echo @$items->companyCode; ?>" required>
       </div>
     </div>
     <div class="mb-2 row">
-      <label for="_CompanyName" class="col-sm-3 col-form-label"><?php echo @lang('COMPANY_NAME'); ?></label>
-      <div class="col-sm-4 has-validation">
+      <label for="_CompanyName" class="col-md-3 col-form-label"><?php echo @lang('COMPANY_NAME'); ?></label>
+      <div class="col-md-4 has-validation">
         <input type="text" class="form-control" id="_CompanyName" name="companyName" value="<?php echo @$items->companyName; ?>" required>
       </div>
     </div>
     <div class="mb-2 row">
-      <label for="_DescriptionEn" class="col-sm-3 col-form-label"><?php echo @lang('DESCRIPTION_EN'); ?></label>
-      <div class="col-sm-4 has-validation">
+      <label for="_DescriptionEn" class="col-md-3 col-form-label"><?php echo @lang('DESCRIPTION_EN'); ?></label>
+      <div class="col-md-4 has-validation">
         <input type="text" class="form-control" id="_DescriptionEn" name="descriptionEn" value="<?php echo @$items->descriptionEn; ?>" required>
       </div>
     </div>
     <div class="mb-2 row">
-      <label for="_DescriptionTh" class="col-sm-3 col-form-label"><?php echo @lang('DESCRIPTION_TH'); ?></label>
-      <div class="col-sm-4 has-validation">
+      <label for="_DescriptionTh" class="col-md-3 col-form-label"><?php echo @lang('DESCRIPTION_TH'); ?></label>
+      <div class="col-md-4 has-validation">
         <input type="text" class="form-control" id="_DescriptionTh" name="descriptionTh" value="<?php echo @$items->descriptionTh; ?>" required>
       </div>
     </div>
     <div class="mb-2 row">
-      <label for="_BusinessUnitCode" class="col-sm-3 col-form-label"><?php echo @lang('BUSINESS_UNIT_CODE'); ?></label>
-      <div class="col-sm-4 has-validation">
+      <label for="_BusinessUnitCode" class="col-md-3 col-form-label"><?php echo @lang('BUSINESS_UNIT_CODE'); ?></label>
+      <div class="col-md-4 has-validation">
         <?php echo @$selectBoxBusinessUnitCode; ?>
       </div>
     </div>
     <div class="mb-2 row">
-      <label for="_StatusId" class="col-sm-3 col-form-label"><?php echo @lang('STATUS_ID'); ?></label>
-      <div class="col-sm-2 has-validation">
+      <label for="_StatusId" class="col-md-3 col-form-label"><?php echo @lang('STATUS_ID'); ?></label>
+      <div class="col-md-2 has-validation">
         <?php echo @$selectBoxStatusId; ?>
       </div>
     </div>
     <div class="row pt-3 pb-0">
-      <div class="col-sm-3"></div>
-      <div class="col-sm-5"><span class="text-danger" id="error-message"></span></div>
-      <div class="col-sm-4">
+      <div class="col-md-3"></div>
+      <div class="col-md-5"><span class="text-danger" id="error-message"></span></div>
+      <div class="col-md-4">
         <div class="d-flex justify-content-end">
-          <button class="btn btn-primary me-2" type="button" id="buttonSubmit"><?php echo @lang('BUTTON_SAVE'); ?></button>
-          <button class="btn btn-secondary" type="button" id="buttonCancel"><?php echo @lang('BUTTON_CANCEL'); ?></button>
+          <button class="btn btn-primary px-4 me-2" type="button" id="buttonSubmit"><?php echo @lang('BUTTON_SAVE'); ?></button>
+          <button class="btn btn-secondary px-4" type="button" id="buttonCancel"><?php echo @lang('BUTTON_CANCEL'); ?></button>
         </div>
       </div>
     </div>

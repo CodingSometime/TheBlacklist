@@ -14,7 +14,7 @@ class SecurityProfile extends BaseController
   private $breadcrumbs = array(
     array("" => null),
     array("ROOT" => null),
-    array("TITLE" => null)
+    array("TITLE" => "/page/security-profile")
   );
 
   function __construct()
@@ -32,6 +32,8 @@ class SecurityProfile extends BaseController
 		$this->load->model("PrivilegeTypeModel");
 		$this->load->model("PersonTypeModel");
 		$this->load->model("BusinessUnitModel");
+		$this->load->model("GroupCompanyModel");
+		$this->load->model("CompanyModel");
 		$this->load->model("BranchModel");
     $this->load->model("StatusModel");
   }
@@ -56,7 +58,7 @@ class SecurityProfile extends BaseController
     $config = loadPaginationConfig((base_url() . $this->route . "/index"), $totalRows, 4, 10);
     $this->pagination->initialize($config);
     $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
-    $results = $this->BaseModel->fetchAll($conditions, $config["per_page"], $page, "");
+    $results = $this->BaseModel->fetchAll($conditions, $config["per_page"], $page, "ROLE_CODE");
 
     // calculate showing row / page
     $startRow = $page + 1;
@@ -75,7 +77,7 @@ class SecurityProfile extends BaseController
     $items["breadcrumbs"] = $this->_breadcrumbs();
     // render view html
     $output["content"] = $this->load->view($this->view_list, $items, true);
-    $this->load->view("layouts/Dashboard", $output);
+    $this->load->view("layouts/Main", $output);
   }
 
 
@@ -100,6 +102,8 @@ class SecurityProfile extends BaseController
 			$privilegeTypeCode = @$object->privilegeTypeCode;
 			$personTypeCode = @$object->personTypeCode;
 			$businessUnitCode = @$object->businessUnitCode;
+			$groupCompanyCode = @$object->groupCompanyCode;
+			$companyCode = @$object->companyCode;
 			$branchCode = @$object->branchCode;
 
     }
@@ -112,16 +116,19 @@ class SecurityProfile extends BaseController
     $items["breadcrumbs"] = $this->_breadcrumbs();
 
     // select box HERE !!
-		$items["selectBoxRoleCode"] = $this->RoleModel->selectBox("roleCode", @$roleCode);
-		$items["selectBoxPrivilegeTypeCode"] = $this->PrivilegeTypeModel->selectBox("privilegeTypeCode", @$privilegeTypeCode);
-		$items["selectBoxPersonTypeCode"] = $this->PersonTypeModel->selectBox("personTypeCode", @$personTypeCode);
-		$items["selectBoxBusinessUnitCode"] = $this->BusinessUnitModel->selectBox("businessUnitCode", @$businessUnitCode);
-		$items["selectBoxBranchCode"] = $this->BranchModel->selectBox("branchCode", @$branchCode);
+		$items["selectBoxRoleCode"] = $this->RoleModel->datalistBox("roleCode", @$roleCode);
+		$items["selectBoxPrivilegeTypeCode"] = $this->PrivilegeTypeModel->datalistBox("privilegeTypeCode", @$privilegeTypeCode,true);
+		$items["selectBoxPersonTypeCode"] = $this->PersonTypeModel->datalistBox("personTypeCode", @$personTypeCode, true);
+		$items["selectBoxBusinessUnitCode"] = $this->BusinessUnitModel->datalistBox("businessUnitCode", @$businessUnitCode, true);
+		$items["selectBoxGroupCompanyCode"] = $this->GroupCompanyModel->datalistBox("groupCompanyCode", @$groupCompanyCode, true);
+		$items["selectBoxCompanyCode"] = $this->CompanyModel->datalistBox("companyCode", @$companyCode, true);
+		$items["selectBoxBranchCode"] = $this->BranchModel->datalistBox("branchCode", @$branchCode, true);
+		$items["selectBoxStatusId"] = $this->StatusModel->selectBox("statusId", @$statusId);
 
-
+    
     // render view html
     $output["content"] = $this->load->view($this->view_form, $items, true);
-    $this->load->view("layouts/Dashboard", $output);
+    $this->load->view("layouts/Main", $output);
   }
 
 

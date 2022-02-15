@@ -14,7 +14,7 @@ class User extends BaseController
   private $breadcrumbs = array(
     array("" => null),
     array("ROOT" => null),
-    array("TITLE" => null)
+    array("TITLE" => "/page/user")
   );
 
   function __construct()
@@ -72,7 +72,7 @@ class User extends BaseController
     $items["breadcrumbs"] = $this->_breadcrumbs();
     // render view html
     $output["content"] = $this->load->view($this->view_list, $items, true);
-    $this->load->view("layouts/Dashboard", $output);
+    $this->load->view("layouts/Main", $output);
   }
 
 
@@ -111,7 +111,7 @@ class User extends BaseController
 
     // render view html
     $output["content"] = $this->load->view($this->view_form, $items, true);
-    $this->load->view("layouts/Dashboard", $output);
+    $this->load->view("layouts/Main", $output);
   }
 
   // route: /page/user/create

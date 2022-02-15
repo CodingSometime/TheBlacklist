@@ -4,29 +4,30 @@ if (!defined('BASEPATH')) {
 }
 
 if (!function_exists('getBreadcrumbs')) {
-  function getBreadcrumbs($breadcrumbs)
-  {
-    $html = '<div class="row my-3">'."\n";
-    $html .= '<nav aria-label="breadcrumb">'."\n";
-    $html .= '<ol class="breadcrumb">'."\n";
+	function getBreadcrumbs($breadcrumbs)
+	{
+		$html = '<div class="row my-3">' . "\n";
+		$html .= '<nav aria-label="breadcrumb">' . "\n";
+		$html .= '<ol class="breadcrumb">' . "\n";
 
-    $index = 0;
-    foreach ($breadcrumbs as $key => $results) {
-      ++$index;
-      foreach ($results as $label => $href) {
-				
-				$mylabel = @lang($label) !="" ? @lang($label) : $label;
+		$index = 0;
+		foreach ($breadcrumbs as $key => $results) {
+			++$index;
+			foreach ($results as $label => $href) {
 
-        if ($index < count($breadcrumbs))
-          $html .= '<li class="breadcrumb-item"><a href="'.$href.'">'.$mylabel.'</a></li>'."\n";
-        else
-          $html .= '<li class="breadcrumb-item active" aria-current="page">'.$mylabel.'</li>'."\n";
-      }
-    }
-    $html .= '</ol>'."\n";
-    $html .= '</div>'."\n";
-    return $html;
-  }
+				$href = $href != "" ? $href : "#";
+				$mylabel = @lang($label) != "" ? @lang($label) : $label;
+
+				if ($index < count($breadcrumbs))
+					$html .= '<li class="breadcrumb-item"><a href="' . $href . '">' . $mylabel . '</a></li>' . "\n";
+				else
+					$html .= '<li class="breadcrumb-item active" aria-current="page">' . $mylabel . '</li>' . "\n";
+			}
+		}
+		$html .= '</ol>' . "\n";
+		$html .= '</div>' . "\n";
+		return $html;
+	}
 }
 
 

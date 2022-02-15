@@ -3,42 +3,41 @@
 </div>
 
 
-<div class="shadow bg-body">
+<div class="shadow bg-body ">
   <div class="px-3 py-3">
     <h5><i class="ti ti-align-justified icon"></i> <?php echo @lang("SUB_TITLE1"); ?></h5>
   </div>
-
   <div class="px-4 py-3">
-    <div class="mb-2 row">
-      <label for="_NationalId" class="col-sm-2 col-form-label"><?php echo @lang('SEARCH_UNIQUE_ID'); ?></label>
-      <div class="col-sm-3 has-validation">
+    <div class="px-4 mb-2 row">
+      <label for="_NationalId" class="col-md-2 col-form-label"><?php echo @lang('SEARCH_UNIQUE_ID'); ?></label>
+      <div class="col-md-3 has-validation">
         <input type="text" class="form-control" id="_NationalId" name="nationalId" value="<?php echo @$items->nationalId; ?>">
       </div>
-      <label for="_ReferenceId" class="col-sm-2 col-form-label"><?php echo @lang('SEARCH_REFERENCE_ID'); ?></label>
-      <div class="col-sm-3 has-validation">
+      <label for="_ReferenceId" class="col-md-2 col-form-label"><?php echo @lang('SEARCH_REFERENCE_ID'); ?></label>
+      <div class="col-md-3 has-validation">
         <input type="text" class="form-control" id="_ReferenceId" name="referenceId" value="<?php echo @$items->nationalId; ?>">
       </div>
     </div>
-    <div class="mb-2 row">
-      <label for="_NameTH" class="col-sm-2 col-form-label"><?php echo @lang('SEARCH_NAME_TH'); ?></label>
-      <div class="col-sm-3 has-validation">
+    <div class="px-4 mb-2 row">
+      <label for="_NameTH" class="col-md-2 col-form-label"><?php echo @lang('SEARCH_NAME_TH'); ?></label>
+      <div class="col-md-3 has-validation">
         <input type="text" class="form-control" id="_NameTH" name="nameTh" value="<?php echo @$items->nationalId; ?>">
       </div>
-      <label for="_NameEN" class="col-sm-2 col-form-label"><?php echo @lang('SEARCH_NAME_EN'); ?></label>
-      <div class="col-sm-3 has-validation">
+      <label for="_NameEN" class="col-md-2 col-form-label"><?php echo @lang('SEARCH_NAME_EN'); ?></label>
+      <div class="col-md-3 has-validation">
         <input type="text" class="form-control" id="_NameEN" name="nameEn" value="<?php echo @$items->nationalId; ?>">
       </div>
     </div>
-    <div class="mb-2 row">
-      <div class="d-flex justify-content-end align-items-end col-10">
-        <button class="btn btn-primary"><i class="ti ti-search icon"></i> Search</button>
+    <div class="px-4 mb-2 row">
+      <div class="d-flex justify-content-end align-items-end col-md-10">
+        <button class="btn btn-primary px-4"><i class="ti ti-search icon"></i> <?php echo @lang("BUTTON_SEARCH"); ?></button>
       </div>
     </div>
   </div>
 </div>
 
 <div class="mt-4 shadow bg-body">
-<div class="px-3 py-3">
+  <div class="px-3 py-3">
     <h5><i class="ti ti-align-justified icon"></i> <?php echo @lang("SUB_TITLE2"); ?></h5>
   </div>
 

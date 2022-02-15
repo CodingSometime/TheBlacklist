@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-between align-items-center mt-3">
   <?php echo @$breadcrumbs; ?>
-  <button data-bs-toggle="modal" data-bs-target="#modalLoading" data-bs-action="create" class="btn btn-primary"><i class="ti ti-plus icon"></i> <?php echo @lang("BUTTON_NEW"); ?></button>
+  <button data-bs-toggle="modal" data-bs-target="#modalLoading" data-bs-action="create" class="btn btn-primary px-4"><i class="ti ti-plus icon"></i> <?php echo @lang("BUTTON_NEW"); ?></button>
 </div>
 <div class="shadow bg-body">
   <div class="border-bottom px-3 py-3 d-flex justify-content-between align-items-center">
@@ -16,39 +16,39 @@
       <thead>
         <tr>
           <th>#</th>
-					<th><?php echo @lang("PERSON_ID");?></th>
-					<th><?php echo @lang("SEQUENCE_NO");?></th>
-					<th><?php echo @lang("EMPLOYEE_NUMBER");?></th>
-					<th><?php echo @lang("BUSINESS_UNIT_CODE");?></th>
-					<th><?php echo @lang("COMPANY_CODE");?></th>
-					<th><?php echo @lang("BRANCH_CODE");?></th>
-					<th><?php echo @lang("COMPANY_OR_VENDOR");?></th>
-					<th><?php echo @lang("ORGANIZATION_NAME");?></th>
-					<th><?php echo @lang("POSITION_NAME");?></th>
-					<th><?php echo @lang("PERSON_TYPE_CODE");?></th>
-					<th><?php echo @lang("AGE");?></th>
-					<th><?php echo @lang("SERVICE_YEAR");?></th>
-					<th><?php echo @lang("MENTAL");?></th>
-					<th><?php echo @lang("OCCUPATION");?></th>
-					<th><?php echo @lang("MISBEHAVIOR_DATE");?></th>
-					<th><?php echo @lang("MISBEHAVIOR_TIME");?></th>
-					<th><?php echo @lang("MISBEHAVIOR_PLACE");?></th>
-					<th><?php echo @lang("PROVINCE_ID");?></th>
-					<th><?php echo @lang("DISTRICT_ID");?></th>
-					<th><?php echo @lang("ALLEGATION_TYPE_ID");?></th>
-					<th><?php echo @lang("DECISION");?></th>
-					<th><?php echo @lang("DETAIL_OF_CASE");?></th>
-					<th><?php echo @lang("TERMINATE_DATE");?></th>
-					<th><?php echo @lang("TERMINATE_REASON");?></th>
-					<th><?php echo @lang("TOTAL_AMOUNT");?></th>
-					<th><?php echo @lang("ALLEGATION_STATUS");?></th>
-					<th><?php echo @lang("ALLEGATION_REASON");?></th>
-					<th><?php echo @lang("DELETE_REASON");?></th>
-					<th><?php echo @lang("CREATED_BY");?></th>
-					<th><?php echo @lang("CREATED_DATE");?></th>
-					<th><?php echo @lang("LASTED_UPDATE_BY_");?></th>
-					<th><?php echo @lang("LASTED_UPDATE_DATE");?></th>
-					<th><?php echo @lang("DATA_SOURCE_ID");?></th>
+          <th><?php echo @lang("PERSON_ID"); ?></th>
+          <th><?php echo @lang("SEQUENCE_NO"); ?></th>
+          <th><?php echo @lang("EMPLOYEE_NUMBER"); ?></th>
+          <th><?php echo @lang("BUSINESS_UNIT_CODE"); ?></th>
+          <th><?php echo @lang("COMPANY_CODE"); ?></th>
+          <th><?php echo @lang("BRANCH_CODE"); ?></th>
+          <th><?php echo @lang("COMPANY_OR_VENDOR"); ?></th>
+          <th><?php echo @lang("ORGANIZATION_NAME"); ?></th>
+          <th><?php echo @lang("POSITION_NAME"); ?></th>
+          <th><?php echo @lang("PERSON_TYPE_CODE"); ?></th>
+          <th><?php echo @lang("AGE"); ?></th>
+          <th><?php echo @lang("SERVICE_YEAR"); ?></th>
+          <th><?php echo @lang("MENTAL"); ?></th>
+          <th><?php echo @lang("OCCUPATION"); ?></th>
+          <th><?php echo @lang("MISBEHAVIOR_DATE"); ?></th>
+          <th><?php echo @lang("MISBEHAVIOR_TIME"); ?></th>
+          <th><?php echo @lang("MISBEHAVIOR_PLACE"); ?></th>
+          <th><?php echo @lang("PROVINCE_ID"); ?></th>
+          <th><?php echo @lang("DISTRICT_ID"); ?></th>
+          <th><?php echo @lang("ALLEGATION_TYPE_ID"); ?></th>
+          <th><?php echo @lang("DECISION"); ?></th>
+          <th><?php echo @lang("DETAIL_OF_CASE"); ?></th>
+          <th><?php echo @lang("TERMINATE_DATE"); ?></th>
+          <th><?php echo @lang("TERMINATE_REASON"); ?></th>
+          <th><?php echo @lang("TOTAL_AMOUNT"); ?></th>
+          <th><?php echo @lang("ALLEGATION_STATUS"); ?></th>
+          <th><?php echo @lang("ALLEGATION_REASON"); ?></th>
+          <th><?php echo @lang("DELETE_REASON"); ?></th>
+          <th><?php echo @lang("CREATED_BY"); ?></th>
+          <th><?php echo @lang("CREATED_DATE"); ?></th>
+          <th><?php echo @lang("LASTED_UPDATE_BY_"); ?></th>
+          <th><?php echo @lang("LASTED_UPDATE_DATE"); ?></th>
+          <th><?php echo @lang("DATA_SOURCE_ID"); ?></th>
           <th><?php echo @lang("ACTIONS"); ?></th>
         </tr>
       </thead>
@@ -60,39 +60,39 @@
         ?>
             <tr>
               <td class="text-muted"><?php echo $counter; ?></td>
-							<td><?php echo @$rs->personId;?></td>
-							<td><?php echo @$rs->sequenceNo;?></td>
-							<td><?php echo @$rs->employeeNumber;?></td>
-							<td><?php echo @$rs->businessUnitCode;?></td>
-							<td><?php echo @$rs->companyCode;?></td>
-							<td><?php echo @$rs->branchCode;?></td>
-							<td><?php echo @$rs->companyOrVendor;?></td>
-							<td><?php echo @$rs->organizationName;?></td>
-							<td><?php echo @$rs->positionName;?></td>
-							<td><?php echo @$rs->personTypeCode;?></td>
-							<td><?php echo @$rs->age;?></td>
-							<td><?php echo @$rs->serviceYear;?></td>
-							<td><?php echo @$rs->mental;?></td>
-							<td><?php echo @$rs->occupation;?></td>
-							<td><?php echo @$rs->misbehaviorDate;?></td>
-							<td><?php echo @$rs->misbehaviorTime;?></td>
-							<td><?php echo @$rs->misbehaviorPlace;?></td>
-							<td><?php echo @$rs->provinceId;?></td>
-							<td><?php echo @$rs->districtId;?></td>
-							<td><?php echo @$rs->allegationTypeId;?></td>
-							<td><?php echo @$rs->decision;?></td>
-							<td><?php echo @$rs->detailOfCase;?></td>
-							<td><?php echo @$rs->terminateDate;?></td>
-							<td><?php echo @$rs->terminateReason;?></td>
-							<td><?php echo @$rs->totalAmount;?></td>
-							<td><?php echo @$rs->allegationStatus;?></td>
-							<td><?php echo @$rs->allegationReason;?></td>
-							<td><?php echo @$rs->deleteReason;?></td>
-							<td><?php echo @$rs->createdBy;?></td>
-							<td><?php echo @$rs->createdDate;?></td>
-							<td><?php echo @$rs->lastedUpdateBy;?></td>
-							<td><?php echo @$rs->lastedUpdateDate;?></td>
-							<td><?php echo @$rs->dataSourceId;?></td>
+              <td><?php echo @$rs->personId; ?></td>
+              <td><?php echo @$rs->sequenceNo; ?></td>
+              <td><?php echo @$rs->employeeNumber; ?></td>
+              <td><?php echo @$rs->businessUnitCode; ?></td>
+              <td><?php echo @$rs->companyCode; ?></td>
+              <td><?php echo @$rs->branchCode; ?></td>
+              <td><?php echo @$rs->companyOrVendor; ?></td>
+              <td><?php echo @$rs->organizationName; ?></td>
+              <td><?php echo @$rs->positionName; ?></td>
+              <td><?php echo @$rs->personTypeCode; ?></td>
+              <td><?php echo @$rs->age; ?></td>
+              <td><?php echo @$rs->serviceYear; ?></td>
+              <td><?php echo @$rs->mental; ?></td>
+              <td><?php echo @$rs->occupation; ?></td>
+              <td><?php echo @$rs->misbehaviorDate; ?></td>
+              <td><?php echo @$rs->misbehaviorTime; ?></td>
+              <td><?php echo @$rs->misbehaviorPlace; ?></td>
+              <td><?php echo @$rs->provinceId; ?></td>
+              <td><?php echo @$rs->districtId; ?></td>
+              <td><?php echo @$rs->allegationTypeId; ?></td>
+              <td><?php echo @$rs->decision; ?></td>
+              <td><?php echo @$rs->detailOfCase; ?></td>
+              <td><?php echo @$rs->terminateDate; ?></td>
+              <td><?php echo @$rs->terminateReason; ?></td>
+              <td><?php echo @$rs->totalAmount; ?></td>
+              <td><?php echo @$rs->allegationStatus; ?></td>
+              <td><?php echo @$rs->allegationReason; ?></td>
+              <td><?php echo @$rs->deleteReason; ?></td>
+              <td><?php echo @$rs->createdBy; ?></td>
+              <td><?php echo @$rs->createdDate; ?></td>
+              <td><?php echo @$rs->lastedUpdateBy; ?></td>
+              <td><?php echo @$rs->lastedUpdateDate; ?></td>
+              <td><?php echo @$rs->dataSourceId; ?></td>
               <td class="text-nowrap">
                 <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalLoading" data-bs-action="edit" data-bs-id="<?php echo @$rs->id; ?>"><?php echo @lang('LIST_BUTTON_EDIT'); ?></button>
                 <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalDeleteConfirm" data-bs-action="remove" data-bs-id="<?php echo @$rs->id; ?>" data-bs-label="<?php echo @$rs->companyCode; ?>"><?php echo @lang('LIST_BUTTON_DEL'); ?></button>

@@ -12,48 +12,90 @@
     <span class="pt-1"></span>
 
     <div class="mb-2 row">
-      <label for="_RoleCode" class="col-sm-3 col-form-label"><?php echo @lang('ROLE_CODE'); ?></label>
-      <div class="col-sm-4 has-validation">
+      <label for="_RoleCode" class="col-md-3 col-form-label"><?php echo @lang('ROLE_CODE'); ?></label>
+      <div class="col-md-4 has-validation">
         <?php echo @$selectBoxRoleCode; ?>
       </div>
     </div>
     <div class="mb-2 row">
-      <label for="_PrivilegeTypeCode" class="col-sm-3 col-form-label"><?php echo @lang('PRIVILEGE_TYPE_CODE'); ?></label>
-      <div class="col-sm-4 has-validation">
-        <?php echo @$selectBoxPrivilegeTypeCode; ?>
-      </div>
-    </div>
-    <div class="mb-2 row">
-      <label for="_PersonTypeCode" class="col-sm-3 col-form-label"><?php echo @lang('PERSON_TYPE_CODE'); ?></label>
-      <div class="col-sm-4 has-validation">
+      <label for="_PersonTypeCode" class="col-md-3 col-form-label"><?php echo @lang('PERSON_TYPE_CODE'); ?></label>
+      <div class="col-md-4 has-validation">
         <?php echo @$selectBoxPersonTypeCode; ?>
       </div>
     </div>
     <div class="mb-2 row">
-      <label for="_BusinessUnitCode" class="col-sm-3 col-form-label"><?php echo @lang('BUSINESS_UNIT_CODE'); ?></label>
-      <div class="col-sm-4 has-validation">
+      <label for="_BusinessUnitCode" class="col-md-3 col-form-label"><?php echo @lang('BUSINESS_UNIT_CODE'); ?></label>
+      <div class="col-md-4 has-validation">
         <?php echo @$selectBoxBusinessUnitCode; ?>
       </div>
     </div>
     <div class="mb-2 row">
-      <label for="_BranchCode" class="col-sm-3 col-form-label"><?php echo @lang('BRANCH_CODE'); ?></label>
-      <div class="col-sm-4 has-validation">
+      <label for="_GroupCompanyCode" class="col-md-3 col-form-label"><?php echo @lang('GROUP_COMPANY_CODE'); ?></label>
+      <div class="col-md-4 has-validation">
+        <?php echo @$selectBoxGroupCompanyCode; ?>
+      </div>
+    </div>
+    <div class="mb-2 row">
+      <label for="_CompanyCode" class="col-md-3 col-form-label"><?php echo @lang('COMPANY_CODE'); ?></label>
+      <div class="col-md-4 has-validation">
+        <?php echo @$selectBoxCompanyCode; ?>
+      </div>
+    </div>
+    <div class="mb-2 row">
+      <label for="_BranchCode" class="col-md-3 col-form-label"><?php echo @lang('BRANCH_CODE'); ?></label>
+      <div class="col-md-4 has-validation">
         <?php echo @$selectBoxBranchCode; ?>
       </div>
     </div>
     <div class="mb-2 row">
-      <label for="_StatusId" class="col-sm-3 col-form-label"><?php echo @lang('STATUS_ID'); ?></label>
-      <div class="col-sm-2 has-validation">
-        <?php echo @$selectBoxStatusId; ?>
+      <label for="_StatusId" class="col-md-3 col-form-label"><?php echo @lang('STATUS_ID'); ?></label>
+      <div class="col-md-2 has-validation">
+        <input type="checkbox" class="form-check-input" id="statusId" />
+      </div>
+    </div>
+    <div class="mb-2 row">
+      <label for="_StatusId" class="col-md-3 col-form-label"><?php echo @lang('STATUS_ID'); ?></label>
+      <div class="col-md-2 has-validation">
+        <input type="checkbox" class="form-check-input" id="statusId" />
+      </div>
+    </div>
+    <div class="mb-2 row">
+      <label for="_StatusId" class="col-md-3 col-form-label"><?php echo @lang('STATUS_ID'); ?></label>
+      <div class="col-md-2 has-validation">
+        <input type="checkbox" class="form-check-input" id="statusId" />
+      </div>
+    </div>
+    <div class="mb-2 row">
+      <label for="_StatusId" class="col-md-3 col-form-label"><?php echo @lang('STATUS_ID'); ?></label>
+      <div class="col-md-2 has-validation">
+        <input type="checkbox" class="form-check-input" id="statusId" />
+      </div>
+    </div>
+    <div class="mb-2 row">
+      <label for="_StatusId" class="col-md-3 col-form-label"><?php echo @lang('STATUS_ID'); ?></label>
+      <div class="col-md-2 has-validation">
+        <input type="checkbox" class="form-check-input" id="statusId" />
+      </div>
+    </div>
+    <div class="mb-2 row">
+      <label for="_StatusId" class="col-md-3 col-form-label"><?php echo @lang('STATUS_ID'); ?></label>
+      <div class="col-md-2 has-validation">
+        <input type="checkbox" class="form-check-input" id="statusId" />
+      </div>
+    </div>
+    <div class="mb-2 row">
+      <label for="_StatusId" class="col-md-3 col-form-label"><?php echo @lang('STATUS_ID'); ?></label>
+      <div class="col-md-2 has-validation">
+        <input type="checkbox" class="form-check-input" id="statusId" />
       </div>
     </div>
     <div class="row pt-3 pb-0">
-      <div class="col-sm-3"></div>
-      <div class="col-sm-5"><span class="text-danger" id="error-message"></span></div>
-      <div class="col-sm-4">
+      <div class="col-md-3"></div>
+      <div class="col-md-5"><span class="text-danger" id="error-message"></span></div>
+      <div class="col-md-4">
         <div class="d-flex justify-content-end">
-          <button class="btn btn-primary me-2" type="button" id="buttonSubmit"><?php echo @lang('BUTTON_SAVE'); ?></button>
-          <button class="btn btn-secondary" type="button" id="buttonCancel"><?php echo @lang('BUTTON_CANCEL'); ?></button>
+          <button class="btn btn-primary px-4 me-2" type="button" id="buttonSubmit"><?php echo @lang('BUTTON_SAVE'); ?></button>
+          <button class="btn btn-secondary px-4" type="button" id="buttonCancel"><?php echo @lang('BUTTON_CANCEL'); ?></button>
         </div>
       </div>
     </div>

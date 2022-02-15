@@ -14,7 +14,7 @@ class BaseController extends CI_Controller
     $this->load->library("pagination");
     $this->load->helper("language");
     $this->load->helper("common");
-		$this->load->helper("pagination_helper");
+    $this->load->helper("pagination_helper");
 
     // default class members
     $this->_route = @$object->route;
@@ -23,18 +23,22 @@ class BaseController extends CI_Controller
 
     if (!isset($_SESSION["sess_user_id"])) show_404();
 
+    if (isset($_GET["lang"])) $_SESSION["sess_user_lang"] = $_GET["lang"];
+
     // load _languageuage
     $this->lang->load("menu", @$_SESSION["sess_user_lang"]);
     $this->lang->load($this->_language, @$_SESSION["sess_user_lang"]);
     // $this->lang->load($this->_language, "thailand");
   }
 
-  public function logout(){
+  public function logout()
+  {
     session_destroy();
     redirect("/");
   }
 
-  public function _breadcrumbs(){
+  public function _breadcrumbs()
+  {
     return getBreadcrumbs($this->_breadcrumbs);
   }
 
@@ -44,12 +48,10 @@ class BaseController extends CI_Controller
       array_push($this->_breadcrumbs, $segments);
     return true;
   }
-  
+
   public function dateFormat($var, $format = "Y-m-d")
   {
     $date = str_replace('/', '-', $var);
     return date($format, strtotime($date));
   }
-
-
 }

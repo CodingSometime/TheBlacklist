@@ -1,4 +1,5 @@
 <?php 
+$lang['ROOT'] = 'Persons';
 $lang['TITLE'] = 'Personal List Detail';
 $lang['SUB_TITLE'] = 'Personal List Detail';
 
@@ -9,8 +10,8 @@ $lang['BREADCRUMBS_DEL'] = 'Del';
 
 # Buttons
 $lang['BUTTON_NEW'] = 'New '.$lang["TITLE"];
-$lang['BUTTON_SAVE'] = 'Save';
-$lang['BUTTON_CANCEL'] = 'Cancel';
+$lang['BUTTON_SAVE'] = 'SAVE';
+$lang['BUTTON_CANCEL'] = 'CANCEL';
 $lang['BUTTON_DEL'] = 'Del';
 $lang['CONFIRM_BUTTON_YES'] = 'YES, CONTINUE';
 $lang['CONFIRM_BUTTON_NO'] = 'NO, CANCEL';

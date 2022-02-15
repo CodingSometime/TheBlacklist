@@ -7,14 +7,14 @@ class AllegationType extends BaseController
 {
   private $route = "page/allegation-type";
   private $language = "AllegationType";
-  private $view_list = "admin/foundations/foundations/AllegationTypeList";
-  private $view_form = "admin/foundations/foundations/AllegationTypeForm";
+  private $view_list = "admin/foundations/AllegationTypeList";
+  private $view_form = "admin/foundations/AllegationTypeForm";
 
   // formatting breadcrumbs
   private $breadcrumbs = array(
     array("" => null),
     array("ROOT" => null),
-    array("TITLE" => null)
+    array("TITLE" => "/page/allegation-type")
   );
 
   function __construct()
@@ -68,7 +68,7 @@ class AllegationType extends BaseController
     $items["breadcrumbs"] = $this->_breadcrumbs();
     // render view html
     $output["content"] = $this->load->view($this->view_list, $items, true);
-    $this->load->view("layouts/Dashboard", $output);
+    $this->load->view("layouts/Main", $output);
   }
 
 
@@ -106,7 +106,7 @@ class AllegationType extends BaseController
 
     // render view html
     $output["content"] = $this->load->view($this->view_form, $items, true);
-    $this->load->view("layouts/Dashboard", $output);
+    $this->load->view("layouts/Main", $output);
   }
 
 

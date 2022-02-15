@@ -14,7 +14,7 @@ class Province extends BaseController
   private $breadcrumbs = array(
     array("" => null),
     array("ROOT" => null),
-    array("TITLE" => null)
+    array("TITLE" => "/page/province")
   );
 
   function __construct()
@@ -68,7 +68,7 @@ class Province extends BaseController
     $items["breadcrumbs"] = $this->_breadcrumbs();
     // render view html
     $output["content"] = $this->load->view($this->view_list, $items, true);
-    $this->load->view("layouts/Dashboard", $output);
+    $this->load->view("layouts/Main", $output);
   }
 
 
@@ -106,7 +106,7 @@ class Province extends BaseController
 
     // render view html
     $output["content"] = $this->load->view($this->view_form, $items, true);
-    $this->load->view("layouts/Dashboard", $output);
+    $this->load->view("layouts/Main", $output);
   }
 
 

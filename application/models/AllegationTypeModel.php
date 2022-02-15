@@ -14,7 +14,7 @@ class AllegationTypeModel extends BaseModel
 		parent::__construct($this->tableName, $this->viewName, $this->primaryKey);
 	}
 
-	public function selectBox($controlName=null, $selected = null, $isReadOnly = false)
+	public function selectBox($controlName=null, $selected = null, $hasAll = false, $isReadOnly = false)
 	{
 		if (!$controlName) return false;
 		
@@ -23,7 +23,7 @@ class AllegationTypeModel extends BaseModel
 		$this->db->order_by(2);
 		$query = $this->db->get($this->tableName);
 		$results = ($query->result_array());
-		$options = array("" => "");
+		$options = $hasAll ? array("" => "All") : array("" => "");
 
 		foreach ($results as $key => $value) {
 			foreach ($value as $key2 => $value2) {

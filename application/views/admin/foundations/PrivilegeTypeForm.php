@@ -12,30 +12,36 @@
     <span class="pt-1"></span>
 
     <div class="mb-2 row">
-      <label for="_PrivilegeTypeCode" class="col-sm-3 col-form-label"><?php echo @lang('PRIVILEGE_TYPE_CODE'); ?></label>
-      <div class="col-sm-2 has-validation">
-        <input type="text" class="form-control" id="_PrivilegeTypeCode" name="privilegeTypeCode" style="text-transform:uppercase" value="<?php echo @$items->privilegeTypeCode; ?>" required>
+      <label for="_PrivilegeTypeCode" class="col-md-3 col-form-label"><?php echo @lang('PRIVILEGE_TYPE_CODE'); ?></label>
+      <div class="col-md-2 has-validation">
+        <input type="text" class="form-control" id="_PrivilegeTypeCode" name="privilegeTypeCode" onkeyup="this.value = this.value.toUpperCase();" value="<?php echo @$items->privilegeTypeCode; ?>" required>
       </div>
     </div>
     <div class="mb-2 row">
-      <label for="_PrivilegeTypeName" class="col-sm-3 col-form-label"><?php echo @lang('PRIVILEGE_TYPE_NAME'); ?></label>
-      <div class="col-sm-4 has-validation">
+      <label for="_PrivilegeTypeName" class="col-md-3 col-form-label"><?php echo @lang('PRIVILEGE_TYPE_NAME'); ?></label>
+      <div class="col-md-4 has-validation">
         <input type="text" class="form-control" id="_PrivilegeTypeName" name="privilegeTypeName" value="<?php echo @$items->privilegeTypeName; ?>" required>
       </div>
     </div>
     <div class="mb-2 row">
-      <label for="_StatusId" class="col-sm-3 col-form-label"><?php echo @lang('STATUS_ID'); ?></label>
-      <div class="col-sm-2 has-validation">
+      <label for="_Remarks" class="col-md-3 col-form-label"><?php echo @lang('REMARKS'); ?></label>
+      <div class="col-md-4 has-validation">
+        <input type="text" class="form-control" id="_Remarks" name="remarks" value="<?php echo @$items->remarks; ?>">
+      </div>
+    </div>
+    <div class="mb-2 row">
+      <label for="_StatusId" class="col-md-3 col-form-label"><?php echo @lang('STATUS_ID'); ?></label>
+      <div class="col-md-2 has-validation">
         <?php echo @$selectBoxStatusId; ?>
       </div>
     </div>
     <div class="row pt-3 pb-0">
-      <div class="col-sm-3"></div>
-      <div class="col-sm-5"><span class="text-danger" id="error-message"></span></div>
-      <div class="col-sm-4">
+      <div class="col-md-3"></div>
+      <div class="col-md-5"><span class="text-danger" id="error-message"></span></div>
+      <div class="col-md-4">
         <div class="d-flex justify-content-end">
-          <button class="btn btn-primary me-2" type="button" id="buttonSubmit"><?php echo @lang('BUTTON_SAVE'); ?></button>
-          <button class="btn btn-secondary" type="button" id="buttonCancel"><?php echo @lang('BUTTON_CANCEL'); ?></button>
+          <button class="btn btn-primary px-4 me-2" type="button" id="buttonSubmit"><?php echo @lang('BUTTON_SAVE'); ?></button>
+          <button class="btn btn-secondary px-4" type="button" id="buttonCancel"><?php echo @lang('BUTTON_CANCEL'); ?></button>
         </div>
       </div>
     </div>

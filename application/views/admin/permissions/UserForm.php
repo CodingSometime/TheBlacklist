@@ -13,54 +13,54 @@
     <span class="pt-1"></span>
 
     <div class="mb-2 row">
-      <label for="_UserName" class="col-sm-3 col-form-label"><?php echo @lang('USER_NAME'); ?></label>
-      <div class="col-sm-4 has-validation">
+      <label for="_UserName" class="col-md-3 col-form-label"><?php echo @lang('USER_NAME'); ?></label>
+      <div class="col-md-4 has-validation">
         <input type="email" class="form-control" id="_UserName" name="userName" value="<?php echo @$items->userName; ?>" required>
       </div>
     </div>
     <div class="mb-2 row">
-      <label for="_FirstName" class="col-sm-3 col-form-label"><?php echo @lang('FIRST_NAME'); ?></label>
-      <div class="col-sm-4 has-validation">
+      <label for="_FirstName" class="col-md-3 col-form-label"><?php echo @lang('FIRST_NAME'); ?></label>
+      <div class="col-md-4 has-validation">
         <input type="text" class="form-control" id="_FirstName" name="firstName" value="<?php echo @$items->firstName; ?>" required>
       </div>
     </div>
     <div class="mb-2 row">
-      <label for="_LastName" class="col-sm-3 col-form-label"><?php echo @lang('LAST_NAME'); ?></label>
-      <div class="col-sm-4 has-validation">
+      <label for="_LastName" class="col-md-3 col-form-label"><?php echo @lang('LAST_NAME'); ?></label>
+      <div class="col-md-4 has-validation">
         <input type="text" class="form-control" id="_LastName" name="lastName" value="<?php echo @$items->lastName; ?>" required>
       </div>
     </div>
     <div class="mb-2 row">
-      <label for="_RoleCode" class="col-sm-3 col-form-label"><?php echo @lang('ROLE_ID'); ?></label>
-      <div class="col-sm-4 has-validation">
+      <label for="_RoleCode" class="col-md-3 col-form-label"><?php echo @lang('ROLE_ID'); ?></label>
+      <div class="col-md-4 has-validation">
         <?php echo @$selectBoxRoleId; ?>
       </div>
     </div>
     <div class="mb-2 row">
-      <label for="_EffectiveStartDate" class="col-sm-3 col-form-label"><?php echo @lang('EFFECTIVE_START_DATE'); ?></label>
-      <div class="col-sm-2 has-validation">
+      <label for="_EffectiveStartDate" class="col-md-3 col-form-label"><?php echo @lang('EFFECTIVE_START_DATE'); ?></label>
+      <div class="col-md-2 has-validation">
         <input type="text" class="form-control" id="_EffectiveStartDate" name="effectiveStartDate" placeholder="dd/mm/yyyy" value="<?php echo @$items->effectiveStartDateDmy; ?>" required>
       </div>
     </div>
     <div class="mb-2 row">
-      <label for="_EffectiveEndDate" class="col-sm-3 col-form-label"><?php echo @lang('EFFECTIVE_END_DATE'); ?></label>
-      <div class="col-sm-2 has-validation">
+      <label for="_EffectiveEndDate" class="col-md-3 col-form-label"><?php echo @lang('EFFECTIVE_END_DATE'); ?></label>
+      <div class="col-md-2 has-validation">
         <input type="text" class="form-control" id="_EffectiveEndDate" name="effectiveEndDate" placeholder="dd/mm/yyyy" value="<?php echo @$items->effectiveEndDateDmy; ?>" required>
       </div>
     </div>
     <div class="mb-2 row">
-      <label for="_StatusId" class="col-sm-3 col-form-label"><?php echo @lang('STATUS_ID'); ?></label>
-      <div class="col-sm-2 has-validation">
+      <label for="_StatusId" class="col-md-3 col-form-label"><?php echo @lang('STATUS_ID'); ?></label>
+      <div class="col-md-2 has-validation">
         <?php echo @$selectBoxStatusId; ?>
       </div>
     </div>
     <div class="row pt-3 pb-0">
-      <div class="col-sm-3"></div>
-      <div class="col-sm-5"><span class="text-danger" id="error-message"></span></div>
-      <div class="col-sm-4">
+      <div class="col-md-3"></div>
+      <div class="col-md-5"><span class="text-danger" id="error-message"></span></div>
+      <div class="col-md-4">
         <div class="d-flex justify-content-end">
-          <button class="btn btn-primary me-2" type="button" id="buttonSubmit"><?php echo @lang('BUTTON_SAVE'); ?></button>
-          <button class="btn btn-secondary" type="button" id="buttonCancel"><?php echo @lang('BUTTON_CANCEL'); ?></button>
+          <button class="btn btn-primary px-4 me-2" type="button" id="buttonSubmit"><?php echo @lang('BUTTON_SAVE'); ?></button>
+          <button class="btn btn-secondary px-4" type="button" id="buttonCancel"><?php echo @lang('BUTTON_CANCEL'); ?></button>
         </div>
       </div>
     </div>

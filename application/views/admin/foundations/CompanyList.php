@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-between align-items-center mt-3">
   <?php echo @$breadcrumbs; ?>
-  <button data-bs-toggle="modal" data-bs-target="#modalLoading" data-bs-action="create" class="btn btn-primary"><i class="ti ti-plus icon"></i> <?php echo @lang("BUTTON_NEW"); ?></button>
+  <button data-bs-toggle="modal" data-bs-target="#modalLoading" data-bs-action="create" class="btn btn-primary px-4"><i class="ti ti-plus icon"></i> <?php echo @lang("BUTTON_NEW"); ?></button>
 </div>
 <div class="shadow bg-body">
   <div class="border-bottom px-3 py-3 d-flex justify-content-between align-items-center">
@@ -16,11 +16,11 @@
       <thead>
         <tr>
           <th>#</th>
-					<th><?php echo @lang("COMPANY_CODE");?></th>
-					<th><?php echo @lang("COMPANY_NAME");?></th>
-					<th><?php echo @lang("DESCRIPTION_EN");?></th>
-					<th><?php echo @lang("DESCRIPTION_TH");?></th>
-					<th><?php echo @lang("BUSINESS_UNIT_CODE");?></th>
+          <th><?php echo @lang("COMPANY_CODE"); ?></th>
+          <th><?php echo @lang("COMPANY_NAME"); ?></th>
+          <th><?php echo @lang("DESCRIPTION_EN"); ?></th>
+          <th><?php echo @lang("DESCRIPTION_TH"); ?></th>
+          <th><?php echo @lang("BUSINESS_UNIT_CODE"); ?></th>
           <th><?php echo @lang("ACTIONS"); ?></th>
         </tr>
       </thead>
@@ -31,12 +31,12 @@
           foreach ($results as $rs) {
         ?>
             <tr>
-              <td class="text-muted"><?php echo $counter; ?></td>
-							<td><?php echo @$rs->companyCode;?></td>
-							<td><?php echo @$rs->companyName;?></td>
-							<td><?php echo @$rs->descriptionEn;?></td>
-							<td><?php echo @$rs->descriptionTh;?></td>
-							<td><?php echo @$rs->businessUnitCode;?></td>
+              <td><span class="text-secondary"><?php echo $counter; ?></span></td>
+              <td><?php echo @$rs->companyCode; ?></td>
+              <td><?php echo @$rs->companyName; ?></td>
+              <td><?php echo @$rs->descriptionEn; ?></td>
+              <td><?php echo @$rs->descriptionTh; ?></td>
+              <td><?php echo @$rs->businessUnitCode; ?></td>
               <td class="text-nowrap">
                 <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalLoading" data-bs-action="edit" data-bs-id="<?php echo @$rs->id; ?>"><?php echo @lang('LIST_BUTTON_EDIT'); ?></button>
                 <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalDeleteConfirm" data-bs-action="remove" data-bs-id="<?php echo @$rs->id; ?>" data-bs-label="<?php echo @$rs->companyName; ?>"><?php echo @lang('LIST_BUTTON_DEL'); ?></button>
