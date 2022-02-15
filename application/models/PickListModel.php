@@ -14,13 +14,19 @@ class PicklistModel extends CI_Model
   {
     $arrays = array();
     array_push($arrays, array('OPTION_VALUE' => "", 'OPTION_NAME' => ""));
-    array_push($arrays, array('OPTION_VALUE' => "M", 'OPTION_NAME' => "Male"));
-    array_push($arrays, array('OPTION_VALUE' => "F", 'OPTION_NAME' => "Female"));
+    
+    if (isset($_SESSION["sess_user_lang"]) && strtoupper($_SESSION["sess_user_lang"]) === "THAILAND") {
+      array_push($arrays, array('OPTION_VALUE' => "M", 'OPTION_NAME' => "ชาย"));
+      array_push($arrays, array('OPTION_VALUE' => "F", 'OPTION_NAME' => "หญิง"));
+    } else {
+      array_push($arrays, array('OPTION_VALUE' => "M", 'OPTION_NAME' => "Male"));
+      array_push($arrays, array('OPTION_VALUE' => "F", 'OPTION_NAME' => "Female"));
+    }
 
     foreach ($arrays as $k => $values) {
-        $id = $values["OPTION_VALUE"];
-        $name = $values["OPTION_NAME"];
-        $options[$id] = $name;
+      $id = $values["OPTION_VALUE"];
+      $name = $values["OPTION_NAME"];
+      $options[$id] = $name;
     }
 
     $readOnly = "";
@@ -37,9 +43,9 @@ class PicklistModel extends CI_Model
     array_push($arrays, array('OPTION_VALUE' => "N", 'OPTION_NAME' => "No"));
 
     foreach ($arrays as $k => $values) {
-        $id = $values["OPTION_VALUE"];
-        $name = $values["OPTION_NAME"];
-        $options[$id] = $name;
+      $id = $values["OPTION_VALUE"];
+      $name = $values["OPTION_NAME"];
+      $options[$id] = $name;
     }
 
     $readOnly = "";

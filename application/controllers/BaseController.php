@@ -24,9 +24,14 @@ class BaseController extends CI_Controller
     if (!isset($_SESSION["sess_user_id"])) show_404();
 
     // load _languageuage
+    $this->lang->load("menu", @$_SESSION["sess_user_lang"]);
     $this->lang->load($this->_language, @$_SESSION["sess_user_lang"]);
+    // $this->lang->load($this->_language, "thailand");
+  }
 
-
+  public function logout(){
+    session_destroy();
+    redirect("/");
   }
 
   public function _breadcrumbs(){
@@ -39,10 +44,12 @@ class BaseController extends CI_Controller
       array_push($this->_breadcrumbs, $segments);
     return true;
   }
-
-  public function logout(){
-    session_destroy();
-    redirect("/");
+  
+  public function dateFormat($var, $format = "Y-m-d")
+  {
+    $date = str_replace('/', '-', $var);
+    return date($format, strtotime($date));
   }
+
 
 }

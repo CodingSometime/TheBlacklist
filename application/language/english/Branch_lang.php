@@ -2,8 +2,13 @@
 $lang['TITLE'] = 'Branch';
 $lang['SUB_TITLE'] = 'Branch';
 
+# Breadcrumbs
+$lang['BREADCRUMBS_NEW'] = 'New '.$lang["TITLE"];
+$lang['BREADCRUMBS_EDIT'] = 'Edit';
+$lang['BREADCRUMBS_DEL'] = 'Del';
+
 # Buttons
-$lang['BUTTON_NEW'] = 'New Branch';
+$lang['BUTTON_NEW'] = 'New '.$lang["TITLE"];
 $lang['BUTTON_SAVE'] = 'Save';
 $lang['BUTTON_CANCEL'] = 'Cancel';
 $lang['BUTTON_DEL'] = 'Del';
@@ -24,6 +29,7 @@ $lang['CONFIRM_MESSAGE_DEL'] = 'Are you sure you want to delete ';
 
 # Message Form Validation
 $lang['FORM_VALIDATE_REQUIRE'] = 'cannot be null.';
+$lang['FORM_DUPLICATE_DATA'] = 'Warning: code already exists, Please re-check data again.';
 
 # Database Items
 $lang['ACTIONS'] = 'Actions';

@@ -12,6 +12,21 @@ function toggleThemes(theme) {
 	document.body.classList.add(`theme-${theme}`);
 }
 
+// for formatting date from th to en before commit!
+function dateformat(strDate) {
+	try {
+		const d = new Date(strDate.split("/").reverse().join("-"));
+		const dd = d.getDate();
+		const mm = d.getMonth() + 1;
+		const yy = d.getFullYear();
+		const newdate = yy + "/" + mm + "/" + dd;
+		return newdate;
+		
+	} catch (error) {
+		return null;
+	}
+}
+
 // for bootstap tooltips
 var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
 var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
@@ -41,4 +56,3 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 		);
 	});
 })();
-

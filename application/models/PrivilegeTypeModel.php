@@ -18,7 +18,7 @@ class PrivilegeTypeModel extends BaseModel
 	{
 		if (!$controlName) return false;
 		
-		$this->db->select("ID AS OPTION_VALUE, ID AS OPTION_NAME", false);
+		$this->db->select("ID AS OPTION_VALUE, CONCAT(PRIVILEGE_TYPE_CODE, ' - ', PRIVILEGE_TYPE_NAME) AS OPTION_NAME", false);
 		$this->db->where("STATUS_ID", 1);
 		$this->db->order_by(2);
 		$query = $this->db->get($this->tableName);
@@ -36,6 +36,17 @@ class PrivilegeTypeModel extends BaseModel
 		if ($isReadOnly) {
 			$readOnly = "disabled";
 		}
-		return form_dropdown($controlName, $options, $selected, 'class="form-select" required ' . $readOnly);
+	}
+
+	public function isDuplicate($id, $privilegeTypeCode)
+	{
+		if(!$privilegeTypeCode) return false;
+
+		$this->db->where("PRIVILEGE_TYPE_CODE", $privilegeTypeCode);
+		if (isset($id)) $this->db->where("ID !=", $id);
+
+		$query = $this->db->get($this->TABLE_NAME);
+		if ($query->num_rows() == 0) return false;
+		return true;
 	}
 }

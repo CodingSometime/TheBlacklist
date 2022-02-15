@@ -17,8 +17,10 @@ class TitleModel extends BaseModel
 	public function selectBox($controlName=null, $selected = null, $isReadOnly = false)
 	{
 		if (!$controlName) return false;
-		
-		$this->db->select("ID AS OPTION_VALUE, ID AS OPTION_NAME", false);
+    if (isset($_SESSION["sess_user_lang"]) && strtoupper($_SESSION["sess_user_lang"]) === "THAILAND")
+			$this->db->select("ID AS OPTION_VALUE, TITLE_NAME_TH AS OPTION_NAME", false);
+		else $this->db->select("ID AS OPTION_VALUE, TITLE_NAME_EN AS OPTION_NAME", false);
+
 		$this->db->where("STATUS_ID", 1);
 		$this->db->order_by(2);
 		$query = $this->db->get($this->tableName);
@@ -36,6 +38,19 @@ class TitleModel extends BaseModel
 		if ($isReadOnly) {
 			$readOnly = "disabled";
 		}
-		return form_dropdown($controlName, $options, $selected, 'class="form-select" required ' . $readOnly);
+		return form_dropdown($controlName, $options, $selected, 'id="'.$controlName.'" class="form-select" required ' . $readOnly);
+	}
+
+
+	public function isDuplicate($id, $titleCode)
+	{
+		if (!$titleCode) return false;
+
+		$this->db->where("TITLE_CODE", $titleCode);
+		if (isset($id)) $this->db->where("ID !=", $id);
+
+		$query = $this->db->get($this->TABLE_NAME);
+		if ($query->num_rows() == 0) return false;
+		return true;
 	}
 }

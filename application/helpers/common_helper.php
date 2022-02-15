@@ -14,10 +14,13 @@ if (!function_exists('getBreadcrumbs')) {
     foreach ($breadcrumbs as $key => $results) {
       ++$index;
       foreach ($results as $label => $href) {
+				
+				$mylabel = @lang($label) !="" ? @lang($label) : $label;
+
         if ($index < count($breadcrumbs))
-          $html .= '<li class="breadcrumb-item"><a href="'.$href.'">'.$label.'</a></li>'."\n";
+          $html .= '<li class="breadcrumb-item"><a href="'.$href.'">'.$mylabel.'</a></li>'."\n";
         else
-          $html .= '<li class="breadcrumb-item active" aria-current="page">'.$label.'</li>'."\n";
+          $html .= '<li class="breadcrumb-item active" aria-current="page">'.$mylabel.'</li>'."\n";
       }
     }
     $html .= '</ol>'."\n";

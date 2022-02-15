@@ -72,8 +72,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 */
 $active_group = 'default';
 $query_builder = TRUE;
-$username = $_SERVER['CI_USERNAME'] ? $_SERVER['CI_USERNAME'] : "root";
-$password = $_SERVER['CI_PASSWORD'] ? $_SERVER['CI_PASSWORD'] : "";
+$username = @$_SERVER['CI_USERNAME'] ? @$_SERVER['CI_USERNAME'] : "root";
+$password = @$_SERVER['CI_PASSWORD'] ? @$_SERVER['CI_PASSWORD'] : "";
 
 $db['default'] = array(
 	'dsn'	=> '',

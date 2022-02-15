@@ -36,6 +36,19 @@ class AllegationTypeModel extends BaseModel
 		if ($isReadOnly) {
 			$readOnly = "disabled";
 		}
-		return form_dropdown($controlName, $options, $selected, 'class="form-select" required ' . $readOnly);
+		return form_dropdown($controlName, $options, $selected, 'id="'.$controlName.'" class="form-select" required ' . $readOnly);
+	}
+
+
+	public function isDuplicate($id, $allegationCode)
+	{
+		if(!$allegationCode) return false;
+
+		$this->db->where("ALLEGATION_CODE", $allegationCode);
+		if (isset($id)) $this->db->where("ID !=", $id);
+
+		$query = $this->db->get($this->TABLE_NAME);
+		if ($query->num_rows() == 0) return false;
+		return true;
 	}
 }

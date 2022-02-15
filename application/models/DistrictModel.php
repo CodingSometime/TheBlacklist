@@ -18,7 +18,7 @@ class DistrictModel extends BaseModel
 	{
 		if (!$controlName) return false;
 		
-		$this->db->select("ID AS OPTION_VALUE, ID AS OPTION_NAME", false);
+		$this->db->select("ID AS OPTION_VALUE, CONCAT(DISTRICT_CODE, ' - ', DISTRICT_NAME) AS OPTION_NAME", false);
 		$this->db->where("STATUS_ID", 1);
 		$this->db->order_by(2);
 		$query = $this->db->get($this->tableName);
@@ -36,6 +36,19 @@ class DistrictModel extends BaseModel
 		if ($isReadOnly) {
 			$readOnly = "disabled";
 		}
-		return form_dropdown($controlName, $options, $selected, 'class="form-select" required ' . $readOnly);
+		return form_dropdown($controlName, $options, $selected, 'id="'.$controlName.'" class="form-select" required ' . $readOnly);
+	}
+
+
+	public function isDuplicate($id, $districtCode)
+	{
+		if(!$districtCode) return false;
+
+		$this->db->where("DISTRICT_CODE", $districtCode);
+		if (isset($id)) $this->db->where("ID !=", $id);
+
+		$query = $this->db->get($this->TABLE_NAME);
+		if ($query->num_rows() == 0) return false;
+		return true;
 	}
 }

@@ -36,6 +36,19 @@ class PersonModel extends BaseModel
 		if ($isReadOnly) {
 			$readOnly = "disabled";
 		}
-		return form_dropdown($controlName, $options, $selected, 'class="form-select" required ' . $readOnly);
+		return form_dropdown($controlName, $options, $selected, 'id="'.$controlName.'" class="form-select" required ' . $readOnly);
+	}
+
+
+	public function isDuplicate($id, $nationalId)
+	{
+		if(!$nationalId) return false;
+
+		$this->db->where("NATIONAL_ID", $nationalId);
+		if (isset($id)) $this->db->where("ID !=", $id);
+
+		$query = $this->db->get($this->TABLE_NAME);
+		if ($query->num_rows() == 0) return false;
+		return true;
 	}
 }

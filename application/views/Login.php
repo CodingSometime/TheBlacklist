@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="<?php echo base_url(); ?>public/css/signin.css" />
 
 <main class="form-signin">
-  <form action="page/redirect" id="formData" class="row g-3 needs-validation" novalidate>
+  <form action="<?php echo base_url(); ?>page/redirect" id="formData" class="row g-3 needs-validation" novalidate>
     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
     <div class="form-floating">

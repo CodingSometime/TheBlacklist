@@ -20,6 +20,7 @@ class BaseModel extends CI_Model
 		$this->PRIMARY_KEY = $primaryKey;
 	}
 
+	// for count records
 	public function recordCount($conditions = array())
 	{
 		$this->db->from($this->VIEW_NAME);
@@ -38,6 +39,7 @@ class BaseModel extends CI_Model
 		return $this->db->count_all_results();
 	}
 
+	// for retrieve all records
 	public function fetchAll($conditions = array(), $limit = 0, $start = 0, $orderBy = "")
 	{
 		// $this->db->where("STATUS_ID", 1);
@@ -65,6 +67,7 @@ class BaseModel extends CI_Model
 		return responseOk($results);
 	}
 
+	// for retrieve only one by primary key
 	public function fetchOne($id)
 	{
 		if (!$id) return responseError(null, "ID is required");
@@ -78,6 +81,7 @@ class BaseModel extends CI_Model
 		return responseOk($results[0]);
 	}
 
+	// for verify record exists in database
 	public function isExists($id)
 	{
 		if (!$id) return responseError(null, "ID is required");
@@ -87,6 +91,7 @@ class BaseModel extends CI_Model
 		return true;
 	}
 
+	// for insert new record to database
 	public function create($forms)
 	{
 		unset($forms["__RequestVerificationAction"]);
@@ -105,6 +110,7 @@ class BaseModel extends CI_Model
 		return responseOk($id);
 	}
 
+	// for update record by primary key
 	public function update($id, $forms)
 	{
 		unset($forms["__RequestVerificationAction"]);
@@ -124,6 +130,7 @@ class BaseModel extends CI_Model
 		return responseOk($query);
 	}
 
+	// for delete record by primary key
 	public function delete($id)
 	{
 		if (!$id) return responseError(null, "ID is required");
