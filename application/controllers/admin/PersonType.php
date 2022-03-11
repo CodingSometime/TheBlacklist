@@ -65,9 +65,10 @@ class PersonType extends BaseController
 
     // breadcrumbs
     $items["breadcrumbs"] = $this->_breadcrumbs();
+
     // render view html
-    $output["content"] = $this->load->view($this->view_list, $items, true);
-    $this->load->view("layouts/Main", $output);
+    $output = $this->load->view($this->view_list, $items, true);
+    $this->response($output);
   }
 
 
@@ -101,10 +102,9 @@ class PersonType extends BaseController
     // select box HERE !!
 		$items["selectBoxStatusId"] = $this->StatusModel->selectBox("statusId", @$statusId);
 
-
     // render view html
-    $output["content"] = $this->load->view($this->view_form, $items, true);
-    $this->load->view("layouts/Main", $output);
+    $output = $this->load->view($this->view_form, $items, true);
+    $this->response($output);
   }
 
 

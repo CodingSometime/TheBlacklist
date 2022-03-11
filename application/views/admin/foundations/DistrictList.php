@@ -12,14 +12,14 @@
     </div>
   </div>
   <div class="table-responsive">
-    <table class="table">
+    <table class="table table-hover">
       <thead>
         <tr>
           <th>#</th>
           <th><?php echo @lang("PROVINCE_ID"); ?></th>
           <th><?php echo @lang("DISTRICT_CODE"); ?></th>
           <th><?php echo @lang("DISTRICT_NAME"); ?></th>
-          <th><?php echo @lang("ACTIONS"); ?></th>
+          <th class="col-sm-2"><?php echo @lang("ACTIONS"); ?></th>
         </tr>
       </thead>
       <tbody>
@@ -27,10 +27,11 @@
         if (isset($results) && is_array($results)) {
           $counter = @$startRow;
           foreach ($results as $rs) {
+            $inactiveCssName = $rs->statusId != 1 ? 'class="fst-italic text-muted"' : '';
         ?>
-            <tr>
+            <tr <?php echo $inactiveCssName;?>>
               <td><span class="text-secondary"><?php echo $counter; ?></span></td>
-              <td><?php echo @$rs->provinceId; ?></td>
+              <td><?php echo @$rs->provinceName; ?></td>
               <td><?php echo @$rs->districtCode; ?></td>
               <td><?php echo @$rs->districtName; ?></td>
               <td class="text-nowrap">

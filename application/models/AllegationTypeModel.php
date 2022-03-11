@@ -6,7 +6,7 @@ require_once APPPATH . 'models/BaseModel.php';
 class AllegationTypeModel extends BaseModel
 {
 	protected $tableName = "FND_ALLEGATION_TYPE";
-	protected $viewName = "FND_ALLEGATION_TYPE";
+	protected $viewName = "FND_ALLEGATION_TYPE_VW";
   protected $primaryKey = "ID";
 
 	public function __construct()
@@ -14,15 +14,18 @@ class AllegationTypeModel extends BaseModel
 		parent::__construct($this->tableName, $this->viewName, $this->primaryKey);
 	}
 
-	public function selectBox($controlName=null, $selected = null, $hasAll = false, $isReadOnly = false)
+	public function selectBox($controlName=null, $selected = null, $hasAll = false, $isRequired = true, $isReadOnly = false)
 	{
 		if (!$controlName) return false;
-		
+		$required = $isRequired ? " required " : "";
+		$readOnly = $isReadOnly ? " disabled " : "";
+
 		$this->db->select("ID AS OPTION_VALUE, ALLEGATION_TYPE AS OPTION_NAME", false);
 		$this->db->where("STATUS_ID", 1);
 		$this->db->order_by(2);
 		$query = $this->db->get($this->tableName);
 		$results = ($query->result_array());
+		
 		$options = $hasAll ? array("" => "All") : array("" => "");
 
 		foreach ($results as $key => $value) {
@@ -32,11 +35,8 @@ class AllegationTypeModel extends BaseModel
 				$options[$id] = $name ;
 			}
 		}
-		$readOnly = "";
-		if ($isReadOnly) {
-			$readOnly = "disabled";
-		}
-		return form_dropdown($controlName, $options, $selected, 'id="'.$controlName.'" class="form-select" required ' . $readOnly);
+
+		return form_dropdown($controlName, $options, $selected, 'id="'.$controlName.'" class="form-select" '.$required . $readOnly);
 	}
 
 

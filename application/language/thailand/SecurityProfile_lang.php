@@ -3,6 +3,10 @@ $lang['ROOT'] = 'จัดการสิทธิ์';
 $lang['TITLE'] = 'Security Profile';
 $lang['SUB_TITLE'] = 'Security Profile';
 
+$lang['TITLE_RESPONSE'] = 'Responsibilities';
+$lang['TITLE_PRIVILEGE'] = 'Privileges';
+
+
 # Breadcrumbs
 $lang['BREADCRUMBS_NEW'] = 'เพิ่ม'.$lang["TITLE"];
 $lang['BREADCRUMBS_EDIT'] = 'แก้ไข';
@@ -35,19 +39,19 @@ $lang['FORM_DUPLICATE_DATA'] = 'พบข้อผิดพลาด: รหั�
 # Database Items
 $lang['ACTIONS'] = 'เครื่องมือ';
 $lang['ID'] = '#';
-$lang['ROLE_CODE'] = 'Role Code';
-$lang['PRIVILEGE_TYPE_CODE'] = 'Privilege Type Code';
-$lang['PERSON_TYPE_CODE'] = 'Person Type Code';
-$lang['BUSINESS_UNIT_CODE'] = 'Business Unit Code';
-$lang['GROUP_COMPANY_CODE'] = 'Group Company Code';
-$lang['COMPANY_CODE'] = 'Company Code';
-$lang['BRANCH_CODE'] = 'Branch Code';
-$lang['IS_CREATE'] = 'Create?';
-$lang['IS_UPDATE'] = 'Update?';
-$lang['IS_VIEW'] = 'View?';
-$lang['IS_DELETE_L1'] = 'Delete L.1?';
-$lang['IS_DELETE_L2'] = 'Delete L.2?';
-$lang['IS_DELETE_L3'] = 'Delete L.3?';
+$lang['ROLE_ID'] = 'กลุ่มผู้ใช้';
+$lang['PRIVILEGE_TYPE_ID'] = 'สิทธิการปรับปรุงข้อมูล';
+$lang['PERSON_TYPE_ID'] = 'ประเภทบุคคลที่กระทำความผิด';
+$lang['BUSINESS_UNIT_CODE'] = 'Business Unit';
+$lang['GROUP_COMPANY_ID'] = 'Group of Company';
+$lang['COMPANY_CODE'] = 'บริษัท';
+$lang['BRANCH_CODE'] = 'สาขา';
+$lang['IS_CREATE'] = 'CREATE - สร้างรายการได้';
+$lang['IS_UPDATE'] = 'UPDATE - แก้ไขข้อมูลได้เป็นบางรายการ';
+$lang['IS_VIEW'] = 'VIEW - เรียกดูข้อมูลได้อย่างเดียว ไม่สามารถแก้ไขได้';
+$lang['IS_DELETE_L1'] = 'DELETE L.1 - Disabled ความผิดเล็กน้อย และบันทึกเหตุผลการลบข้อมูลในฟิลด์ Remark';
+$lang['IS_DELETE_L2'] = 'DELETE L.2 - Disabled ความผิดไม่ร้ายแรง และบันทึกเหตุผลการลบข้อมูลในฟิลด์ Remark';
+$lang['IS_DELETE_L3'] = 'DELETE L.3 - Disabled ความผิดร้ายแรง และบันทึกเหตุผลการลบข้อมูลในฟิลด์ Remark';
 $lang['REMARKS'] = 'Remarks';
 $lang['STATUS_ID'] = 'Active?';
 $lang['CREATE_DATE'] = 'Create Date';

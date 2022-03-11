@@ -52,7 +52,7 @@ $border-color-transparent: rgba($text-muted, $border-opacity) !default;
 		--#{$variable-prefix}black-rgb: #{to-rgb($black)};
 		--#{$variable-prefix}body-color-rgb: #{to-rgb($body-color)};
 		--#{$variable-prefix}body-bg-rgb: #{to-rgb($body-bg)};
-	  
+
 		// --#{$variable-prefix}body-color: #{$light-mode-text};
 		// --#{$variable-prefix}body-color-rgb: #{to-rgb($light-mode-text)};
 
@@ -78,21 +78,24 @@ $border-color-transparent: rgba($text-muted, $border-opacity) !default;
 	}
 
 	.bg-body {
-		background-color:  rgba($gray-100, 0.9) !important;
+		background-color: rgba($gray-100, 0.9) !important;
 	}
 
-	.breadcrumb .breadcrumb-item a {
-		color: $text-muted !important;
+	// .breadcrumb .breadcrumb-item a {
+	.breadcrumb {
+		// color: $dark !important;
+		// color: $text-muted !important;
+		color: $dark !important;
 	}
 
-	.pagination .page-item a.page-link{
+	.pagination .page-item a.page-link {
 		padding: 2px;
 		border: none !important;
 		background-color: $white !important;
 		color: inherit;
 	}
 
-	.pagination .active a.page-link{
+	.pagination .active a.page-link {
 		background-color: $primary !important;
 		color: $light;
 	}

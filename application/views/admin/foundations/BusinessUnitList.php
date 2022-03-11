@@ -12,14 +12,14 @@
     </div>
   </div>
   <div class="table-responsive">
-    <table class="table">
+    <table class="table table-hover">
       <thead>
         <tr>
           <th>#</th>
           <th><?php echo @lang("BUSINESS_UNIT_CODE"); ?></th>
           <th><?php echo @lang("BUSINESS_UNIT_NAME"); ?></th>
           <th><?php echo @lang("GROUP_COMPANY_ID"); ?></th>
-          <th><?php echo @lang("ACTIONS"); ?></th>
+          <th class="col-md-2"><?php echo @lang("ACTIONS"); ?></th>
         </tr>
       </thead>
       <tbody>
@@ -27,12 +27,18 @@
         if (isset($results) && is_array($results)) {
           $counter = @$startRow;
           foreach ($results as $rs) {
+            $inactiveCssName = $rs->statusId != 1 ? 'class="fst-italic text-muted"' : '';
         ?>
-            <tr>
+            <tr <?php echo $inactiveCssName;?>>
               <td><span class="text-secondary"><?php echo $counter; ?></span></td>
               <td><?php echo @$rs->businessUnitCode; ?></td>
               <td><?php echo @$rs->businessUnitName; ?></td>
-              <td><?php echo @$rs->groupCompanyId; ?></td>
+              <td><?php if (isset($rs->groupCode)){
+                echo $rs->groupName;
+                echo " (". $rs->groupCode. ")";
+              }
+              ?>
+              </td>
               <td class="text-nowrap">
                 <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalLoading" data-bs-action="edit" data-bs-id="<?php echo @$rs->id; ?>"><?php echo @lang('LIST_BUTTON_EDIT'); ?></button>
                 <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalDeleteConfirm" data-bs-action="remove" data-bs-id="<?php echo @$rs->id; ?>" data-bs-label="<?php echo @$rs->businessUnitName; ?>"><?php echo @lang('LIST_BUTTON_DEL'); ?></button>

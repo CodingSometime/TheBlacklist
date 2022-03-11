@@ -57,8 +57,9 @@
         if (isset($results) && is_array($results)) {
           $counter = @$startRow;
           foreach ($results as $rs) {
+            $inactiveCssName = $rs->statusId != 1 ? 'class="fst-italic text-muted"' : '';
         ?>
-            <tr>
+            <tr <?php echo $inactiveCssName;?>>
               <td class="text-muted"><?php echo $counter; ?></td>
               <td><?php echo @$rs->personId; ?></td>
               <td><?php echo @$rs->sequenceNo; ?></td>

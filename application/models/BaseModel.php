@@ -99,9 +99,9 @@ class BaseModel extends CI_Model
 		$forms = camelCaseToUnderscore($forms);
 
 		$forms["CREATE_DATE"] = date("Y-m-d H:i:s");
-		$forms["CREATE_BY"] = @$_SESSION["sess_user_id"];
+		$forms["CREATE_BY"] = @$_SESSION["user_id"];
 		$forms["UPDATE_DATE"] = date("Y-m-d H:i:s");
-		$forms["UPDATE_BY"] = @$_SESSION["sess_user_id"];
+		$forms["UPDATE_BY"] = @$_SESSION["user_id"];
 
 		$query = $this->db->insert($this->TABLE_NAME, $forms);
 		if (!$query) return responseError($this->db->error());
@@ -121,7 +121,7 @@ class BaseModel extends CI_Model
 		$forms = camelCaseToUnderscore($forms);
 
 		$forms["UPDATE_DATE"] = date("Y-m-d H:i:s");
-		$forms["UPDATE_BY"] = @$_SESSION["sess_user_id"];
+		$forms["UPDATE_BY"] = @$_SESSION["user_id"];
 
 		$this->db->where($this->PRIMARY_KEY, $id);
 		$query = $this->db->update($this->TABLE_NAME, $forms);

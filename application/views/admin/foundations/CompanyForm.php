@@ -2,7 +2,10 @@
   <?php echo @$breadcrumbs; ?>
 </div>
 <div class="my-1 p-3 rounded shadow bg-body">
-  <h5 class="border-bottom pb-2 mb-0"><i class="ti ti-edit-circle icon"></i> <?php echo @lang("TITLE"); ?></h5>
+  <div class="row py-2 border-bottom ">
+    <div class="col-md-6 pb-2 mb-0 h5"><i class="ti ti-edit-circle icon"></i> <?php echo @lang("TITLE"); ?></div>
+    <div class="col-md-6 text-muted text-end"><span class="fs-8"><?php if(isset($items->id)) echo @$items->lastUpdateLabel; ?></span></div>
+  </div>
   <div class="my-1 p-3 rounded">
     <?php echo form_open(base_url() . "page/company/save", array("id" => "formData", "class" => "row g-3 needs-validation")); ?>
     <input type="hidden" id="__RequestVerificationAction" name="__RequestVerificationAction" value="<?php echo @$__RequestVerificationAction; ?>" />
@@ -104,6 +107,10 @@
   $(document).ready(function() {
     var baseUrl = "<?php echo base_url(); ?>page/company";
     var formId = $("#__RequestVerificationId").val();
+
+    $('#businessUnitCode').select2( {
+        theme: 'bootstrap-5'
+    });
 
     // **************************************************************************
     // !validate data ! allegation type code

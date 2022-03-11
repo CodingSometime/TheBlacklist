@@ -35,12 +35,13 @@ $lang['FORM_DUPLICATE_DATA'] = 'พบข้อผิดพลาด: รหั�
 # Database Items
 $lang['ACTIONS'] = 'เครื่องมือ';
 $lang['ID'] = '#';
-$lang['BRANCH_CODE'] = 'Branch Code';
-$lang['BRANCH_NAME'] = 'Branch Name';
-$lang['COMPANY_CODE'] = 'Company Code';
+$lang['BRANCH_CODE'] = 'รหัสสาขา';
+$lang['BRANCH_NAME'] = 'ชื่อสาขา';
+$lang['COMPANY_CODE'] = 'บริษัท';
 $lang['REMARKS'] = 'คำแนะนำ';
 $lang['STATUS_ID'] = 'สถานะการใช้งาน';
 $lang['CREATE_DATE'] = 'Create Date';
 $lang['CREATE_BY'] = 'Create By';
 $lang['UPDATE_DATE'] = 'Update Date';
 $lang['UPDATE_BY'] = 'Update By';
+$lang['LAST_UPDATE_LABEL'] = 'ข้อมูลปรับปรุงล่าสุด';

@@ -78,9 +78,10 @@ class Person extends BaseController
 
     // breadcrumbs
     $items["breadcrumbs"] = $this->_breadcrumbs();
+
     // render view html
-    $output["content"] = $this->load->view($this->view_list, $items, true);
-    $this->load->view("layouts/Main", $output);
+    $output = $this->load->view($this->view_list, $items, true);
+    $this->response($output);
   }
 
 
@@ -120,10 +121,9 @@ class Person extends BaseController
     $items["selectBoxCountryCode"] = $this->CountryModel->selectBox("countryCode", @$countryCode);
     $items["selectBoxDataSourceId"] = $this->DataSourceModel->selectBox("dataSourceId", @$dataSourceId);
 
-
     // render view html
-    $output["content"] = $this->load->view($this->view_form, $items, true);
-    $this->load->view("layouts/Main", $output);
+    $output = $this->load->view($this->view_form, $items, true);
+    $this->response($output);
   }
 
 

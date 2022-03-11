@@ -28,13 +28,13 @@ class SecurityProfile extends BaseController
 
     // load models
     $this->load->model("SecurityProfileModel", "BaseModel");
-		$this->load->model("RoleModel");
-		$this->load->model("PrivilegeTypeModel");
-		$this->load->model("PersonTypeModel");
-		$this->load->model("BusinessUnitModel");
-		$this->load->model("GroupCompanyModel");
-		$this->load->model("CompanyModel");
-		$this->load->model("BranchModel");
+    $this->load->model("RoleModel");
+    $this->load->model("PrivilegeTypeModel");
+    $this->load->model("PersonTypeModel");
+    $this->load->model("BusinessUnitModel");
+    $this->load->model("GroupCompanyModel");
+    $this->load->model("CompanyModel");
+    $this->load->model("BranchModel");
     $this->load->model("StatusModel");
   }
 
@@ -45,12 +45,12 @@ class SecurityProfile extends BaseController
   {
     // Find something
     $conditions = array();
-    if (isset($_GET["q"]) && !empty($_GET["q"])){
-			$conditions["ROLE_CODE"] = $_GET["q"];
-			$conditions["PRIVILEGE_TYPE_CODE"] = $_GET["q"];
-			$conditions["PERSON_TYPE_CODE"] = $_GET["q"];
-			$conditions["BUSINESS_UNIT_CODE"] = $_GET["q"];
-			$conditions["BRANCH_CODE"] = $_GET["q"];
+    if (isset($_GET["q"]) && !empty($_GET["q"])) {
+      $conditions["ROLE_ID"] = $_GET["q"];
+      $conditions["PRIVILEGE_TYPE_ID"] = $_GET["q"];
+      $conditions["PERSON_TYPE_ID"] = $_GET["q"];
+      $conditions["BUSINESS_UNIT_CODE"] = $_GET["q"];
+      $conditions["BRANCH_CODE"] = $_GET["q"];
     }
 
     // preparing pagination
@@ -58,7 +58,7 @@ class SecurityProfile extends BaseController
     $config = loadPaginationConfig((base_url() . $this->route . "/index"), $totalRows, 4, 10);
     $this->pagination->initialize($config);
     $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
-    $results = $this->BaseModel->fetchAll($conditions, $config["per_page"], $page, "ROLE_CODE");
+    $results = $this->BaseModel->fetchAll($conditions, $config["per_page"], $page, "ID");
 
     // calculate showing row / page
     $startRow = $page + 1;
@@ -75,9 +75,10 @@ class SecurityProfile extends BaseController
 
     // breadcrumbs
     $items["breadcrumbs"] = $this->_breadcrumbs();
+
     // render view html
-    $output["content"] = $this->load->view($this->view_list, $items, true);
-    $this->load->view("layouts/Main", $output);
+    $output = $this->load->view($this->view_list, $items, true);
+    $this->response($output);
   }
 
 
@@ -97,15 +98,14 @@ class SecurityProfile extends BaseController
 
       $object = $results->result;
       $items["items"] = $object;
-      $displayValue = @$object->roleCode . " : " . @$object->privilegeTypeCode;
-			$roleCode = @$object->roleCode;
-			$privilegeTypeCode = @$object->privilegeTypeCode;
-			$personTypeCode = @$object->personTypeCode;
-			$businessUnitCode = @$object->businessUnitCode;
-			$groupCompanyCode = @$object->groupCompanyCode;
-			$companyCode = @$object->companyCode;
-			$branchCode = @$object->branchCode;
-
+      $displayValue = @$object->roleCode . " : " . @$object->personTypeCode;
+      $roleId = @$object->roleId;
+      $privilegeTypeId = @$object->privilegeTypeId;
+      $personTypeId = @$object->personTypeId;
+      $businessUnitCode = @$object->businessUnitCode;
+      $groupCompanyId = @$object->groupCompanyId;
+      $companyCode = @$object->companyCode;
+      $branchCode = @$object->branchCode;
     }
 
     if ($action == Constants::ACTION_NEW) $this->addBreadcrumbs(array("BREADCRUMBS_NEW" => null));
@@ -116,19 +116,18 @@ class SecurityProfile extends BaseController
     $items["breadcrumbs"] = $this->_breadcrumbs();
 
     // select box HERE !!
-		$items["selectBoxRoleCode"] = $this->RoleModel->datalistBox("roleCode", @$roleCode);
-		$items["selectBoxPrivilegeTypeCode"] = $this->PrivilegeTypeModel->datalistBox("privilegeTypeCode", @$privilegeTypeCode,true);
-		$items["selectBoxPersonTypeCode"] = $this->PersonTypeModel->datalistBox("personTypeCode", @$personTypeCode, true);
-		$items["selectBoxBusinessUnitCode"] = $this->BusinessUnitModel->datalistBox("businessUnitCode", @$businessUnitCode, true);
-		$items["selectBoxGroupCompanyCode"] = $this->GroupCompanyModel->datalistBox("groupCompanyCode", @$groupCompanyCode, true);
-		$items["selectBoxCompanyCode"] = $this->CompanyModel->datalistBox("companyCode", @$companyCode, true);
-		$items["selectBoxBranchCode"] = $this->BranchModel->datalistBox("branchCode", @$branchCode, true);
-		$items["selectBoxStatusId"] = $this->StatusModel->selectBox("statusId", @$statusId);
+    $items["selectBoxRoleCode"] = $this->RoleModel->selectBox("roleId", @$roleId, true, false);
+    $items["selectBoxPrivilegeTypeCode"] = $this->PrivilegeTypeModel->selectBox("privilegeTypeId", @$privilegeTypeId, true, false);
+    $items["selectBoxPersonTypeCode"] = $this->PersonTypeModel->selectBox("personTypeId", @$personTypeId, true, false);
+    $items["selectBoxBusinessUnitCode"] = $this->BusinessUnitModel->selectBox("businessUnitCode", @$businessUnitCode, true, false);
+    $items["selectBoxGroupCompanyCode"] = $this->GroupCompanyModel->selectBox("groupCompanyId", @$groupCompanyId, true, false);
+    $items["selectBoxCompanyCode"] = $this->CompanyModel->selectBox("companyCode", @$companyCode, true, false);
+    $items["selectBoxBranchCode"] = $this->BranchModel->selectBox("branchCode", @$branchCode, true, false);
+    $items["selectBoxStatusId"] = $this->StatusModel->selectBox("statusId", @$statusId);
 
-    
     // render view html
-    $output["content"] = $this->load->view($this->view_form, $items, true);
-    $this->load->view("layouts/Main", $output);
+    $output = $this->load->view($this->view_form, $items, true);
+    $this->response($output);
   }
 
 
@@ -221,10 +220,10 @@ class SecurityProfile extends BaseController
   // check data duplicate from this table
   // route: /page/security-profile/validate/(:id)/(:roleCode)
   // method: GET
-  public function validate($id, $roleCode, $privilegeTypeCode)
+  public function validate($id, $roleId, $privilegeTypeCode)
   {
     // is duplicate ? then return json for javascript validation
-    if ($this->BaseModel->isDuplicate($id, $roleCode, $privilegeTypeCode)) {
+    if ($this->BaseModel->isDuplicate($id, $roleId, $privilegeTypeCode)) {
       echo (json_encode(array("duplicate" => true, "message" => @lang("FORM_DUPLICATE_DATA"))));
     } else {
       echo (json_encode(array("duplicate" => false, "message" => "")));

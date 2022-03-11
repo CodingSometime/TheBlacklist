@@ -12,7 +12,7 @@
     </div>
   </div>
   <div class="table-responsive">
-    <table class="table">
+    <table class="table table-hover">
       <thead>
         <tr>
           <th>#</th>
@@ -30,8 +30,9 @@
         if (isset($results) && is_array($results)) {
           $counter = @$startRow;
           foreach ($results as $rs) {
+            $inactiveCssName = $rs->statusId != 1 ? 'class="fst-italic text-muted"' : '';
         ?>
-            <tr>
+            <tr <?php echo $inactiveCssName;?>>
               <td class="text-muted"><?php echo $counter; ?></td>
               <td><?php echo @$rs->userName; ?></td>
               <td><?php echo @$rs->firstName; ?></td>

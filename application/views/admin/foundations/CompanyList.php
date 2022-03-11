@@ -12,7 +12,7 @@
     </div>
   </div>
   <div class="table-responsive">
-    <table class="table">
+    <table class="table table-hover">
       <thead>
         <tr>
           <th>#</th>
@@ -29,14 +29,15 @@
         if (isset($results) && is_array($results)) {
           $counter = @$startRow;
           foreach ($results as $rs) {
+            $inactiveCssName = $rs->statusId != 1 ? 'class="fst-italic text-muted"' : '';
         ?>
-            <tr>
+            <tr <?php echo $inactiveCssName;?>>
               <td><span class="text-secondary"><?php echo $counter; ?></span></td>
               <td><?php echo @$rs->companyCode; ?></td>
               <td><?php echo @$rs->companyName; ?></td>
               <td><?php echo @$rs->descriptionEn; ?></td>
               <td><?php echo @$rs->descriptionTh; ?></td>
-              <td><?php echo @$rs->businessUnitCode; ?></td>
+              <td><?php echo @$rs->businessUnitName; ?></td>
               <td class="text-nowrap">
                 <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalLoading" data-bs-action="edit" data-bs-id="<?php echo @$rs->id; ?>"><?php echo @lang('LIST_BUTTON_EDIT'); ?></button>
                 <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalDeleteConfirm" data-bs-action="remove" data-bs-id="<?php echo @$rs->id; ?>" data-bs-label="<?php echo @$rs->companyName; ?>"><?php echo @lang('LIST_BUTTON_DEL'); ?></button>

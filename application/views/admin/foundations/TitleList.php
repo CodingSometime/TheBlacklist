@@ -12,14 +12,14 @@
     </div>
   </div>
   <div class="table-responsive">
-    <table class="table">
+    <table class="table table-hover">
       <thead>
         <tr>
           <th>#</th>
           <th><?php echo @lang("TITLE_CODE"); ?></th>
           <th><?php echo @lang("TITLE_NAME_EN"); ?></th>
           <th><?php echo @lang("TITLE_NAME_TH"); ?></th>
-          <th><?php echo @lang("ACTIONS"); ?></th>
+          <th class="col-md-2"><?php echo @lang("ACTIONS"); ?></th>
         </tr>
       </thead>
       <tbody>
@@ -27,8 +27,9 @@
         if (isset($results) && is_array($results)) {
           $counter = @$startRow;
           foreach ($results as $rs) {
+            $inactiveCssName = $rs->statusId != 1 ? 'class="fst-italic text-muted"' : '';
         ?>
-            <tr>
+            <tr <?php echo $inactiveCssName;?>>
               <td><span class="text-secondary"><?php echo $counter; ?></span></td>
               <td><?php echo @$rs->titleCode; ?></td>
               <td><?php echo @$rs->titleNameEn; ?></td>

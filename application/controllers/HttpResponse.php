@@ -11,7 +11,7 @@ class HttpResponse extends CI_Controller
     $this->load->library("session");
     $this->load->helper("language");
 
-    $this->lang->load("Http", @$_SESSION["sess_user_lang"]);
+    $this->lang->load("Http", @$_SESSION["user_language"]);
 
   }
 

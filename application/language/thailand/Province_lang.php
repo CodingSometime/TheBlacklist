@@ -43,3 +43,4 @@ $lang['CREATE_DATE'] = 'Create Date';
 $lang['CREATE_BY'] = 'Create By';
 $lang['UPDATE_DATE'] = 'Update Date';
 $lang['UPDATE_BY'] = 'Update By';
+$lang['LAST_UPDATE_LABEL'] = 'ข้อมูลปรับปรุงล่าสุด';

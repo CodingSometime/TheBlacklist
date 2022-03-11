@@ -20,10 +20,10 @@ class Login extends CI_Controller
 
   public function redirect()
   {
-    $_SESSION["sess_user_lang"] = "thailand";
-    $_SESSION["sess_user_id"] = -1;
-    $_SESSION["sess_role_id"] = -1;
-    $_SESSION["sess_profile_id"] = -1;
+    $_SESSION["user_language"] = "thailand";
+    $_SESSION["user_id"] = 1;
+    $_SESSION["sess_role_id"] = 1;
+    $_SESSION["sess_profile_id"] = 1;
 
     redirect("page/company");
   }

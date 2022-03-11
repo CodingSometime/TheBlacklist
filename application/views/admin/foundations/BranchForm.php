@@ -2,7 +2,10 @@
   <?php echo @$breadcrumbs; ?>
 </div>
 <div class="my-1 p-3 rounded shadow bg-body">
-  <h5 class="border-bottom pb-2 mb-0"><i class="ti ti-edit-circle icon"></i> <?php echo @lang("TITLE"); ?></h5>
+  <div class="row py-2 border-bottom ">
+    <div class="col-md-6 pb-2 mb-0 h5"><i class="ti ti-edit-circle icon"></i> <?php echo @lang("TITLE"); ?></div>
+    <div class="col-md-6 text-muted text-end"><span class="fs-8"><?php if(isset($items->id)) echo @$items->lastUpdateLabel; ?></span></div>
+  </div>
   <div class="my-1 p-3 rounded">
     <?php echo form_open(base_url() . "page/branch/save", array("id" => "formData", "class" => "row g-3 needs-validation")); ?>
     <input type="hidden" id="__RequestVerificationAction" name="__RequestVerificationAction" value="<?php echo @$__RequestVerificationAction; ?>" />
@@ -19,13 +22,13 @@
     </div>
     <div class="mb-2 row">
       <label for="_BranchName" class="col-md-3 col-form-label"><?php echo @lang('BRANCH_NAME'); ?></label>
-      <div class="col-md-4 has-validation">
+      <div class="col-md-6 has-validation">
         <input type="text" class="form-control" id="_BranchName" name="branchName" value="<?php echo @$items->branchName; ?>" required>
       </div>
     </div>
     <div class="mb-2 row">
       <label for="_CompanyCode" class="col-md-3 col-form-label"><?php echo @lang('COMPANY_CODE'); ?></label>
-      <div class="col-md-4 has-validation">
+      <div class="col-md-6 has-validation">
         <?php echo @$selectBoxCompanyCode; ?>
       </div>
     </div>
@@ -93,6 +96,10 @@
   $(document).ready(function() {
     var baseUrl = "<?php echo base_url(); ?>page/branch";
     var formId = $("#__RequestVerificationId").val();
+
+    $('#companyCode').select2( {
+        theme: 'bootstrap-5'
+    });
 
     // **************************************************************************
     // !validate data ! branch code

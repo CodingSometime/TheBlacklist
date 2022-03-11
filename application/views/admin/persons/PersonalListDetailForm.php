@@ -2,7 +2,10 @@
   <?php echo @$breadcrumbs; ?>
 </div>
 <div class="my-1 p-3 rounded shadow bg-body">
-  <h5 class="border-bottom pb-2 mb-0"><i class="ti ti-edit-circle icon"></i> <?php echo @lang("TITLE"); ?></h5>
+  <div class="d-flex justify-content-between align-items-center border-bottom ">
+    <h5 class="pb-2 mb-0"><i class="ti ti-edit-circle icon"></i> <?php echo @lang("TITLE"); ?></h5>
+    <span class="text-muted"><?php if(isset($items->id)) echo @$items->lastUpdateLabel; ?></span>
+  </div>
   <div class="my-1 p-3 rounded">
     <?php echo form_open(base_url() . "page/personal-list-detail/save", array("id" => "formData", "class" => "row g-3 needs-validation")); ?>
     <input type="hidden" id="__RequestVerificationAction" name="__RequestVerificationAction" value="<?php echo @$__RequestVerificationAction; ?>" />

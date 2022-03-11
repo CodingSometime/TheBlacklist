@@ -60,8 +60,9 @@
         if (isset($results) && is_array($results)) {
           $counter = @$startRow;
           foreach ($results as $rs) {
+            $inctiveCssName = $rs->statusId != 1 ? 'class="fst-italic text-muted"' : '';
         ?>
-            <tr>
+            <tr <?php echo $inctiveCssName;?>>
               <td class="text-muted"><?php echo $counter; ?></td>
               <td><?php echo @$rs->nationalId; ?></td>
               <td><?php echo @$rs->passportId; ?></td>

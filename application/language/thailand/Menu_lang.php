@@ -16,8 +16,8 @@ $lang['MENU_REPORT_2'] = 'Summary Blacklist Report';
 
 // foundations
 $lang['MENU_FOUNDATION'] = 'ข้อมูลพื้นฐาน';
-$lang['MENU_FND_GROUP_COMPANY'] = 'กลุ่มบริษัท';
-$lang['MENU_FND_BUSINESS_UNIT'] = 'กลุ่มบริษัท';
+$lang['MENU_FND_GROUP_COMPANY'] = 'Group of Company';
+$lang['MENU_FND_BUSINESS_UNIT'] = 'Business Unit';
 $lang['MENU_FND_COMPANY'] = 'บริษัท';
 $lang['MENU_FND_BRANCH'] = 'สาขา';
 $lang['MENU_FND_COUNTRY'] = 'ประเทศ';

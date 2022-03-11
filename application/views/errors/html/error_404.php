@@ -65,6 +65,35 @@ button {
   box-shadow: 0 4px 8px 0 #ccc;
 }
 
+a{
+  text-decoration: none;
+}
+
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  background-color: transparent;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 0.875rem;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}.btn-primary {
+  color: #fff;
+  background-color: #206bc4;
+  border-color: #206bc4;
+}
+.btn-primary:hover {
+  color: #fff;
+  background-color: #1b5ba7;
+  border-color: #1a569d;
+}
 </style>
 </head>
 <body>
@@ -76,6 +105,7 @@ button {
     
     <h1> 404 Error.</h1>
     <p> We can't find the page you're looking for.</p>
+    <p><a href="<?php echo base_url();?>" class="btn btn-primary">Go to home page</a></p>
   </div>
 </div>
 </body>

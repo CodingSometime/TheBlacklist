@@ -21,13 +21,13 @@ class BaseController extends CI_Controller
     $this->_language = @$object->language;
     $this->_breadcrumbs = @$object->breadcrumbs;
 
-    if (!isset($_SESSION["sess_user_id"])) show_404();
+    if (!isset($_SESSION["user_id"])) show_404();
 
-    if (isset($_GET["lang"])) $_SESSION["sess_user_lang"] = $_GET["lang"];
+    if (isset($_GET["lang"])) $_SESSION["user_language"] = $_GET["lang"];
 
     // load _languageuage
-    $this->lang->load("menu", @$_SESSION["sess_user_lang"]);
-    $this->lang->load($this->_language, @$_SESSION["sess_user_lang"]);
+    $this->lang->load("menu", @$_SESSION["user_language"]);
+    $this->lang->load($this->_language, @$_SESSION["user_language"]);
     // $this->lang->load($this->_language, "thailand");
   }
 
@@ -53,5 +53,13 @@ class BaseController extends CI_Controller
   {
     $date = str_replace('/', '-', $var);
     return date($format, strtotime($date));
+  }
+
+  public function response($content){
+    $items =array();
+    $output["menubar"] = $this->load->view("layouts/MainMenus", $items, true);
+    $output["userProfile"] = $this->load->view("layouts/MainUser", $items, true);
+    $output["content"] = $content;
+    $this->load->view("layouts/Main", $output);
   }
 }

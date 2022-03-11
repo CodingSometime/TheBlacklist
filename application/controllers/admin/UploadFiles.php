@@ -44,12 +44,12 @@ class UploadFiles extends BaseController
   // for upload personal list (xlsx)
   public function persons()
   {
-    // render view html
     // breadcrumbs
     $items["breadcrumbs"] = $this->_breadcrumbs();
-
-    $output["content"] = $this->load->view("admin/persons/UploadFile", $items, true);
-    $this->load->view("layouts/Main", $output);
+    
+    // render view html
+    $output = $this->load->view("admin/persons/UploadFile", $items, true);
+    $this->response($output);
   }
 
 }

@@ -38,9 +38,10 @@ class Dashboard extends BaseController
     
     // breadcrumbs
     $items["breadcrumbs"] = $this->_breadcrumbs();
+    
     // render view html
-    $output["content"] = $this->load->view("admin/Dashboard", $items, true);
-    $this->load->view("layouts/Main", $output);
+    $output = $this->load->view("admin/Dashboard", $items, true);
+    $this->response($output);
   }
 
 }

@@ -62,7 +62,7 @@ $border-color-transparent: rgba($text-muted, $border-opacity) !default;
 		color: $dark-mode-text !important;
 	}
 
-	.nav-item .nav-link a{
+	.nav-item .nav-link a {
 		color: $white !important;
 		background-color: $dark-mode-lighten !important;
 	}
@@ -71,18 +71,18 @@ $border-color-transparent: rgba($text-muted, $border-opacity) !default;
 		background-color: $dark-mode-lighten !important;
 	}
 
-	.border-bottom{
+	.border-bottom {
 		border-color: $dark-mode-border-color !important;
 	}
 
-	.table{
+	.table {
 		border-color: $dark-mode-border-color !important;
 	}
 
 	// .table thead th{
 	// 	background-color: $dark-mode-darken !important;
 	// }
-	.text-muted{
+	.text-muted {
 		color: $gray-500 !important;
 	}
 
@@ -114,12 +114,11 @@ $border-color-transparent: rgba($text-muted, $border-opacity) !default;
 		color: inherit;
 	}
 
-	
 	.breadcrumb .breadcrumb-item a {
 		color: $text-muted !important;
 	}
-	
-	.pagination .page-item a.page-link{
+
+	.pagination .page-item a.page-link {
 		padding: 2px;
 		border: none !important;
 		// background-color: $dark !important;
@@ -127,11 +126,10 @@ $border-color-transparent: rgba($text-muted, $border-opacity) !default;
 		color: inherit;
 	}
 
-	.pagination .active a.page-link{
+	.pagination .active a.page-link {
 		background-color: $primary !important;
 		color: inherit;
 	}
-
 
 	pre {
 		background-color: $dark-mode-darken;
@@ -170,6 +168,23 @@ $border-color-transparent: rgba($text-muted, $border-opacity) !default;
 	}
 
 	.input-group-text {
+		border-color: $dark-mode-border-color;
+	}
+
+	.select2-container--bootstrap-5 .select2-selection {
+		color: $light !important;
+		background-color: $dark-mode-darken !important;
+		border-color: $dark-mode-border-color;
+	}
+	.select2-container--bootstrap-5 .select2-dropdown .select2-search .select2-search__field {
+		color: $light !important;
+		background-color: $dark-mode-darken !important;
+	}
+	.select2-container--bootstrap-5 .select2-selection--single .select2-selection__rendered {
+		color: $light !important;
+	}
+	.select2-dropdown {
+		background-color: $dark-mode-darken !important;
 		border-color: $dark-mode-border-color;
 	}
 
@@ -218,5 +233,4 @@ $border-color-transparent: rgba($text-muted, $border-opacity) !default;
 	.list-group-header {
 		background: $dark-mode-darken;
 	}
-
 }

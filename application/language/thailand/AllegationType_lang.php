@@ -35,12 +35,13 @@ $lang['FORM_DUPLICATE_DATA'] = 'พบข้อผิดพลาด: รหั�
 # Database Items
 $lang['ACTIONS'] = 'เครื่องมือ';
 $lang['ID'] = '#';
-$lang['ALLEGATION_CODE'] = 'Allegation Code';
-$lang['ALLEGATION_TYPE'] = 'Allegation Type';
-$lang['ALLEGATION_LEVEL'] = 'Allegation Level';
+$lang['ALLEGATION_CODE'] = 'รหัสประเภทการกระทำความผิด';
+$lang['ALLEGATION_TYPE'] = 'ประเภทการกระทำผิด';
+$lang['ALLEGATION_LEVEL'] = 'ระดับความผิด';
 $lang['REMARKS'] = 'คำแนะนำ';
 $lang['STATUS_ID'] = 'สถานะการใช้งาน';
 $lang['CREATE_DATE'] = 'Create Date';
 $lang['CREATE_BY'] = 'Create By';
 $lang['UPDATE_DATE'] = 'Update Date';
 $lang['UPDATE_BY'] = 'Update By';
+$lang['LAST_UPDATE_LABEL'] = 'ข้อมูลปรับปรุงล่าสุด';

@@ -15,7 +15,7 @@ class PicklistModel extends CI_Model
     $arrays = array();
     array_push($arrays, array('OPTION_VALUE' => "", 'OPTION_NAME' => ""));
     
-    if (isset($_SESSION["sess_user_lang"]) && strtoupper($_SESSION["sess_user_lang"]) === "THAILAND") {
+    if (isset($_SESSION["user_language"]) && strtoupper($_SESSION["user_language"]) === "THAILAND") {
       array_push($arrays, array('OPTION_VALUE' => "M", 'OPTION_NAME' => "ชาย"));
       array_push($arrays, array('OPTION_VALUE' => "F", 'OPTION_NAME' => "หญิง"));
     } else {

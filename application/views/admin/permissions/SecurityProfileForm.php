@@ -2,93 +2,105 @@
   <?php echo @$breadcrumbs; ?>
 </div>
 <div class="my-1 p-3 rounded shadow bg-body">
-  <h5 class="border-bottom pb-2 mb-0"><i class="ti ti-edit-circle icon"></i> <?php echo @lang("TITLE"); ?></h5>
+  <div class="row py-2 border-bottom">
+    <div class="col-md-6 pb-2 mb-0 h5"><i class="ti ti-edit-circle icon"></i> <?php echo @lang("TITLE"); ?></div>
+    <div class="col-md-6 text-muted text-end"><span class="fs-8"><?php if(isset($items->id)) echo @$items->lastUpdateLabel; ?></span></div>
+  </div>
   <div class="my-1 p-3 rounded">
     <?php echo form_open(base_url() . "page/security-profile/save", array("id" => "formData", "class" => "row g-3 needs-validation")); ?>
     <input type="hidden" id="__RequestVerificationAction" name="__RequestVerificationAction" value="<?php echo @$__RequestVerificationAction; ?>" />
     <?php if (isset($__RequestVerificationAction) && $__RequestVerificationAction != "NEW") { ?>
       <input type="hidden" id="__RequestVerificationId" name="__RequestVerificationId" value="<?php echo @$items->id; ?>" />
     <?php } ?>
+
+      <input type="hidden" id="isCreate" name="isCreate" value="<?php echo @$items->isCreate; ?>" />
+      <input type="hidden" id="isUpdate" name="isUpdate" value="<?php echo @$items->isUpdate; ?>" />
+      <input type="hidden" id="isView" name="isView" value="<?php echo @$items->isView; ?>" />
+      <input type="hidden" id="isDeleteL1" name="isDeleteL1" value="<?php echo @$items->isDeleteL1; ?>" />
+      <input type="hidden" id="isDeleteL2" name="isDeleteL2" value="<?php echo @$items->isDeleteL2; ?>" />
+      <input type="hidden" id="isDeleteL3" name="isDeleteL3" value="<?php echo @$items->isDeleteL3; ?>" />
+
     <span class="pt-1"></span>
 
     <div class="mb-2 row">
-      <label for="_RoleCode" class="col-md-3 col-form-label"><?php echo @lang('ROLE_CODE'); ?></label>
+      <label for="roleId" class="col-md-3 col-form-label"><?php echo @lang('ROLE_ID'); ?></label>
       <div class="col-md-4 has-validation">
         <?php echo @$selectBoxRoleCode; ?>
       </div>
     </div>
+
+    <h6 class="border-bottom px-2 pb-2"><i class="ti ti-chevron-right icon"></i><?php echo @lang("TITLE_RESPONSE"); ?></h6>
+
     <div class="mb-2 row">
-      <label for="_PersonTypeCode" class="col-md-3 col-form-label"><?php echo @lang('PERSON_TYPE_CODE'); ?></label>
+      <label for="personTypeId" class="col-md-3 col-form-label"><?php echo @lang('PERSON_TYPE_ID'); ?></label>
       <div class="col-md-4 has-validation">
         <?php echo @$selectBoxPersonTypeCode; ?>
       </div>
     </div>
     <div class="mb-2 row">
-      <label for="_BusinessUnitCode" class="col-md-3 col-form-label"><?php echo @lang('BUSINESS_UNIT_CODE'); ?></label>
+      <label for="businessUnitCode" class="col-md-3 col-form-label"><?php echo @lang('BUSINESS_UNIT_CODE'); ?></label>
       <div class="col-md-4 has-validation">
         <?php echo @$selectBoxBusinessUnitCode; ?>
       </div>
     </div>
     <div class="mb-2 row">
-      <label for="_GroupCompanyCode" class="col-md-3 col-form-label"><?php echo @lang('GROUP_COMPANY_CODE'); ?></label>
+      <label for="groupCompanyId" class="col-md-3 col-form-label"><?php echo @lang('GROUP_COMPANY_ID'); ?></label>
       <div class="col-md-4 has-validation">
         <?php echo @$selectBoxGroupCompanyCode; ?>
       </div>
     </div>
     <div class="mb-2 row">
-      <label for="_CompanyCode" class="col-md-3 col-form-label"><?php echo @lang('COMPANY_CODE'); ?></label>
+      <label for="companyCode" class="col-md-3 col-form-label"><?php echo @lang('COMPANY_CODE'); ?></label>
       <div class="col-md-4 has-validation">
         <?php echo @$selectBoxCompanyCode; ?>
       </div>
     </div>
     <div class="mb-2 row">
-      <label for="_BranchCode" class="col-md-3 col-form-label"><?php echo @lang('BRANCH_CODE'); ?></label>
+      <label for="branchCode" class="col-md-3 col-form-label"><?php echo @lang('BRANCH_CODE'); ?></label>
       <div class="col-md-4 has-validation">
         <?php echo @$selectBoxBranchCode; ?>
       </div>
     </div>
-    <div class="mb-2 row">
-      <label for="_StatusId" class="col-md-3 col-form-label"><?php echo @lang('STATUS_ID'); ?></label>
-      <div class="col-md-2 has-validation">
-        <input type="checkbox" class="form-check-input" id="statusId" />
+
+    <h6 class="border-bottom px-2 py-2 mb-2"><i class="ti ti-chevron-right icon"></i><?php echo @lang("TITLE_PRIVILEGE"); ?></h6>
+    <?php
+    $isCreate = @$items->isCreate == "Y" ? "checked" : "";
+    $isUpdate = @$items->isUpdate == "Y" ? "checked" : "";
+    $isView = @$items->isView == "Y" ? "checked" : "";
+    $isDeleteL1 = @$items->isDeleteL1 == "Y" ? "checked" : "";
+    $isDeleteL2 = @$items->isDeleteL2 == "Y" ? "checked" : "";
+    $isDeleteL3 = @$items->isDeleteL3 == "Y" ? "checked" : "";
+    ?>
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-9">
+        <div class="form-check form-switch py-1">
+          <input class="form-check-input" type="checkbox" role="switch" id="_IsCreate" name="_IsCreate" value="Y" <?php echo $isCreate;?>>
+          <label class="form-check-label" for="_IsCreate"><?php echo @lang("IS_CREATE"); ?></label>
+        </div>
+        <div class="form-check form-switch py-1">
+          <input class="form-check-input" type="checkbox" role="switch" id="_IsUpdate" name="_IsUpdate" value="Y" <?php echo $isUpdate;?>>
+          <label class="form-check-label" for="_IsUpdate"><?php echo @lang("IS_UPDATE"); ?></label>
+        </div>
+        <div class="form-check form-switch py-1">
+          <input class="form-check-input" type="checkbox" role="switch" id="_IsView" name="_IsView" value="Y" <?php echo $isView;?>>
+          <label class="form-check-label" for="_IsView"><?php echo @lang("IS_VIEW"); ?></label>
+        </div>
+        <div class="form-check form-switch py-1">
+          <input class="form-check-input" type="checkbox" role="switch" id="_IsDeleteL1" name="_IsDeleteL1" value="Y" <?php echo $isDeleteL1;?>>
+          <label class="form-check-label" for="_IsDeleteL1"><?php echo @lang("IS_DELETE_L1"); ?></label>
+        </div>
+        <div class="form-check form-switch py-1">
+          <input class="form-check-input" type="checkbox" role="switch" id="_IsDeleteL2" name="_IsDeleteL2" value="Y" <?php echo $isDeleteL2;?>>
+          <label class="form-check-label" for="_IsDeleteL2"><?php echo @lang("IS_DELETE_L2"); ?></label>
+        </div>
+        <div class="form-check form-switch py-1">
+          <input class="form-check-input" type="checkbox" role="switch" id="_IsDeleteL3" name="_IsDeleteL3" value="Y" <?php echo $isDeleteL3;?>>
+          <label class="form-check-label" for="_IsDeleteL3"><?php echo @lang("IS_DELETE_L3"); ?></label>
+        </div>
       </div>
     </div>
-    <div class="mb-2 row">
-      <label for="_StatusId" class="col-md-3 col-form-label"><?php echo @lang('STATUS_ID'); ?></label>
-      <div class="col-md-2 has-validation">
-        <input type="checkbox" class="form-check-input" id="statusId" />
-      </div>
-    </div>
-    <div class="mb-2 row">
-      <label for="_StatusId" class="col-md-3 col-form-label"><?php echo @lang('STATUS_ID'); ?></label>
-      <div class="col-md-2 has-validation">
-        <input type="checkbox" class="form-check-input" id="statusId" />
-      </div>
-    </div>
-    <div class="mb-2 row">
-      <label for="_StatusId" class="col-md-3 col-form-label"><?php echo @lang('STATUS_ID'); ?></label>
-      <div class="col-md-2 has-validation">
-        <input type="checkbox" class="form-check-input" id="statusId" />
-      </div>
-    </div>
-    <div class="mb-2 row">
-      <label for="_StatusId" class="col-md-3 col-form-label"><?php echo @lang('STATUS_ID'); ?></label>
-      <div class="col-md-2 has-validation">
-        <input type="checkbox" class="form-check-input" id="statusId" />
-      </div>
-    </div>
-    <div class="mb-2 row">
-      <label for="_StatusId" class="col-md-3 col-form-label"><?php echo @lang('STATUS_ID'); ?></label>
-      <div class="col-md-2 has-validation">
-        <input type="checkbox" class="form-check-input" id="statusId" />
-      </div>
-    </div>
-    <div class="mb-2 row">
-      <label for="_StatusId" class="col-md-3 col-form-label"><?php echo @lang('STATUS_ID'); ?></label>
-      <div class="col-md-2 has-validation">
-        <input type="checkbox" class="form-check-input" id="statusId" />
-      </div>
-    </div>
+
     <div class="row pt-3 pb-0">
       <div class="col-md-3"></div>
       <div class="col-md-5"><span class="text-danger" id="error-message"></span></div>
@@ -144,30 +156,60 @@
 
 <script>
   $(document).ready(function() {
+
+    $('#roleId').select2( {
+        theme: 'bootstrap-5'
+    });
+
+    $('#privilegeTypeId').select2( {
+        theme: 'bootstrap-5'
+    });
+
+    $('#personTypeId').select2( {
+        theme: 'bootstrap-5'
+    });
+
+    $('#businessUnitCode').select2( {
+        theme: 'bootstrap-5'
+    });
+
+    $('#groupCompanyId').select2( {
+        theme: 'bootstrap-5'
+    });
+
+    $('#companyCode').select2( {
+        theme: 'bootstrap-5'
+    });
+
+    $('#branchCode').select2( {
+        theme: 'bootstrap-5'
+    });
+
+
     var baseUrl = "<?php echo base_url(); ?>page/security-profile";
     var formId = $("#__RequestVerificationId").val();
 
     // **************************************************************************
-    // !validate data ! allegation type code
+    // !validate data ! check duplicate data first
     // **************************************************************************
-    $("#_RoleCode").keyup(function() {
-      $("#error-message").text("");
-      $("#buttonSubmit").attr("disabled", false);
-      let roleCode = encodeURIComponent(this.value);
-      let validateUrl = `${baseUrl}/validate/${formId}/${roleCode}`;
+    // $("#roleId").keyup(function() {
+    //   $("#error-message").text("");
+    //   $("#buttonSubmit").attr("disabled", false);
+    //   let roleCode = encodeURIComponent(this.value);
+    //   let validateUrl = `${baseUrl}/validate/${formId}/${roleCode}`;
 
-      $.get(validateUrl, function(data) {
-        let result = JSON.parse(data);
-        if (!result.duplicate) {
-          $("#buttonSubmit").attr("disabled", false);
-          return false;
-        }
+    //   $.get(validateUrl, function(data) {
+    //     let result = JSON.parse(data);
+    //     if (!result.duplicate) {
+    //       $("#buttonSubmit").attr("disabled", false);
+    //       return false;
+    //     }
 
-        $("#buttonSubmit").attr("disabled", true);
-        $("#error-message").text(result.message);
+    //     $("#buttonSubmit").attr("disabled", true);
+    //     $("#error-message").text(result.message);
 
-      });
-    });
+    //   });
+    // });
 
     // **************************************************************************
     // !button cancel handler
@@ -197,6 +239,30 @@
         $("#btnSave").on("click", function() {
           $("#modalLoading").modal("show");
           $("#modalConfirmation").modal("hide");
+
+          // apply checkbox uncheck
+          const _IsCreate = $("#_IsCreate").is(":checked") ? "Y" : "N";
+          const _IsUpdate = $("#_IsUpdate").is(":checked") ? "Y" : "N";
+          const _IsView = $("#_IsView").is(":checked") ? "Y" : "N";
+          const _IsDeleteL1 = $("#_IsDeleteL1").is(":checked") ? "Y" : "N";
+          const _IsDeleteL2 = $("#_IsDeleteL2").is(":checked") ? "Y" : "N";
+          const _IsDeleteL3 = $("#_IsDeleteL3").is(":checked") ? "Y" : "N";
+          
+          $("#_IsCreate").attr("disabled", true);
+          $("#_IsUpdate").attr("disabled", true);
+          $("#_IsView").attr("disabled", true);
+          $("#_IsDeleteL1").attr("disabled", true);
+          $("#_IsDeleteL2").attr("disabled", true);
+          $("#_IsDeleteL3").attr("disabled", true);
+          
+          $("#isCreate").val(_IsCreate);
+          $("#isUpdate").val(_IsUpdate);
+          $("#isView").val(_IsView);
+          $("#isDeleteL1").val(_IsDeleteL1);
+          $("#isDeleteL2").val(_IsDeleteL2);
+          $("#isDeleteL3").val(_IsDeleteL3);
+
+          // goto somewhere
           $("#formData").submit();
         });
       }

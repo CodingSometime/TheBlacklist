@@ -40,7 +40,7 @@ class District extends BaseController
     // Find something
     $conditions = array();
     if (isset($_GET["q"]) && !empty($_GET["q"])){
-			$conditions["PROVINCE_ID"] = $_GET["q"];
+			$conditions["PROVINCE_NAME"] = $_GET["q"];
 			$conditions["DISTRICT_CODE"] = $_GET["q"];
 			$conditions["DISTRICT_NAME"] = $_GET["q"];
     }
@@ -67,9 +67,10 @@ class District extends BaseController
 
     // breadcrumbs
     $items["breadcrumbs"] = $this->_breadcrumbs();
+    
     // render view html
-    $output["content"] = $this->load->view($this->view_list, $items, true);
-    $this->load->view("layouts/Main", $output);
+    $output = $this->load->view($this->view_list, $items, true);
+    $this->response($output);
   }
 
 
@@ -93,7 +94,6 @@ class District extends BaseController
       $displayValue = @$object->districtCode . " : " . @$object->districtName;
 			$provinceId = @$object->provinceId;
 			$statusId = @$object->statusId;
-
     }
 
     if ($action == Constants::ACTION_NEW) $this->addBreadcrumbs(array("BREADCRUMBS_NEW" => null));
@@ -104,13 +104,12 @@ class District extends BaseController
     $items["breadcrumbs"] = $this->_breadcrumbs();
 
     // select box HERE !!
-		$items["selectBoxProvinceId"] = $this->ProvinceModel->selectBox("provinceId", @$statusId);
+		$items["selectBoxProvinceId"] = $this->ProvinceModel->selectBox("provinceId", @$provinceId);
 		$items["selectBoxStatusId"] = $this->StatusModel->selectBox("statusId", @$statusId);
 
-
     // render view html
-    $output["content"] = $this->load->view($this->view_form, $items, true);
-    $this->load->view("layouts/Main", $output);
+    $output = $this->load->view($this->view_form, $items, true);
+    $this->response($output);
   }
 
 

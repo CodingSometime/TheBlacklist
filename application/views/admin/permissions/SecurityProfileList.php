@@ -12,15 +12,16 @@
     </div>
   </div>
   <div class="table-responsive">
-    <table class="table">
+    <table class="table table-hover">
       <thead>
         <tr>
           <th>#</th>
-          <th><?php echo @lang("ROLE_CODE"); ?></th>
-          <th><?php echo @lang("PERSON_TYPE_CODE"); ?></th>
+          <th><?php echo @lang("ROLE_ID"); ?></th>
+          <th><?php echo @lang("PERSON_TYPE_ID"); ?></th>
           <th><?php echo @lang("BUSINESS_UNIT_CODE"); ?></th>
           <th><?php echo @lang("COMPANY_CODE"); ?></th>
           <th><?php echo @lang("BRANCH_CODE"); ?></th>
+          <th><?php echo @lang("PRIVILEGE_TYPE_ID"); ?></th>
           <th><?php echo @lang("ACTIONS"); ?></th>
         </tr>
       </thead>
@@ -29,14 +30,26 @@
         if (isset($results) && is_array($results)) {
           $counter = @$startRow;
           foreach ($results as $rs) {
+            $isCreate = (isset($rs->isCreate) && @$rs->isCreate == "Y") ? "bg-primary" : "bg-secondary";
+            $isUpdate = (isset($rs->isUpdate) && @$rs->isUpdate == "Y") ? "bg-primary" : "bg-secondary";
+            $isView = (isset($rs->isView) && @$rs->isView == "Y") ? "bg-primary" : "bg-secondary";
+            $isDeleteL1 = (isset($rs->isDeleteL1) && @$rs->isDeleteL1 == "Y") ? "bg-primary" : "bg-secondary";
+            $isDeleteL2 = (isset($rs->isDeleteL2) && @$rs->isDeleteL2 == "Y") ? "bg-primary" : "bg-secondary";
+            $isDeleteL3 = (isset($rs->isDeleteL3) && @$rs->isDeleteL3 == "Y") ? "bg-primary" : "bg-secondary";
         ?>
             <tr>
               <td class="text-muted"><?php echo $counter; ?></td>
-              <td><?php echo @$rs->roleCode; ?></td>
-              <td><?php echo @$rs->personTypeCode; ?></td>
-              <td><?php echo @$rs->businessUnitCode; ?></td>
-              <td><?php echo @$rs->companyCode; ?></td>
-              <td><?php echo @$rs->branchCode; ?></td>
+              <td><?php echo @$rs->roleName; ?></td>
+              <td><?php echo @$rs->personTypeName; ?></td>
+              <td><?php echo @$rs->businessUnitName; ?></td>
+              <td><?php echo @$rs->companyName; ?></td>
+              <td><?php echo @$rs->branchName; ?></td>
+              <td><span title="Create" class="badge rounded-pill <?php echo $isCreate;?>">C</span>
+              <span title="Update" class="badge rounded-pill <?php echo $isUpdate;?>">U</span>
+              <span title="View" class="badge rounded-pill <?php echo $isView;?>">V</span>
+            <span title="Delete Level1" class="badge rounded-pill <?php echo $isDeleteL1;?>">D1</span>
+            <span title="Delete Level2" class="badge rounded-pill <?php echo $isDeleteL2;?>">D2</span>
+            <span title="Delete Level3" class="badge rounded-pill <?php echo $isDeleteL3;?>">D3</span></td>
               <td class="text-nowrap">
                 <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalLoading" data-bs-action="edit" data-bs-id="<?php echo @$rs->id; ?>"><?php echo @lang('LIST_BUTTON_EDIT'); ?></button>
                 <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalDeleteConfirm" data-bs-action="remove" data-bs-id="<?php echo @$rs->id; ?>" data-bs-label="<?php echo @$rs->roleCode; ?>"><?php echo @lang('LIST_BUTTON_DEL'); ?></button>

@@ -1,7 +1,7 @@
 <?php 
 $lang['ROOT'] = 'จัดการสิทธิ์';
-$lang['TITLE'] = 'ประเภทผู้ใช้';
-$lang['SUB_TITLE'] = 'ประเภทผู้ใช้';
+$lang['TITLE'] = 'กลุ่มผู้ใช้งาน';
+$lang['SUB_TITLE'] = 'กลุ่มผู้ใช้งาน';
 
 # Breadcrumbs
 $lang['BREADCRUMBS_NEW'] = 'เพิ่ม'.$lang["TITLE"];
@@ -35,8 +35,8 @@ $lang['FORM_DUPLICATE_DATA'] = 'พบข้อผิดพลาด: รหั�
 # Database Items
 $lang['ACTIONS'] = 'เครื่องมือ';
 $lang['ID'] = '#';
-$lang['ROLE_CODE'] = 'Role Code';
-$lang['ROLE_NAME'] = 'Role Name';
+$lang['ROLE_CODE'] = 'รหัสกลุ่มผู้ใช้งาน';
+$lang['ROLE_NAME'] = 'ชื่อกลุ่มผู้ใช้งาน';
 $lang['REMARKS'] = 'คำแนะนำ';
 $lang['STATUS_ID'] = 'สถานะการใช้งาน';
 $lang['REMOVEABLE'] = 'Removeable';
@@ -44,3 +44,4 @@ $lang['CREATE_DATE'] = 'Create Date';
 $lang['CREATE_BY'] = 'Create By';
 $lang['UPDATE_DATE'] = 'Update Date';
 $lang['UPDATE_BY'] = 'Update By';
+$lang['LAST_UPDATE_LABEL'] = 'ข้อมูลปรับปรุงล่าสุด';
