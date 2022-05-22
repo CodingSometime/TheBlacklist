@@ -208,4 +208,11 @@ class AllegationType extends BaseController
       echo (json_encode(array("duplicate" => false, "message" => "")));
     }
   }
+
+  public function ajax($allegationLevel){
+		if(!$allegationLevel) return false;
+		$selectOptions = $this->BaseModel->callAjaxForCriteria($allegationLevel);
+		echo $selectOptions;
+	}
+
 }

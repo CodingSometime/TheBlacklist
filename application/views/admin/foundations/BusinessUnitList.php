@@ -33,15 +33,10 @@
               <td><span class="text-secondary"><?php echo $counter; ?></span></td>
               <td><?php echo @$rs->businessUnitCode; ?></td>
               <td><?php echo @$rs->businessUnitName; ?></td>
-              <td><?php if (isset($rs->groupCode)){
-                echo $rs->groupName;
-                echo " (". $rs->groupCode. ")";
-              }
-              ?>
-              </td>
+              <td><?php echo @$rs->groupName; ?></td>
               <td class="text-nowrap">
                 <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalLoading" data-bs-action="edit" data-bs-id="<?php echo @$rs->id; ?>"><?php echo @lang('LIST_BUTTON_EDIT'); ?></button>
-                <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalDeleteConfirm" data-bs-action="remove" data-bs-id="<?php echo @$rs->id; ?>" data-bs-label="<?php echo @$rs->businessUnitName; ?>"><?php echo @lang('LIST_BUTTON_DEL'); ?></button>
+                <!-- <button disabled type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalDeleteConfirm" data-bs-action="remove" data-bs-id="<?php echo @$rs->id; ?>" data-bs-label="<?php echo @$rs->businessUnitName; ?>"><?php echo @lang('LIST_BUTTON_DEL'); ?></button> -->
               </td>
             </tr>
         <?php

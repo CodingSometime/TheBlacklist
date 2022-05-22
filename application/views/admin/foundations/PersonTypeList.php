@@ -18,6 +18,7 @@
           <th>#</th>
           <th><?php echo @lang("PERSON_TYPE_CODE"); ?></th>
           <th><?php echo @lang("PERSON_TYPE_NAME"); ?></th>
+          <th><?php echo @lang("STATUS_ID"); ?></th>
           <th class="col-md-2"><?php echo @lang("ACTIONS"); ?></th>
         </tr>
       </thead>
@@ -32,6 +33,7 @@
               <td><span class="text-secondary"><?php echo $counter; ?></span></td>
               <td><?php echo @$rs->personTypeCode; ?></td>
               <td><?php echo @$rs->personTypeName; ?></td>
+              <td><?php echo @$rs->statusNameEn; ?></td>
               <td class="text-nowrap">
                 <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalLoading" data-bs-action="edit" data-bs-id="<?php echo @$rs->id; ?>"><?php echo @lang('LIST_BUTTON_EDIT'); ?></button>
                 <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalDeleteConfirm" data-bs-action="remove" data-bs-id="<?php echo @$rs->id; ?>" data-bs-label="<?php echo @$rs->personTypeName; ?>"><?php echo @lang('LIST_BUTTON_DEL'); ?></button>

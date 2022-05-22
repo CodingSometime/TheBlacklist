@@ -1,15 +1,15 @@
-<?php 
+<?php
 $lang['ROOT'] = 'ข้อมูลบุคคล';
 $lang['TITLE'] = 'รายละเอียดการกระทำความผิด';
 $lang['SUB_TITLE'] = 'รายละเอียดการกระทำความผิด';
 
 # Breadcrumbs
-$lang['BREADCRUMBS_NEW'] = 'เพิ่ม'.$lang["TITLE"];
+$lang['BREADCRUMBS_NEW'] = 'เพิ่ม' . $lang["TITLE"];
 $lang['BREADCRUMBS_EDIT'] = 'แก้ไข';
 $lang['BREADCRUMBS_DEL'] = 'ลบ';
 
 # Buttons
-$lang['BUTTON_NEW'] = 'เพิ่ม'.$lang["TITLE"];
+$lang['BUTTON_NEW'] = 'เพิ่ม' . $lang["TITLE"];
 $lang['BUTTON_SAVE'] = 'บันทึกข้อมูล';
 $lang['BUTTON_CANCEL'] = 'ยกเลิก';
 $lang['BUTTON_DEL'] = 'ลบ';

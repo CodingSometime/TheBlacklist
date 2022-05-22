@@ -20,6 +20,7 @@
           <th>#</th>
           <th><?php echo @lang("ROLE_CODE"); ?></th>
           <th><?php echo @lang("ROLE_NAME"); ?></th>
+          <th><?php echo @lang("STATUS_ID"); ?></th>
           <th class="col-sm-2"><?php echo @lang("ACTIONS"); ?></th>
         </tr>
       </thead>
@@ -34,6 +35,7 @@
           <td class="text-muted"><?php echo $counter; ?></td>
           <td><?php echo @$rs->roleCode; ?></td>
           <td><?php echo @$rs->roleName; ?></td>
+          <td><?php echo @$rs->statusNameEn; ?></td>
           <td class="text-nowrap">
             <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal"
               data-bs-target="#modalLoading" data-bs-action="edit"

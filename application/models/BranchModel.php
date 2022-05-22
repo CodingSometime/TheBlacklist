@@ -39,6 +39,26 @@ class BranchModel extends BaseModel
 		return form_dropdown($controlName, $options, $selected, 'id="'.$controlName.'" class="form-select" '.$required . $readOnly);
 	}
 
+    // for fetch one by national id
+    public function fetchByCode($code)
+    {
+        if (!$code) {
+            return responseError(null, "CODE is required");
+        }
+
+        $this->db->where("BRANCH_CODE", $code);
+        $query = $this->db->get($this->VIEW_NAME);
+        if (!$query) {
+            return responseError($this->db->error());
+        }
+
+        if ($query->num_rows() == 0) {
+            return responseError(null, "No data found");
+        }
+
+        $results = toCamelCase($query->result_array());
+        return responseOk($results[0]);
+    }
 
 	public function isDuplicate($id, $branchCode, $companyCode)
 	{
@@ -52,4 +72,22 @@ class BranchModel extends BaseModel
 		if ($query->num_rows() == 0) return false;
 		return true;
 	}
+
+	public function callAjaxForCriteria($companyCode = null)
+	{
+		$this->db->select("ID, BRANCH_CODE, BRANCH_NAME", false);
+		$this->db->where("COMPANY_CODE", $companyCode);
+		$this->db->where("STATUS_ID", 1);
+		$this->db->order_by("BRANCH_CODE");
+		$query = $this->db->get($this->viewName);
+		$results = ($query->result_array());
+
+		$selectOptions = '<option value=""></option>';
+		foreach ($results as $key => $value) {
+			$code = $value["BRANCH_CODE"];
+			$description = $value["BRANCH_CODE"]. " - ".$value["BRANCH_NAME"];
+			$selectOptions .= '<option value="' . $code . '">' . $description . '</option>';
+		}
+		return $selectOptions;
+	}	
 }

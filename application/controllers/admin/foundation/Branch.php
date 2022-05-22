@@ -3,18 +3,18 @@ defined('BASEPATH') or exit('No direct script access allowed');
 require APPPATH . 'controllers/BaseController.php';
 require APPPATH . 'controllers/Constants.php';
 
-class BusinessUnit extends BaseController
+class Branch extends BaseController
 {
-  private $route = "page/business-unit";
-  private $language = "BusinessUnit";
-  private $view_list = "admin/foundations/BusinessUnitList";
-  private $view_form = "admin/foundations/BusinessUnitForm";
+  private $route = "page/branch";
+  private $language = "Branch";
+  private $view_list = "admin/foundations/BranchList";
+  private $view_form = "admin/foundations/BranchForm";
 
   // formatting breadcrumbs
   private $breadcrumbs = array(
     array("" => null),
     array("ROOT" => null),
-    array("TITLE" => "/page/business-unit")
+    array("TITLE" => "/page/branch")
   );
 
   function __construct()
@@ -27,22 +27,22 @@ class BusinessUnit extends BaseController
     parent::__construct($object);
 
     // load models
-    $this->load->model("BusinessUnitModel", "BaseModel");
-		$this->load->model("GroupCompanyModel");
-		$this->load->model("StatusModel");
+    $this->load->model("BranchModel", "BaseModel");
+    $this->load->model("CompanyModel");
+    $this->load->model("StatusModel");
   }
 
   // home page / index page
-  // route: /page/business-unit
+  // route: /page/branch
   // method: GET
   public function index()
   {
     // Find something
     $conditions = array();
-    if (isset($_GET["q"]) && !empty($_GET["q"])){
-			$conditions["BUSINESS_UNIT_CODE"] = $_GET["q"];
-			$conditions["BUSINESS_UNIT_NAME"] = $_GET["q"];
-			$conditions["GROUP_COMPANY_ID"] = $_GET["q"];
+    if (isset($_GET["q"]) && !empty($_GET["q"])) {
+      $conditions["BRANCH_CODE"] = $_GET["q"];
+      $conditions["BRANCH_NAME"] = $_GET["q"];
+      $conditions["COMPANY_CODE"] = $_GET["q"];
     }
 
     // preparing pagination
@@ -67,6 +67,7 @@ class BusinessUnit extends BaseController
 
     // breadcrumbs
     $items["breadcrumbs"] = $this->_breadcrumbs();
+
     // render view html
     $output = $this->load->view($this->view_list, $items, true);
     $this->response($output);
@@ -89,10 +90,9 @@ class BusinessUnit extends BaseController
 
       $object = $results->result;
       $items["items"] = $object;
-      $displayValue = @$object->businessUnitCode . " : " . @$object->businessUnitName;
-			$groupCompanyId = @$object->groupCompanyId;
-			$statusId = @$object->statusId;
-
+      $displayValue = @$object->branchCode . " : " . @$object->branchName;
+      $companyCode = @$object->companyCode;
+      $statusId = @$object->statusId;
     }
 
     if ($action == Constants::ACTION_NEW) $this->addBreadcrumbs(array("BREADCRUMBS_NEW" => null));
@@ -103,9 +103,8 @@ class BusinessUnit extends BaseController
     $items["breadcrumbs"] = $this->_breadcrumbs();
 
     // select box HERE !!
-		$items["selectBoxGroupCompanyId"] = $this->GroupCompanyModel->selectBox("groupCompanyId", @$groupCompanyId);
-		$items["selectBoxStatusId"] = $this->StatusModel->selectBox("statusId", @$statusId);
-
+    $items["selectBoxCompanyCode"] = $this->CompanyModel->selectBox("companyCode", @$companyCode);
+    $items["selectBoxStatusId"] = $this->StatusModel->selectBox("statusId", @$statusId);
 
     // render view html
     $output = $this->load->view($this->view_form, $items, true);
@@ -113,7 +112,7 @@ class BusinessUnit extends BaseController
   }
 
 
-  // route: /page/business-unit/create
+  // route: /page/branch/create
   // method: GET
   public function create()
   {
@@ -121,7 +120,7 @@ class BusinessUnit extends BaseController
   }
 
 
-  // route: /page/business-unit/edit/(:num)
+  // route: /page/branch/edit/(:num)
   // method: GET
   public function edit($id)
   {
@@ -129,7 +128,7 @@ class BusinessUnit extends BaseController
   }
 
 
-  // route: /page/business-unit/delete/(:num)
+  // route: /page/branch/delete/(:num)
   // method: GET
   public function delete($id)
   {
@@ -138,7 +137,7 @@ class BusinessUnit extends BaseController
 
 
   // save  new or update record to database
-  // route: /page/business-unit/save/(:num)
+  // route: /page/branch/save/(:num)
   // method: POST
   public function save()
   {
@@ -153,7 +152,7 @@ class BusinessUnit extends BaseController
 
 
   // insert new record to database
-  // route: /page/business-unit/insert/(:num)
+  // route: /page/branch/insert/(:num)
   // method: POST
   public function insert($forms)
   {
@@ -163,11 +162,12 @@ class BusinessUnit extends BaseController
 
 
   // update record to database
-  // route: /page/business-unit/update/(:num)
+  // route: /page/branch/update/(:num)
   // method: POST
   public function update($forms)
   {
     if (!$forms || !$forms["__RequestVerificationId"]) show_404();
+    
     $forms["id"] = $forms["__RequestVerificationId"];
     $this->BaseModel->update($forms["id"], $forms);
     redirect($this->route);
@@ -175,7 +175,7 @@ class BusinessUnit extends BaseController
 
 
   // delete from database
-  // route: /page/business-unit/remove/(:num)
+  // route: /page/branch/remove/(:num)
   // method: POST
   public function remove($id)
   {
@@ -200,15 +200,21 @@ class BusinessUnit extends BaseController
 
 
   // check data duplicate from this table
-  // route: /page/business-unit/validate/(:id)/(:businessUnitCode)
+  // route: /page/branch/validate/(:id)/(:branchCode)/(:companyCode)
   // method: GET
-  public function validate($id, $businessUnitCode)
+  public function validate($id, $branchCode, $companyCode)
   {
     // is duplicate ? then return json for javascript validation
-    if ($this->BaseModel->isDuplicate($id, $businessUnitCode)) {
+    if ($this->BaseModel->isDuplicate($id, $branchCode, $companyCode)) {
       echo (json_encode(array("duplicate" => true, "message" => @lang("FORM_DUPLICATE_DATA"))));
     } else {
       echo (json_encode(array("duplicate" => false, "message" => "")));
     }
   }
+
+  public function ajax($companyCode){
+		if(!$companyCode) return false;
+		$selectOptions = $this->BaseModel->callAjaxForCriteria($companyCode);
+		echo $selectOptions;
+	}
 }

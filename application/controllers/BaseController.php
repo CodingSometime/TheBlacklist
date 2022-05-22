@@ -25,10 +25,9 @@ class BaseController extends CI_Controller
 
     if (isset($_GET["lang"])) $_SESSION["user_language"] = $_GET["lang"];
 
-    // load _languageuage
+    // load default language
     $this->lang->load("menu", @$_SESSION["user_language"]);
     $this->lang->load($this->_language, @$_SESSION["user_language"]);
-    // $this->lang->load($this->_language, "thailand");
   }
 
   public function logout()

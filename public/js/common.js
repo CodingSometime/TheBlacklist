@@ -19,9 +19,8 @@ function dateformat(strDate) {
 		const dd = d.getDate();
 		const mm = d.getMonth() + 1;
 		const yy = d.getFullYear();
-		const newdate = yy + "/" + mm + "/" + dd;
-		return newdate;
-		
+		const new_date = yy + "/" + mm + "/" + dd;
+		return new_date;
 	} catch (error) {
 		return null;
 	}

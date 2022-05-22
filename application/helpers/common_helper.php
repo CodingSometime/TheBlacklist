@@ -3,6 +3,18 @@ if (!defined('BASEPATH')) {
 	exit('No direct script access allowed');
 }
 
+if (!function_exists('ddmmyyyyToYYYYMMDD')) {
+	function ddmmyyyyToYYYYMMDD($str)
+	{
+		$arrays = explode("/", $str);
+		$yyyy = $arrays[2];
+		$mm = $arrays[1];
+		$dd = $arrays[0];
+
+		return "$yyyy-$mm-$dd";
+	}
+}
+
 if (!function_exists('getBreadcrumbs')) {
 	function getBreadcrumbs($breadcrumbs)
 	{

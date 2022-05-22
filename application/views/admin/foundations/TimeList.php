@@ -19,6 +19,7 @@
           <th><?php echo @lang("TIME_CODE"); ?></th>
           <th><?php echo @lang("TIME_NAME"); ?></th>
           <th><?php echo @lang("DESCRIPTION"); ?></th>
+          <th><?php echo @lang("STATUS_ID"); ?></th>
           <th class="col-md-2"><?php echo @lang("ACTIONS"); ?></th>
         </tr>
       </thead>
@@ -34,6 +35,7 @@
               <td><?php echo @$rs->timeCode; ?></td>
               <td><?php echo @$rs->timeName; ?></td>
               <td><?php echo @$rs->description; ?></td>
+              <td><?php echo @$rs->statusNameEn; ?></td>
               <td class="text-nowrap">
                 <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalLoading" data-bs-action="edit" data-bs-id="<?php echo @$rs->id; ?>"><?php echo @lang('LIST_BUTTON_EDIT'); ?></button>
                 <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalDeleteConfirm" data-bs-action="remove" data-bs-id="<?php echo @$rs->id; ?>" data-bs-label="<?php echo @$rs->timeName; ?>"><?php echo @lang('LIST_BUTTON_DEL'); ?></button>

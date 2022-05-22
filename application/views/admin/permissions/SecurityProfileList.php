@@ -1,13 +1,15 @@
 <div class="d-flex justify-content-between align-items-center mt-3">
   <?php echo @$breadcrumbs; ?>
-  <button data-bs-toggle="modal" data-bs-target="#modalLoading" data-bs-action="create" class="btn btn-primary px-4"><i class="ti ti-plus icon"></i> <?php echo @lang("BUTTON_NEW"); ?></button>
+  <button data-bs-toggle="modal" data-bs-target="#modalLoading" data-bs-action="create" class="btn btn-primary px-4"><i
+      class="ti ti-plus icon"></i> <?php echo @lang("BUTTON_NEW"); ?></button>
 </div>
 <div class="shadow bg-body">
   <div class="border-bottom px-3 py-3 d-flex justify-content-between align-items-center">
     <h5><i class="ti ti-align-justified icon"></i> <?php echo @lang("TITLE"); ?></h5>
     <div>
       <form action="<?php echo @$route; ?>">
-        <input type="text" name="q" value="<?php echo @$_GET["q"]; ?>" class="form-control  col-md-3" placeholder="Search.." aria-label="Search" />
+        <input type="text" name="q" value="<?php echo @$_GET["q"]; ?>" class="form-control  col-md-3"
+          placeholder="Search.." aria-label="Search" />
       </form>
     </div>
   </div>
@@ -16,12 +18,14 @@
       <thead>
         <tr>
           <th>#</th>
+          <th><?php echo @lang("CODE"); ?></th>
           <th><?php echo @lang("ROLE_ID"); ?></th>
           <th><?php echo @lang("PERSON_TYPE_ID"); ?></th>
           <th><?php echo @lang("BUSINESS_UNIT_CODE"); ?></th>
           <th><?php echo @lang("COMPANY_CODE"); ?></th>
           <th><?php echo @lang("BRANCH_CODE"); ?></th>
           <th><?php echo @lang("PRIVILEGE_TYPE_ID"); ?></th>
+          <th><?php echo @lang("STATUS_ID"); ?></th>
           <th><?php echo @lang("ACTIONS"); ?></th>
         </tr>
       </thead>
@@ -33,28 +37,47 @@
             $isCreate = (isset($rs->isCreate) && @$rs->isCreate == "Y") ? "bg-primary" : "bg-secondary";
             $isUpdate = (isset($rs->isUpdate) && @$rs->isUpdate == "Y") ? "bg-primary" : "bg-secondary";
             $isView = (isset($rs->isView) && @$rs->isView == "Y") ? "bg-primary" : "bg-secondary";
-            $isDeleteL1 = (isset($rs->isDeleteL1) && @$rs->isDeleteL1 == "Y") ? "bg-primary" : "bg-secondary";
-            $isDeleteL2 = (isset($rs->isDeleteL2) && @$rs->isDeleteL2 == "Y") ? "bg-primary" : "bg-secondary";
-            $isDeleteL3 = (isset($rs->isDeleteL3) && @$rs->isDeleteL3 == "Y") ? "bg-primary" : "bg-secondary";
+            $isDelete = (isset($rs->isDelete) && @$rs->isDelete == "Y") ? "bg-primary" : "bg-secondary";
+            $isEnableL1 = (isset($rs->isEnableL1) && @$rs->isEnableL1 == "Y") ? "bg-primary" : "bg-secondary";
+            $isEnableL2 = (isset($rs->isEnableL2) && @$rs->isEnableL2 == "Y") ? "bg-primary" : "bg-secondary";
+            $isEnableL3 = (isset($rs->isEnableL3) && @$rs->isEnableL3 == "Y") ? "bg-primary" : "bg-secondary";
+
+            $titleCreate = (isset($rs->isCreate) && @$rs->isCreate == "Y") ? 'title="CREATE - สร้างรายการได้"' : "";
+            $titleUpdate = (isset($rs->isUpdate) && @$rs->isUpdate == "Y") ? 'title="UPDATE - แก้ไขข้อมูลได้เป็นบางรายการ"' : "";
+            $titleView = (isset($rs->isView) && @$rs->isView == "Y") ? 'title="VIEW - เรียกดูข้อมูลได้อย่างเดียว ไม่สามารถแก้ไขได้"' : "";
+            $titleDelete = (isset($rs->isDelete) && @$rs->isDelete == "Y") ? 'title="DELETE - ลบรายการได้"' : "";
+            $titleEnableL1 = (isset($rs->isEnableL1) && @$rs->isEnableL1 == "Y") ? 'title="ENABLE L.1 - ปลดความผิดเล็กน้อย"' : "";
+            $titleEnableL2 = (isset($rs->isEnableL2) && @$rs->isEnableL2 == "Y") ? 'title="ENABLE L.2 - ปลดความผิดไม่ร้ายแรง"' : "";
+            $titleEnableL3 = (isset($rs->isEnableL3) && @$rs->isEnableL3 == "Y") ? 'title="ENABLE L.3 - ปลดความผิดร้ายแรง"' : "";
+            $inactiveCssName = $rs->statusId != 1 ? 'class="fst-italic text-muted"' : '';
+
         ?>
-            <tr>
-              <td class="text-muted"><?php echo $counter; ?></td>
-              <td><?php echo @$rs->roleName; ?></td>
-              <td><?php echo @$rs->personTypeName; ?></td>
-              <td><?php echo @$rs->businessUnitName; ?></td>
-              <td><?php echo @$rs->companyName; ?></td>
-              <td><?php echo @$rs->branchName; ?></td>
-              <td><span title="Create" class="badge rounded-pill <?php echo $isCreate;?>">C</span>
-              <span title="Update" class="badge rounded-pill <?php echo $isUpdate;?>">U</span>
-              <span title="View" class="badge rounded-pill <?php echo $isView;?>">V</span>
-            <span title="Delete Level1" class="badge rounded-pill <?php echo $isDeleteL1;?>">D1</span>
-            <span title="Delete Level2" class="badge rounded-pill <?php echo $isDeleteL2;?>">D2</span>
-            <span title="Delete Level3" class="badge rounded-pill <?php echo $isDeleteL3;?>">D3</span></td>
-              <td class="text-nowrap">
-                <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalLoading" data-bs-action="edit" data-bs-id="<?php echo @$rs->id; ?>"><?php echo @lang('LIST_BUTTON_EDIT'); ?></button>
-                <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalDeleteConfirm" data-bs-action="remove" data-bs-id="<?php echo @$rs->id; ?>" data-bs-label="<?php echo @$rs->roleCode; ?>"><?php echo @lang('LIST_BUTTON_DEL'); ?></button>
-              </td>
-            </tr>
+        <tr <?php echo $inactiveCssName;?>>
+          <td class="text-muted"><?php echo $counter; ?></td>
+          <td><?php echo @$rs->code; ?></td>
+          <td><?php echo @$rs->roleName; ?></td>
+          <td><?php echo @$rs->personTypeName; ?></td>
+          <td><?php echo @$rs->businessUnitName; ?></td>
+          <td><?php echo @$rs->companyName; ?></td>
+          <td><?php echo @$rs->branchName; ?></td>
+          <td><span <?php echo $titleCreate;?> class="badge rounded-pill <?php echo $isCreate;?>">C</span>
+            <span <?php echo $titleUpdate;?> class="badge rounded-pill <?php echo $isUpdate;?>">U</span>
+            <span <?php echo $titleView;?> class="badge rounded-pill <?php echo $isView;?>">V</span>
+            <span <?php echo $titleDelete;?> class="badge rounded-pill <?php echo $isDelete;?>">D</span>
+            <span <?php echo $titleEnableL1;?> class="badge rounded-pill <?php echo $isEnableL1;?>">E1</span>
+            <span <?php echo $titleEnableL2;?> class="badge rounded-pill <?php echo $isEnableL2;?>">E2</span>
+            <span <?php echo $titleEnableL3;?> class="badge rounded-pill <?php echo $isEnableL3;?>">E3</span>
+          </td>
+          <td><?php echo @$rs->statusNameEn; ?></td>
+          <td class="text-nowrap">
+            <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal"
+              data-bs-target="#modalLoading" data-bs-action="edit"
+              data-bs-id="<?php echo @$rs->id; ?>"><?php echo @lang('LIST_BUTTON_EDIT'); ?></button>
+            <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal"
+              data-bs-target="#modalDeleteConfirm" data-bs-action="remove" data-bs-id="<?php echo @$rs->id; ?>"
+              data-bs-label="<?php echo @$rs->roleCode; ?>"><?php echo @lang('LIST_BUTTON_DEL'); ?></button>
+          </td>
+        </tr>
         <?php
             $counter++;
           }
@@ -64,17 +87,20 @@
   </div>
   <div class="card-footer d-flex align-items-center bg-body">
     <?php if (isset($totalRows) && $totalRows > 0) { ?>
-      <p class="m-0 text-muted">Showing <span><?php echo @$startRow; ?></span> to <span><?php echo @$endRow; ?></span> of <span><?php echo @$totalRows; ?></span> entries</p>
-      <?php echo @$pagination; ?>
+    <p class="m-0 text-muted">Showing <span><?php echo @$startRow; ?></span> to <span><?php echo @$endRow; ?></span> of
+      <span><?php echo @$totalRows; ?></span> entries
+    </p>
+    <?php echo @$pagination; ?>
     <?php } else { ?>
-      <p class="m-0 text-muted">No data found</p>
+    <p class="m-0 text-muted">No data found</p>
     <?php } ?>
   </div>
 </div>
 
 
 <!-- Modal Loading-->
-<div class="modal fade" id="modalLoading" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+<div class="modal fade" id="modalLoading" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+  aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -92,7 +118,8 @@
 </div>
 
 <!-- Modal Delete Confirmation-->
-<div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="modalDeleteConfirm" tabindex="-1" aria-labelledby="modalDeleteConfirmLabel" aria-hidden="true">
+<div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="modalDeleteConfirm" tabindex="-1"
+  aria-labelledby="modalDeleteConfirmLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
@@ -109,60 +136,62 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?php echo @lang('CONFIRM_BUTTON_NO'); ?></button>
-        <button type="button" id="btnConfirmDelete" class="btn btn-danger"><?php echo @lang('CONFIRM_BUTTON_YES'); ?></button>
+        <button type="button" class="btn btn-secondary"
+          data-bs-dismiss="modal"><?php echo @lang('CONFIRM_BUTTON_NO'); ?></button>
+        <button type="button" id="btnConfirmDelete"
+          class="btn btn-danger"><?php echo @lang('CONFIRM_BUTTON_YES'); ?></button>
       </div>
     </div>
   </div>
 </div>
 
 <script>
-  var baseUrl = "<?php echo base_url(); ?>page/security-profile";
-  var modalLoading = document.getElementById("modalLoading");
-  var modalDeleteConfirm = document.getElementById("modalDeleteConfirm");
+var baseUrl = "<?php echo base_url(); ?>page/security-profile";
+var modalLoading = document.getElementById("modalLoading");
+var modalDeleteConfirm = document.getElementById("modalDeleteConfirm");
 
-  // display modal loading...
-  modalLoading.addEventListener("shown.bs.modal", function(event) {
-    try {
-      // getting attributes
-      var button = event.relatedTarget;
-      var modalAction = button.getAttribute("data-bs-action");
-      var modalId = button.getAttribute("data-bs-id");
-
-      if (modalAction == "create")
-        window.location = `${baseUrl}/${modalAction}`;
-      else
-        window.location = `${baseUrl}/${modalAction}/${modalId}`;
-    } catch (error) {
-      console.log("modalLoading.addEventListener");
-    }
-  });
-
-
-  // display modal confirmation
-  modalDeleteConfirm.addEventListener("shown.bs.modal", function(event) {
-    // getting modal components by id
-    const modalTitle = modalDeleteConfirm.querySelector(".modal-title");
-    const modalBodyMessage = modalDeleteConfirm.querySelector(".modal-body label");
+// display modal loading...
+modalLoading.addEventListener("shown.bs.modal", function(event) {
+  try {
     // getting attributes
-    const button = event.relatedTarget;
-    const modalAction = button.getAttribute("data-bs-action");
-    const modalId = button.getAttribute("data-bs-id");
-    const modalLabel = button.getAttribute("data-bs-label");
-    const textMessage = `<?php echo @lang('CONFIRM_MESSAGE_DEL'); ?><?php echo @lang('TITLE'); ?> "${modalLabel}"`;
+    var button = event.relatedTarget;
+    var modalAction = button.getAttribute("data-bs-action");
+    var modalId = button.getAttribute("data-bs-id");
 
-    // update form values
-    $("#formConfirmDeleteData").attr("action", `${baseUrl}/${modalAction}/${modalId}`);
-    $("#__RequestVerificationId").val(modalId);
-    // assign value to html
-    // modalTitle.textContent = textTitle;
-    modalBodyMessage.innerHTML = `${textMessage} ?`;
-  });
+    if (modalAction == "create")
+      window.location = `${baseUrl}/${modalAction}`;
+    else
+      window.location = `${baseUrl}/${modalAction}/${modalId}`;
+  } catch (error) {
+    console.log("modalLoading.addEventListener");
+  }
+});
 
-  // button confirm delete handler
-  $("#btnConfirmDelete").on("click", function(evt) {
-    $("#modalDeleteConfirm").modal("hide");
-    $("#modalLoading").modal("show");
-    $("#formConfirmDeleteData").submit();
-  });
+
+// display modal confirmation
+modalDeleteConfirm.addEventListener("shown.bs.modal", function(event) {
+  // getting modal components by id
+  const modalTitle = modalDeleteConfirm.querySelector(".modal-title");
+  const modalBodyMessage = modalDeleteConfirm.querySelector(".modal-body label");
+  // getting attributes
+  const button = event.relatedTarget;
+  const modalAction = button.getAttribute("data-bs-action");
+  const modalId = button.getAttribute("data-bs-id");
+  const modalLabel = button.getAttribute("data-bs-label");
+  const textMessage = `<?php echo @lang('CONFIRM_MESSAGE_DEL'); ?><?php echo @lang('TITLE'); ?> "${modalLabel}"`;
+
+  // update form values
+  $("#formConfirmDeleteData").attr("action", `${baseUrl}/${modalAction}/${modalId}`);
+  $("#__RequestVerificationId").val(modalId);
+  // assign value to html
+  // modalTitle.textContent = textTitle;
+  modalBodyMessage.innerHTML = `${textMessage} ?`;
+});
+
+// button confirm delete handler
+$("#btnConfirmDelete").on("click", function(evt) {
+  $("#modalDeleteConfirm").modal("hide");
+  $("#modalLoading").modal("show");
+  $("#formConfirmDeleteData").submit();
+});
 </script>

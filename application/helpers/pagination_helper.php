@@ -14,7 +14,7 @@ if (!function_exists('loadPaginationConfig')) {
         $config['reuse_query_string'] = true;
         $config["base_url"] = $uri;
         $config["total_rows"] = $totalRows;
-        $config["per_page"] = $itemsPerPage;
+        $config["per_page"] = 10; //$itemsPerPage;
         $config["num_links"] = 5;
         $config["uri_segment"] = $uriSegment;
         $config['full_tag_open'] = '<ul class="pagination m-0 ms-auto">';

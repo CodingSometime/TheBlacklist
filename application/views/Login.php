@@ -1,17 +1,17 @@
 <link rel="stylesheet" href="<?php echo base_url(); ?>public/css/signin.css" />
 
 <main class="form-signin">
-  <form action="<?php echo base_url(); ?>page/redirect" id="formData" class="row g-3 needs-validation" novalidate>
+  <form action="<?php echo base_url(); ?>page/redirect" method="post" id="formData" class="row g-3 needs-validation" novalidate>
     <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
     <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" required>
-      <label for="floatingInput">Email address</label>
+      <input type="email" class="form-control" id="inputEmail" name="inputEmail" placeholder="name@example.com" required>
+      <label for="inputEmail">Email address</label>
       <div class="invalid-feedback">Hello World</div>
     </div>
     <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password" required>
-      <label for="floatingPassword">Password</label>
+      <input type="password" class="form-control" id="inputPassword" name="inputPassword" placeholder="Password" required>
+      <label for="inputPassword">Password</label>
       <div class="invalid-feedback">Hello World</div>
     </div>
 

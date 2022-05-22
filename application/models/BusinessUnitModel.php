@@ -51,4 +51,22 @@ class BusinessUnitModel extends BaseModel
 		if ($query->num_rows() == 0) return false;
 		return true;
 	}
+
+	public function callAjaxForCriteria($groupOfCompany = null)
+	{
+		$this->db->select("ID, BUSINESS_UNIT_CODE, BUSINESS_UNIT_NAME", false);
+		$this->db->where("GROUP_COMPANY_ID", $groupOfCompany);
+		$this->db->where("STATUS_ID", 1);
+		$this->db->order_by("BUSINESS_UNIT_NAME");
+		$query = $this->db->get($this->viewName);
+		$results = ($query->result_array());
+
+		$selectOptions = '<option value=""></option>';
+		foreach ($results as $key => $value) {
+			$code = $value["BUSINESS_UNIT_CODE"];
+			$description = $value["BUSINESS_UNIT_NAME"];
+			$selectOptions .= '<option value="' . $code . '">' . $description . '</option>';
+		}
+		return $selectOptions;
+	}	
 }

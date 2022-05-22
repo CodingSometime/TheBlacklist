@@ -5,7 +5,7 @@ $lang['MENU_DASHBOARD'] = 'หน้าแรก';
 // persons
 $lang['MENU_PERSON'] = 'ข้อมูลบุคคล';
 $lang['MENU_PERSON_SEARCH'] = 'ค้นหาข้อมูล';
-$lang['MENU_PERSON_MAINTAIN'] = 'จัดการข้อมูล';
+$lang['MENU_PERSON_MAINTAIN'] = 'เพิ่มข้อมูล';
 $lang['MENU_PERSON_UPLOAD'] = 'อับโหลดข้อมูล';
 
 // reports
@@ -23,7 +23,7 @@ $lang['MENU_FND_BRANCH'] = 'สาขา';
 $lang['MENU_FND_COUNTRY'] = 'ประเทศ';
 $lang['MENU_FND_PROVINCE'] = 'จังหวัด';
 $lang['MENU_FND_DISTRICT'] = 'อำเภอ';
-$lang['MENU_FND_ALLEGAION_TYPE'] = 'ประเภทความผิด';
+$lang['MENU_FND_ALLEGATION_TYPE'] = 'ประเภทความผิด';
 $lang['MENU_FND_PERSON_TYPE'] = 'ประเภทบุคคล';
 $lang['MENU_FND_PRIVILEGE_TYPE'] = 'สิทธิ์สำหรับเข้าใช้ระบบ';
 $lang['MENU_FND_TIME'] = 'เวลากระทำความผิด';

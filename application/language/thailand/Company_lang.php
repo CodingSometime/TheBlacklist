@@ -19,6 +19,7 @@ $lang['CONFIRM_BUTTON_NO'] = 'ยกเลิก';
 # List Buttons
 $lang['LIST_BUTTON_EDIT'] = 'แก้ไข';
 $lang['LIST_BUTTON_DEL'] = 'ลบ';
+$lang['LIST_BUTTON_VIEW'] = 'รายละเอียด';
 $lang['LIST_BUTTON_ENABLE'] = 'Enable';
 $lang['LIST_BUTTON_DISABLE'] = 'Disable';
 

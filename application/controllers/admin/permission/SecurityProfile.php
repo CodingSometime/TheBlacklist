@@ -58,7 +58,7 @@ class SecurityProfile extends BaseController
     $config = loadPaginationConfig((base_url() . $this->route . "/index"), $totalRows, 4, 10);
     $this->pagination->initialize($config);
     $page = ($this->uri->segment(4)) ? $this->uri->segment(4) : 0;
-    $results = $this->BaseModel->fetchAll($conditions, $config["per_page"], $page, "ID");
+    $results = $this->BaseModel->fetchAll($conditions, $config["per_page"], $page, "ROLE_ID");
 
     // calculate showing row / page
     $startRow = $page + 1;
@@ -98,7 +98,7 @@ class SecurityProfile extends BaseController
 
       $object = $results->result;
       $items["items"] = $object;
-      $displayValue = @$object->roleCode . " : " . @$object->personTypeCode;
+      $displayValue = @$object->code;
       $roleId = @$object->roleId;
       $privilegeTypeId = @$object->privilegeTypeId;
       $personTypeId = @$object->personTypeId;
@@ -220,10 +220,10 @@ class SecurityProfile extends BaseController
   // check data duplicate from this table
   // route: /page/security-profile/validate/(:id)/(:roleCode)
   // method: GET
-  public function validate($id, $roleId, $privilegeTypeCode)
+  public function validate($id, $code)
   {
     // is duplicate ? then return json for javascript validation
-    if ($this->BaseModel->isDuplicate($id, $roleId, $privilegeTypeCode)) {
+    if ($this->BaseModel->isDuplicate($id, $code)) {
       echo (json_encode(array("duplicate" => true, "message" => @lang("FORM_DUPLICATE_DATA"))));
     } else {
       echo (json_encode(array("duplicate" => false, "message" => "")));

@@ -48,10 +48,8 @@
           <th>#</th>
           <th><?php echo @lang("NATIONAL_ID"); ?>.</th>
           <th><?php echo @lang("PASSPORT_ID"); ?></th>
-          <th><?php echo @lang("TITLE_TH"); ?></th>
-          <th><?php echo @lang("FIRST_NAME_TH"); ?></th>
-          <th><?php echo @lang("LAST_NAME_TH"); ?></th>
-          <th><?php echo @lang("TITLE_EN"); ?></th>
+          <th><?php echo @lang("THAI_NAME"); ?></th>
+          <th><?php echo @lang("ENGLISH_NAME"); ?></th>
           <th><?php echo @lang("ACTIONS"); ?></th>
         </tr>
       </thead>
@@ -66,10 +64,8 @@
               <td class="text-muted"><?php echo $counter; ?></td>
               <td><?php echo @$rs->nationalId; ?></td>
               <td><?php echo @$rs->passportId; ?></td>
-              <td><?php echo @$rs->titleTh; ?></td>
-              <td><?php echo @$rs->firstNameTh; ?></td>
-              <td><?php echo @$rs->lastNameTh; ?></td>
-              <td><?php echo @$rs->titleEn; ?></td>
+              <td><?php echo @$rs->fullNameTh; ?></td>
+              <td><?php echo @$rs->fullNameEn; ?></td>
               <td class="text-nowrap">
                 <button type="button" class="btn btn-sm btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalLoading" data-bs-action="edit" data-bs-id="<?php echo @$rs->id; ?>"><?php echo @lang('LIST_BUTTON_EDIT'); ?></button>
                 <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modalDeleteConfirm" data-bs-action="remove" data-bs-id="<?php echo @$rs->id; ?>" data-bs-label="<?php echo @$rs->companyCode; ?>"><?php echo @lang('LIST_BUTTON_DEL'); ?></button>

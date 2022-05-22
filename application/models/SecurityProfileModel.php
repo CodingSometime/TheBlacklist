@@ -40,12 +40,11 @@ class SecurityProfileModel extends BaseModel
 	}
 
 
-	public function isDuplicate($id, $roleCode, $privilegeTypeCode)
+	public function isDuplicate($id, $code)
 	{
-		if (!$roleCode || !$privilegeTypeCode) return false;
+		if (!$code) return false;
 
-		$this->db->where("ROLE_CODE", $roleCode);
-		$this->db->where("PRIVILEGE_TYPE_CODE", $privilegeTypeCode);
+		$this->db->where("CODE", $code);
 		if (isset($id)) $this->db->where("ID !=", $id);
 
 		$query = $this->db->get($this->TABLE_NAME);

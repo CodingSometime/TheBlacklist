@@ -17,13 +17,13 @@
     <div class="mb-2 row">
       <label for="_BusinessUnitCode" class="col-md-3 col-form-label"><?php echo @lang('BUSINESS_UNIT_CODE'); ?></label>
       <div class="col-md-2 has-validation">
-        <input type="text" class="form-control" id="_BusinessUnitCode" name="businessUnitCode" onkeyup="this.value = this.value.toUpperCase();" value="<?php echo @$items->businessUnitCode; ?>" required>
+        <input disabled type="text" class="form-control" id="_BusinessUnitCode" name="businessUnitCode" onkeyup="this.value = this.value.toUpperCase();" value="<?php echo @$items->businessUnitCode; ?>" required>
       </div>
     </div>
     <div class="mb-2 row">
       <label for="_BusinessUnitName" class="col-md-3 col-form-label"><?php echo @lang('BUSINESS_UNIT_NAME'); ?></label>
       <div class="col-md-4 has-validation">
-        <input type="text" class="form-control" id="_BusinessUnitName" name="businessUnitName" value="<?php echo @$items->businessUnitName; ?>" required>
+        <input disabled type="text" class="form-control" id="_BusinessUnitName" name="businessUnitName" value="<?php echo @$items->businessUnitName; ?>" required>
       </div>
     </div>
     <div class="mb-2 row">
@@ -32,12 +32,12 @@
         <?php echo @$selectBoxGroupCompanyId; ?>
       </div>
     </div>
-    <div class="mb-2 row">
+    <!-- <div class="mb-2 row">
       <label for="_StatusId" class="col-md-3 col-form-label"><?php echo @lang('STATUS_ID'); ?></label>
       <div class="col-md-2 has-validation">
         <?php echo @$selectBoxStatusId; ?>
       </div>
-    </div>
+    </div> -->
     <div class="row pt-3 pb-0">
       <div class="col-md-3"></div>
       <div class="col-md-5"><span class="text-danger" id="error-message"></span></div>

@@ -20,7 +20,7 @@ class PersonTypeModel extends BaseModel
 		$required = $isRequired ? " required " : "";
 		$readOnly = $isReadOnly ? " disabled " : "";
 
-		$this->db->select("ID AS OPTION_VALUE, CONCAT(PERSON_TYPE_NAME , ' (', PERSON_TYPE_CODE, ')') AS OPTION_NAME", false);
+		$this->db->select("ID AS OPTION_VALUE, CONCAT(PERSON_TYPE_NAME) AS OPTION_NAME", false);
 		$this->db->where("STATUS_ID", 1);
 		$this->db->order_by(2);
 		$query = $this->db->get($this->tableName);

@@ -51,4 +51,22 @@ class AllegationTypeModel extends BaseModel
 		if ($query->num_rows() == 0) return false;
 		return true;
 	}
+
+	public function callAjaxForCriteria($allegationLevel = null)
+	{
+		$this->db->select("ID, ALLEGATION_TYPE", false);
+		$this->db->where("ALLEGATION_LEVEL_ID", $allegationLevel);
+		$this->db->where("STATUS_ID", 1);
+		$this->db->order_by("ALLEGATION_TYPE");
+		$query = $this->db->get($this->viewName);
+		$results = ($query->result_array());
+
+		$selectOptions = '<option value=""></option>';
+		foreach ($results as $key => $value) {
+			$code = $value["ID"];
+			$description = $value["ALLEGATION_TYPE"];
+			$selectOptions .= '<option value="' . $code . '">' . $description . '</option>';
+		}
+		return $selectOptions;
+	}	
 }

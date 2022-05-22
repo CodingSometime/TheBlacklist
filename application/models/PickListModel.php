@@ -1,56 +1,60 @@
 <?php if (!defined('BASEPATH')) {
-  exit('No direct script access allowed');
+    exit('No direct script access allowed');
 }
 
 class PicklistModel extends CI_Model
 {
 
-  public function __construct()
-  {
-    parent::__construct();
-  }
-
-  public function selectBoxGender($selected = null, $isReadOnly = false)
-  {
-    $arrays = array();
-    array_push($arrays, array('OPTION_VALUE' => "", 'OPTION_NAME' => ""));
-    
-    if (isset($_SESSION["user_language"]) && strtoupper($_SESSION["user_language"]) === "THAILAND") {
-      array_push($arrays, array('OPTION_VALUE' => "M", 'OPTION_NAME' => "ชาย"));
-      array_push($arrays, array('OPTION_VALUE' => "F", 'OPTION_NAME' => "หญิง"));
-    } else {
-      array_push($arrays, array('OPTION_VALUE' => "M", 'OPTION_NAME' => "Male"));
-      array_push($arrays, array('OPTION_VALUE' => "F", 'OPTION_NAME' => "Female"));
+    public function __construct()
+    {
+        parent::__construct();
     }
 
-    foreach ($arrays as $k => $values) {
-      $id = $values["OPTION_VALUE"];
-      $name = $values["OPTION_NAME"];
-      $options[$id] = $name;
+    public function selectBoxGender($fieldName, $selected = null, $isReadOnly = false)
+    {
+        $arrays = array();
+        array_push($arrays, array('OPTION_VALUE' => "", 'OPTION_NAME' => ""));
+
+        if (isset($_SESSION["user_language"]) && strtoupper($_SESSION["user_language"]) === "THAILAND") {
+            array_push($arrays, array('OPTION_VALUE' => "M", 'OPTION_NAME' => "ชาย"));
+            array_push($arrays, array('OPTION_VALUE' => "F", 'OPTION_NAME' => "หญิง"));
+        } else {
+            array_push($arrays, array('OPTION_VALUE' => "M", 'OPTION_NAME' => "Male"));
+            array_push($arrays, array('OPTION_VALUE' => "F", 'OPTION_NAME' => "Female"));
+        }
+
+        foreach ($arrays as $k => $values) {
+            $id           = $values["OPTION_VALUE"];
+            $name         = $values["OPTION_NAME"];
+            $options[$id] = $name;
+        }
+
+        $readOnly = "";
+        if ($isReadOnly) {
+            $readOnly = "disabled";
+        }
+
+        return form_dropdown($fieldName, $options, $selected, 'id="gender" class="form-select" required ' . $readOnly);
     }
 
-    $readOnly = "";
-    if ($isReadOnly) $readOnly = "disabled";
+    public function selectBoxYesNo($selected = null, $isReadOnly = false)
+    {
+        $arrays = array();
+        array_push($arrays, array('OPTION_VALUE' => "", 'OPTION_NAME' => ""));
+        array_push($arrays, array('OPTION_VALUE' => "Y", 'OPTION_NAME' => "Yes"));
+        array_push($arrays, array('OPTION_VALUE' => "N", 'OPTION_NAME' => "No"));
 
-    return form_dropdown('gender', $options, $selected, 'class="form-select" required ' . $readOnly);
-  }
+        foreach ($arrays as $k => $values) {
+            $id           = $values["OPTION_VALUE"];
+            $name         = $values["OPTION_NAME"];
+            $options[$id] = $name;
+        }
 
-  public function selectBoxYesNo($selected = null, $isReadOnly = false)
-  {
-    $arrays = array();
-    array_push($arrays, array('OPTION_VALUE' => "", 'OPTION_NAME' => ""));
-    array_push($arrays, array('OPTION_VALUE' => "Y", 'OPTION_NAME' => "Yes"));
-    array_push($arrays, array('OPTION_VALUE' => "N", 'OPTION_NAME' => "No"));
+        $readOnly = "";
+        if ($isReadOnly) {
+            $readOnly = "disabled";
+        }
 
-    foreach ($arrays as $k => $values) {
-      $id = $values["OPTION_VALUE"];
-      $name = $values["OPTION_NAME"];
-      $options[$id] = $name;
+        return form_dropdown('yesno', $options, $selected, 'id="yesno" class="form-select" required ' . $readOnly);
     }
-
-    $readOnly = "";
-    if ($isReadOnly) $readOnly = "disabled";
-
-    return form_dropdown('gender', $options, $selected, 'class="form-select" required ' . $readOnly);
-  }
 }

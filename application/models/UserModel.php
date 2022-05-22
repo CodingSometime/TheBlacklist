@@ -51,4 +51,58 @@ class UserModel extends BaseModel
 		if ($query->num_rows() == 0) return false;
 		return true;
 	}
+
+	// basic form login
+	public function login($userName, $userPassword)
+	{
+		if (!$userName) return responseError(null, "USER_NAME is required");
+		if (!$userPassword) return responseError(null, "USER_PASSWORD is required");
+
+		$this->db->where("LOWER(USER_NAME)", strtolower($userName));
+		$this->db->where("USER_PASSWORD", $userPassword);
+		$this->db->where("STATUS_ID", 1);
+		$query = $this->db->get($this->tableName);
+		if (!$query) return responseError($this->db->error());
+		if ($query->num_rows() == 0) return responseError(null, "No data found");
+
+		// return data
+		$results = toCamelCase($query->result_array());
+		return responseOk($results[0]);
+	}
+
+	// for ADFS  authentication 
+	public function authorization($userName, $employeeId)
+	{
+		if (!$userName) return responseError(null, "USER_NAME is required");
+		// if (!$employeeId) return responseError(null, "EMPLOYEE_ID is required");
+
+		$this->db->where("LOWER(USER_NAME)", strtolower($userName));
+		// $this->db->where("EMPLOYEE_ID", $employeeId);
+		// $this->db->where("STATUS_ID", 1);
+		$this->db->where("CURRENT_DATE() BETWEEN EFFECTIVE_START_DATE AND EFFECTIVE_END_DATE");
+
+		$query = $this->db->get($this->tableName);
+		if (!$query) return responseError($this->db->error());
+		if ($query->num_rows() == 0) return responseError(null, "No data found");
+
+		// return data
+		$results = toCamelCase($query->result_array());
+		return responseOk($results[0]);
+	}
+
+
+	public function fetchByCode($code)
+	{
+		if (!$code) return responseError(null, "USER_NAME is required");
+
+		$this->db->where("USER_NAME", $code);
+		$query = $this->db->get($this->viewName);
+		if (!$query) return responseError($this->db->error());
+		if ($query->num_rows() == 0) return responseError(null, "No data found");
+
+		// return data
+		$results = toCamelCase($query->result_array());
+		return responseOk($results[0]);
+	}
+
 }

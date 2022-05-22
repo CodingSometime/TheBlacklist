@@ -3,18 +3,18 @@ defined('BASEPATH') or exit('No direct script access allowed');
 require APPPATH . 'controllers/BaseController.php';
 require APPPATH . 'controllers/Constants.php';
 
-class Person extends BaseController
+class PersonalHistory extends BaseController
 {
-  private $route = "page/person";
-  private $language = "Person";
-  private $view_list = "admin/persons/PersonList";
-  private $view_form = "admin/persons/PersonForm";
+  private $route = "page/personal-list-detail";
+  private $language = "PersonalHistory";
+  private $view_list = "admin/persons/PersonalHistoryList";
+  private $view_form = "admin/persons/PersonalHistoryForm";
 
   // formatting breadcrumbs
   private $breadcrumbs = array(
     array("" => null),
     array("ROOT" => null),
-    array("TITLE" => "/page/person")
+    array("TITLE" => "/page/personal-list-detail")
   );
 
   function __construct()
@@ -27,33 +27,61 @@ class Person extends BaseController
     parent::__construct($object);
 
     // load models
-    $this->load->model("PersonModel", "BaseModel");
-    $this->load->model("TitleModel");
-    $this->load->model("CountryModel");
-    $this->load->model("DataSourceModel");
-    $this->load->model("StatusModel");
+    $this->load->model("PersonalHistoryModel", "BaseModel");
+		$this->load->model("BusinessUnitModel");
+		$this->load->model("CompanyModel");
+		$this->load->model("BranchModel");
+		$this->load->model("PersonTypeModel");
+		$this->load->model("TimeModel");
+		$this->load->model("ProvinceModel");
+		$this->load->model("DistrictModel");
+		$this->load->model("AllegationTypeModel");
+		$this->load->model("PickListModel");
+		$this->load->model("DataSourceModel");
+		$this->load->model("StatusModel");
   }
 
   // home page / index page
-  // route: /page/person
+  // route: /page/personal-list-detail
   // method: GET
   public function index()
   {
     // Find something
     $conditions = array();
-    if (isset($_GET["q"]) && !empty($_GET["q"])) {
-      $conditions["NATIONAL_ID"] = $_GET["q"];
-      $conditions["PASSPORT_ID"] = $_GET["q"];
-      $conditions["TITLE_TH"] = $_GET["q"];
-      $conditions["FIRST_NAME_TH"] = $_GET["q"];
-      $conditions["LAST_NAME_TH"] = $_GET["q"];
-      $conditions["TITLE_EN"] = $_GET["q"];
-      $conditions["FIRST_NAME_EN"] = $_GET["q"];
-      $conditions["LAST_NAME_EN"] = $_GET["q"];
-      $conditions["PICTURE"] = $_GET["q"];
-      $conditions["COUNTRY_CODE"] = $_GET["q"];
-      $conditions["REFERENCE_ID"] = $_GET["q"];
-      $conditions["GENDER"] = $_GET["q"];
+    if (isset($_GET["q"]) && !empty($_GET["q"])){
+			$conditions["PERSON_ID"] = $_GET["q"];
+			$conditions["SEQUENCE_NO"] = $_GET["q"];
+			$conditions["EMPLOYEE_NUMBER"] = $_GET["q"];
+			$conditions["BUSINESS_UNIT_CODE"] = $_GET["q"];
+			$conditions["COMPANY_CODE"] = $_GET["q"];
+			$conditions["BRANCH_CODE"] = $_GET["q"];
+			$conditions["COMPANY_OR_VENDOR"] = $_GET["q"];
+			$conditions["ORGANIZATION_NAME"] = $_GET["q"];
+			$conditions["POSITION_NAME"] = $_GET["q"];
+			$conditions["PERSON_TYPE_CODE"] = $_GET["q"];
+			$conditions["AGE"] = $_GET["q"];
+			$conditions["SERVICE_YEAR"] = $_GET["q"];
+			$conditions["MENTAL"] = $_GET["q"];
+			$conditions["OCCUPATION"] = $_GET["q"];
+			$conditions["MISBEHAVIOR_DATE"] = $_GET["q"];
+			$conditions["MISBEHAVIOR_TIME"] = $_GET["q"];
+			$conditions["MISBEHAVIOR_PLACE"] = $_GET["q"];
+			$conditions["PROVINCE_ID"] = $_GET["q"];
+			$conditions["DISTRICT_ID"] = $_GET["q"];
+			$conditions["ALLEGATION_TYPE_ID"] = $_GET["q"];
+			$conditions["DECISION"] = $_GET["q"];
+			$conditions["DETAIL_OF_CASE"] = $_GET["q"];
+			$conditions["TERMINATE_DATE"] = $_GET["q"];
+			$conditions["TERMINATE_REASON"] = $_GET["q"];
+			$conditions["TOTAL_AMOUNT"] = $_GET["q"];
+			$conditions["ALLEGATION_STATUS"] = $_GET["q"];
+			$conditions["ALLEGATION_REASON"] = $_GET["q"];
+			$conditions["DELETE_REASON"] = $_GET["q"];
+			$conditions["CREATED_BY"] = $_GET["q"];
+			$conditions["CREATED_DATE"] = $_GET["q"];
+			$conditions["LASTED_UPDATE_BY_"] = $_GET["q"];
+			$conditions["LASTED_UPDATE_DATE"] = $_GET["q"];
+			$conditions["DATA_SOURCE_ID"] = $_GET["q"];
     }
 
     // preparing pagination
@@ -101,11 +129,19 @@ class Person extends BaseController
 
       $object = $results->result;
       $items["items"] = $object;
-      $displayValue = @$object->nationalId . " : " . @$object->firstNameTh . " " . @$object->lastNameTh;
-      $titleTh = @$object->titleTh;
-      $titleEn = @$object->titleEn;
-      $countryCode = @$object->countryCode;
-      $dataSourceId = @$object->dataSourceId;
+      $displayValue = @$object->personId . " : " . @$object->sequenceNo;
+			$businessUnitCode = @$object->businessUnitCode;
+			$companyCode = @$object->companyCode;
+			$branchCode = @$object->branchCode;
+			$personTypeCode = @$object->personTypeCode;
+			$misbehaviorTime = @$object->misbehaviorTime;
+			$provinceId = @$object->provinceId;
+			$districtId = @$object->districtId;
+			$allegationTypeId = @$object->allegationTypeId;
+			$allegationStatus = @$object->allegationStatus;
+			$dataSourceId = @$object->dataSourceId;
+			$statusId = @$object->statusId;
+
     }
 
     if ($action == Constants::ACTION_NEW) $this->addBreadcrumbs(array("BREADCRUMBS_NEW" => null));
@@ -116,10 +152,17 @@ class Person extends BaseController
     $items["breadcrumbs"] = $this->_breadcrumbs();
 
     // select box HERE !!
-    $items["selectBoxTitleTh"] = $this->TitleModel->selectBox("titleTh", @$titleTh);
-    $items["selectBoxTitleEn"] = $this->TitleModel->selectBox("titleEn", @$titleEn);
-    $items["selectBoxCountryCode"] = $this->CountryModel->selectBox("countryCode", @$countryCode);
-    $items["selectBoxDataSourceId"] = $this->DataSourceModel->selectBox("dataSourceId", @$dataSourceId);
+		$items["selectBoxBusinessUnitCode"] = $this->BusinessUnitModel->selectBox("businessUnitCode", @$businessUnitCode);
+		$items["selectBoxCompanyCode"] = $this->CompanyModel->selectBox("companyCode", @$companyCode);
+		$items["selectBoxBranchCode"] = $this->BranchModel->selectBox("branchCode", @$branchCode);
+		$items["selectBoxPersonTypeCode"] = $this->PersonTypeModel->selectBox("personTypeCode", @$personTypeCode);
+		$items["selectBoxMisbehaviorTime"] = $this->TimeModel->selectBox("misbehaviorTime", @$misbehaviorTime);
+		$items["selectBoxProvinceId"] = $this->ProvinceModel->selectBox("provinceId", @$provinceId);
+		$items["selectBoxDistrictId"] = $this->DistrictModel->selectBox("districtId", @$districtId);
+		$items["selectBoxAllegationTypeId"] = $this->AllegationTypeModel->selectBox("allegationTypeId", @$allegationTypeId);
+		$items["selectBoxAllegationStatus"] = $this->PickListModel->selectBoxYesNo("allegationStatus", @$allegationStatus);
+		$items["selectBoxDataSourceId"] = $this->DataSourceModel->selectBox("dataSourceId", @$dataSourceId);
+		$items["selectBoxStatusId"] = $this->StatusModel->selectBox("statusId", @$statusId);
 
     // render view html
     $output = $this->load->view($this->view_form, $items, true);
@@ -127,7 +170,7 @@ class Person extends BaseController
   }
 
 
-  // route: /page/person/create
+  // route: /page/personal-list-detail/create
   // method: GET
   public function create()
   {
@@ -135,7 +178,7 @@ class Person extends BaseController
   }
 
 
-  // route: /page/person/edit/(:num)
+  // route: /page/personal-list-detail/edit/(:num)
   // method: GET
   public function edit($id)
   {
@@ -143,7 +186,7 @@ class Person extends BaseController
   }
 
 
-  // route: /page/person/delete/(:num)
+  // route: /page/personal-list-detail/delete/(:num)
   // method: GET
   public function delete($id)
   {
@@ -152,7 +195,7 @@ class Person extends BaseController
 
 
   // save  new or update record to database
-  // route: /page/person/save/(:num)
+  // route: /page/personal-list-detail/save/(:num)
   // method: POST
   public function save()
   {
@@ -167,7 +210,7 @@ class Person extends BaseController
 
 
   // insert new record to database
-  // route: /page/person/insert/(:num)
+  // route: /page/personal-list-detail/insert/(:num)
   // method: POST
   public function insert($forms)
   {
@@ -177,7 +220,7 @@ class Person extends BaseController
 
 
   // update record to database
-  // route: /page/person/update/(:num)
+  // route: /page/personal-list-detail/update/(:num)
   // method: POST
   public function update($forms)
   {
@@ -189,7 +232,7 @@ class Person extends BaseController
 
 
   // delete from database
-  // route: /page/person/remove/(:num)
+  // route: /page/personal-list-detail/remove/(:num)
   // method: POST
   public function remove($id)
   {
@@ -214,12 +257,12 @@ class Person extends BaseController
 
 
   // check data duplicate from this table
-  // route: /page/person/validate/(:id)/(:nationalId)
+  // route: /page/person-list-detail/validate/(:id)/(:personId)
   // method: GET
-  public function validate($id, $nationalId)
+  public function validate($id, $personId)
   {
     // is duplicate ? then return json for javascript validation
-    if ($this->BaseModel->isDuplicate($id, $nationalId)) {
+    if ($this->BaseModel->isDuplicate($id, $personId)) {
       echo (json_encode(array("duplicate" => true, "message" => @lang("FORM_DUPLICATE_DATA"))));
     } else {
       echo (json_encode(array("duplicate" => false, "message" => "")));

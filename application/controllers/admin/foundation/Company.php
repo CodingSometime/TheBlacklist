@@ -213,4 +213,10 @@ class Company extends BaseController
       echo (json_encode(array("duplicate" => false, "message" => "")));
     }
   }
+
+    public function ajax($businessUnitCode){
+		if(!$businessUnitCode) return false;
+		$selectOptions = $this->BaseModel->callAjaxForCriteria($businessUnitCode);
+		echo $selectOptions;
+	}
 }
